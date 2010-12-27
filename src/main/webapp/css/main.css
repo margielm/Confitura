@@ -1,0 +1,99 @@
+body {
+	background: url(../images/tlo.jpg) center top no-repeat;
+	margin-bottom: 20px;
+	background-color: #D7D5C0;
+	text-align: center;
+	font-family: Tahoma;
+}
+
+#main_banner {
+	padding-left: 25px;
+}
+
+#wraper {
+	width: 900px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#main {
+	background-color: pink;
+	clear: both;
+}
+
+#horizontal_menu {
+	background-color: black;
+	float: right;
+}
+
+#horizontal_menu ul {
+	list-style: none outside none;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+#horizontal_menu li {
+	float: left;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: -5px;
+}
+
+#horizontal_menu .item,#horizontal_menu .item a {
+	text-decoration: none;
+	color: #bcf5ff;
+	font-size: 11pt;
+}
+
+#menu {
+	background-color: white;
+	width: 240px;
+	float: left;
+	margin-right: 10px
+}
+
+#menu ul li {
+	list-style: none;
+	text-transform: uppercase;
+	list-style-image: url(../images/bullet.png);
+}
+
+#menu ul ul {
+	margin-left: 0px;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+#menu ul ul li {
+	font-size: 8pt;
+	color: gray;
+	text-transform: none;
+	list-style-image: none;
+	margin-left: 0px;
+}
+
+#menu .item,#menu .item a {
+	text-decoration: none;
+	color: black;
+	font-size: 10pt;
+	margin-left: -3px;
+}
+
+#menu .subitem,#menu .subitem a {
+	text-decoration: none;
+	color: gray;
+}
+
+#main_content {
+	background-color: white;
+	width: 650px;
+	float: left;
+}
+ 
+.title {
+	border-bottom: 1px dotted #c0c0c0;
+	width: 95%;
+	padding-bottom: 10px;
+}

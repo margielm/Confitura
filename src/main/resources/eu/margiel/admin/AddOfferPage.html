@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<div wicket:id="feedback"></div>
+	<form wicket:id="form">
+	<table>
+		<tr>
+			<td>
+			<table>
+				<tr>
+					<td colspan="4">Title<input
+						type="text"
+						wicket:id="title"
+						id="tile" style="width: 100%;"/></td>
+				</tr>
+				<tr>
+					<td>Category<select
+						wicket:id="type"
+						id="type" /></td>
+					<td>Price<input
+						type="text"
+						wicket:id="price"
+						id="price" /></td>
+					<td>City<input
+						type="text"
+						wicket:id="city"
+						id="city" /></td>
+					<td>Coast<input
+						type="text"
+						wicket:id="coast"
+						id="coast" /></td>
+				</tr>
+				<tr>
+					<td>Sea View<input
+						type="checkbox"
+						wicket:id="seaView"
+						id="seaView" /></td>
+					<td>Primary market<input
+						type="checkbox"
+						wicket:id="primaryMarket"
+						id="primaryMarket" /></td>
+					<td>Bedrooms<input
+						type="text"
+						wicket:id="bedrooms"
+						id="bedrooms" /></td>
+					<td>Bathrooms<input
+						type="text"
+						wicket:id="bathrooms"
+						id="bathrooms" /></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td>Short description</td>
+		</tr>
+		<tr>
+			<td><textarea wicket:id="shortDescription"></textarea></td>
+		</tr>
+		<tr>
+			<td>Description</td>
+		</tr>
+		<tr>
+			<td><textarea wicket:id="description"></textarea></td>
+		</tr>
+		<tr>
+			<td><input
+				type="submit"
+				value="save" /></td>
+		</tr>
+	</table>
+	</form>
+	<div wicket:id="upload_photos" />
+</wicket:extend>
+</body>
+</html>

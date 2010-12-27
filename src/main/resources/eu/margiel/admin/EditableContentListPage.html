@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<wicket:link>
+		<a href="/eu/margiel/admin/EditableContentPage.html">Add</a>
+	</wicket:link>
+	<table
+		wicket:id="table"
+		style="width: 100%"
+		border="1">
+		<thead>
+			<tr>
+				<th>title</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr wicket:id="editable_content_list">
+				<td wicket:id="title"></td>
+				<td style="width: 50px;"><a
+					href="#"
+					wicket:id="remove"><img
+					src="/images/remove.png"
+					style="width: 15px;" /></a></td>
+				<td style="width: 50px;"><a
+					href="#"
+					wicket:id="edit">edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+</wicket:extend>
+</body>
+</html>

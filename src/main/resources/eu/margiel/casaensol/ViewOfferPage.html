@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+<wicket:head>
+	<script src="/js/galleria/galleria.js"></script>
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+	<div style="float: left; width: 300px;">
+	<div
+		wicket:id="short_description"
+		style="text-align: justify; font-family: Tahoma; font-size: 2;"></div>
+	<div
+		wicket:id="description"
+		style="text-align: justify; font-family: Tahoma; font-size: 2;"></div>
+	<div>
+	<div class="cufon title">Szczegóły nieruchomości</div>
+	<table style="font-size: small;">
+		<tr>
+			<td>Cena</td>
+			<td>100000</td>
+		</tr>
+		<tr>
+			<td>Miasto</td>
+			<td>Warszawa</td>
+		</tr>
+		<tr>
+			<td>Wybrzeże</td>
+			<td>Bałtyckie</td>
+		</tr>
+		<tr>
+			<td>Łazienki</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>Sypialnie</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>Widok na morze</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>Rynek Pierwotny</td>
+			<td>2</td>
+		</tr>
+	</table>
+	</div>
+	</div>
+	<div
+		id="photos"
+		style="width: 250px; height: 220px; float: right;">
+	<div wicket:id="photos"><img
+		src="#"
+		wicket:id="photo" /></div>
+	</div>
+	<script>
+	// Load the classic theme
+	Galleria.loadTheme('/js/galleria/themes/classic/galleria.classic.js');
+
+	// Initialize Galleria
+	$('#photos').galleria( {
+		extend : function() {
+			this.bind(Galleria.IMAGE, function(e) {
+				$(e.imageTarget).css('cursor', 'pointer').click(this.proxy(function() {
+					this.openLightbox();
+				}));
+			});
+		}
+	});
+</script>
+</wicket:extend>
+</body>
+</html>
