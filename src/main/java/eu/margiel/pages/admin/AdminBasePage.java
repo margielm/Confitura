@@ -1,10 +1,10 @@
-package eu.margiel.admin;
+package eu.margiel.pages.admin;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 
-import eu.margiel.CasaensolApplication;
+import eu.margiel.Javarsovia;
 
 @SuppressWarnings("serial")
 public class AdminBasePage extends WebPage {
@@ -21,7 +21,7 @@ public class AdminBasePage extends WebPage {
 		add(wrapper);
 	}
 
-	protected CasaensolApplication getCasaensolApp() {
-		return (CasaensolApplication) Application.get();
+	protected Javarsovia getCasaensolApp() {
+		return (Javarsovia) Application.get();
 	}
 }

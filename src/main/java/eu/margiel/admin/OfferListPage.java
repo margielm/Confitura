@@ -9,6 +9,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.Offer;
+import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.services.OfferService;
 
 @SuppressWarnings("serial")

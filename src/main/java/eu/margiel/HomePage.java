@@ -1,6 +1,6 @@
 package eu.margiel;
 
-import eu.margiel.casaensol.BaseWebPage;
+import eu.margiel.pages.javarsovia.BaseWebPage;
 
 public class HomePage extends BaseWebPage {
 

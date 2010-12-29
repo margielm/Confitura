@@ -1,8 +1,8 @@
 package eu.margiel;
 
-import eu.margiel.CasaensolApplication;
+import eu.margiel.Javarsovia;
 
-public class TestApplication extends CasaensolApplication {
+public class TestApplication extends Javarsovia {
 	@Override
 	protected void productionInit() {
 	}

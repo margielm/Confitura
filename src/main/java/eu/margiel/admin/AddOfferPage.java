@@ -21,6 +21,7 @@ import org.joda.time.LocalDateTime;
 import eu.margiel.components.UploadPhotosPanel;
 import eu.margiel.domain.Offer;
 import eu.margiel.domain.OfferType;
+import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.services.OfferService;
 import eu.margiel.utils.OfferPhotosProvider;
 

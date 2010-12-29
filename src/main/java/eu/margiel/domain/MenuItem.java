@@ -44,8 +44,10 @@ public class MenuItem implements Serializable {
 
 	private int position;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private DynamicContent content;
+	// @ManyToOne(cascade = CascadeType.ALL)
+	// private DynamicContent content;
+
+	private String linkTo;
 
 	MenuItem() {
 	}
@@ -148,9 +150,9 @@ public class MenuItem implements Serializable {
 		return position;
 	}
 
-	public DynamicContent getContent() {
-		return content;
-	}
+	// public DynamicContent getContent() {
+	// return content;
+	// }
 
 	@Override
 	public boolean equals(Object obj) {
@@ -178,5 +180,9 @@ public class MenuItem implements Serializable {
 	public MenuItem addMenuItem(MenuItem menuItem) {
 		add(menuItem);
 		return this;
+	}
+
+	public String getLinkTo() {
+		return linkTo;
 	}
 }

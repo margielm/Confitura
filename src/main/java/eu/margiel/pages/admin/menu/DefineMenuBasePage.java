@@ -1,4 +1,4 @@
-package eu.margiel.admin;
+package eu.margiel.pages.admin.menu;
 
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -21,6 +20,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import eu.margiel.domain.DynamicContent;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.OfferContent;
+import eu.margiel.pages.admin.AdminBasePage;
+import eu.margiel.pages.admin.MenuItemList;
 import eu.margiel.services.MenuService;
 import eu.margiel.services.StaticContentService;
 
@@ -78,12 +79,19 @@ public abstract class DefineMenuBasePage extends AdminBasePage {
 	}
 
 	private void createDropDown(String id, final ListItem<MenuItem> item) {
-		PropertyModel<DynamicContent> model = propertyModel(item.getModelObject(), "content");
-		DropDownChoice<DynamicContent> contentDropDown = dropDown(id + "_content", model, getDynamicContents());
-		contentDropDown.setChoiceRenderer(new ChoiceRenderer<DynamicContent>("name", "name"));
-		if (item.getModelObject().getContent() != null)
-			contentDropDown.setDefaultModelObject(item.getModelObject().getContent());
-		item.add(contentDropDown);
+		// PropertyModel<DynamicContent> model =
+		// propertyModel(item.getModelObject(), "content");
+		// DropDownChoice<DynamicContent> contentDropDown = dropDown(id +
+		// "_content", model, getDynamicContents());
+		// contentDropDown.setChoiceRenderer(new
+		// ChoiceRenderer<DynamicContent>("name", "name"));
+		// if (item.getModelObject().getContent() != null)
+		// contentDropDown.setDefaultModelObject(item.getModelObject().getContent());
+		PropertyModel<String> model = propertyModel(item.getModelObject(), "linkTo");
+		DropDownChoice<String> comboBox = dropDown(id + "_content", model, MenuItemList.all());
+		// DropDownChoice<String> comboBox = new DropDownChoice<String>(id +
+		// "_content", MenuItemList.all());
+		item.add(comboBox);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

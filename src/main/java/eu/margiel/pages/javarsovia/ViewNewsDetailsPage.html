@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+	<div class="tekst">
+	<h3
+		id="NewsPostDetailTitle"
+		class="tytul"
+		wicket:id="title">Tytuł</h3>
+	<span
+		class="data"
+		id="NewsPostDetailDate"
+		wicket:id="creationDate"> 19.07.2010 </span>
+	<hr
+		class="clear"
+		id="NewsPostDetailHorizRule" />
+
+	<div id="NewsPostDetailAuthor">Napisał: Autor</div>
+
+	<div id="NewsPostDetailContent">
+		<div wicket:id="shortDescription">krótki opis</div>
+		<div wicket:id="description">pełny opis</div>
+	</div>
+	</div>
+</wicket:extend>
+</body>
+</html>

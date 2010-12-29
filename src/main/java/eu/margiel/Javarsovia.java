@@ -15,16 +15,16 @@ import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import eu.margiel.utils.FileResource;
 
-public class CasaensolApplication extends WebApplication {
+public class Javarsovia extends WebApplication {
 	private Folder mainFilesFolder;
 
-	public CasaensolApplication() {
+	public Javarsovia() {
 	}
 
 	@Override
 	protected void init() {
 		super.init();
-		// getMarkupSettings().setStripWicketTags(true);
+		getMarkupSettings().setStripWicketTags(true);
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 		new AnnotatedMountScanner().scanPackage("eu.margiel.pages").mount(this);

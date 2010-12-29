@@ -5,12 +5,8 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 
-import eu.margiel.casaensol.OfferListPage;
-import eu.margiel.casaensol.ViewContentPage;
-import eu.margiel.domain.DynamicContent;
 import eu.margiel.domain.MenuItem;
-import eu.margiel.domain.OfferContent;
-import eu.margiel.domain.StaticContent;
+import eu.margiel.pages.admin.MenuItemList;
 
 @SuppressWarnings({ "serial" })
 public class MainMenuPanel extends Panel {
@@ -43,12 +39,17 @@ public class MainMenuPanel extends Panel {
 	}
 
 	private Page getPageForContentType(MenuItem menuItem) {
-		DynamicContent content = menuItem.getContent();
-		if (content instanceof OfferContent)
-			return new OfferListPage(menuItem.getName(), ((OfferContent) content).getOfferType());
-		else if (content instanceof StaticContent)
-			return new ViewContentPage(menuItem.getName(), (StaticContent) content);
-		else
+		// DynamicContent content = menuItem.getContent();
+		// if (content instanceof OfferContent)
+		// return new OfferListPage(menuItem.getName(), ((OfferContent)
+		// content).getOfferType());
+		// else if (content instanceof StaticContent)
+		// return new ViewContentPage(menuItem.getName(), (StaticContent)
+		// content);
+		// else
+		String linkTo = menuItem.getLinkTo();
+		if (linkTo == null)
 			return null;
+		return MenuItemList.getPageFor(linkTo);
 	}
 }

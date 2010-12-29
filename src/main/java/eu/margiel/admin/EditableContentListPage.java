@@ -13,6 +13,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.StaticContent;
+import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.services.StaticContentService;
 
 @SuppressWarnings("serial")

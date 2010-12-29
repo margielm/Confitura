@@ -1,0 +1,27 @@
+/* Start of CMSMS style sheet 'javarsovia - additional' */
+input.search-button {
+            padding: 0px 0px;
+            width: 31px;
+	height: 22px;
+            text-indent: -9999em;
+	float: right;
+	margin: 0;
+	border-style: none;
+	cursor: pointer;
+	background: transparent url(uploads/images/2010/template/lupa.png) no-repeat right top;
+}
+input.search-input {
+	width: 175px;
+	height: 22px;
+	border: none;
+	background-image: url("uploads/images/2010/template/search_tlo.png");
+	font-size: 12px;
+	font-family: verdana;
+	padding-left: 10px;
+}
+
+p.opis{
+            text-align: justify;
+}
+/* End of 'javarsovia - additional' */
+

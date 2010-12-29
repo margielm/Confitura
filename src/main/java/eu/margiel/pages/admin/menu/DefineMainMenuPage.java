@@ -1,4 +1,4 @@
-package eu.margiel.admin;
+package eu.margiel.pages.admin.menu;
 
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;

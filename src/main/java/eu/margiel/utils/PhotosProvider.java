@@ -9,7 +9,7 @@ import org.apache.wicket.util.file.Folder;
 
 import com.google.common.collect.Lists;
 
-import eu.margiel.CasaensolApplication;
+import eu.margiel.Javarsovia;
 import eu.margiel.domain.PhotosFolder;
 
 @SuppressWarnings("serial")
@@ -40,8 +40,8 @@ public abstract class PhotosProvider implements Serializable {
 		return urls;
 	}
 
-	protected CasaensolApplication getApp() {
-		return (CasaensolApplication) Application.get();
+	protected Javarsovia getApp() {
+		return (Javarsovia) Application.get();
 	}
 
 	public String getPhotoURLFor(File file) {

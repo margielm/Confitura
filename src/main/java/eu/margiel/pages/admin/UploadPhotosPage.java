@@ -1,4 +1,4 @@
-package eu.margiel.admin;
+package eu.margiel.pages.admin;
 
 import org.apache.wicket.PageParameters;
 

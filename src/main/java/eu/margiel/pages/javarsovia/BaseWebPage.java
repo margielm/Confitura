@@ -1,4 +1,4 @@
-package eu.margiel.casaensol;
+package eu.margiel.pages.javarsovia;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -24,6 +24,7 @@ public class BaseWebPage extends WebPage {
 		wrapper.setOutputMarkupId(true);
 		add(wrapper);
 		add(new MainMenuPanel("mainMenu", testService.getMainMenu()));
-		add(new MainMenuPanel("horizontalMenu", testService.getHorizontalMenu()));
+		// add(new MainMenuPanel("horizontalMenu",
+		// testService.getHorizontalMenu()));
 	}
 }

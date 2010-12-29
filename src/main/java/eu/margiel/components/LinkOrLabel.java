@@ -19,12 +19,13 @@ public class LinkOrLabel extends Panel {
 
 			@Override
 			public boolean isVisible() {
-				return page != null;
+				return true;
+				// return page != null;
 			}
 		};
 		link.add(new Label("link_label", label));
 		add(link);
-		add(new Label("label", label).setVisible(!link.isVisible()));
+		add(new Label("label", label).setVisible(false));
 	}
 
 }

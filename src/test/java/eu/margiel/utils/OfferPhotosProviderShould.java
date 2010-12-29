@@ -12,7 +12,7 @@ import org.joda.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.margiel.CasaensolApplication;
+import eu.margiel.Javarsovia;
 import eu.margiel.domain.Offer;
 import eu.margiel.domain.PhotosFolder;
 
@@ -20,7 +20,7 @@ public class OfferPhotosProviderShould {
 	private Offer offer = new Offer().creationDate(new LocalDateTime(2010, 1, 1, 1, 1, 1));
 	private OfferPhotosProvider provider = spy(new OfferPhotosProvider(offer));
 	private PhotosFolder folder = mock(PhotosFolder.class);
-	private CasaensolApplication app = mock(CasaensolApplication.class);
+	private Javarsovia app = mock(Javarsovia.class);
 	private File[] files = new File[] { new File("file1"), new File("file2") };
 
 	@Before
