@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<form wicket:id="form">
+	<div wicket:id="feedback"></div>
+	<table>
+		<tr>
+			<td>Imię:</td>
+			<td> <input type="text" wicket:id="firstName" /></td>
+		</tr>
+		<tr>
+			<td>Nazwisko:</td>
+			<td><input type="text" wicket:id="lastName" /></td>
+		</tr>
+		<tr>
+			<td>Login:</td>
+			<td><input type="text" wicket:id="userName" /></td>
+		</tr>
+		<tr>
+			<td>e-mail:</td>
+			<td><input type="text" wicket:id="eMail" /></td>
+		</tr>
+		<tr>
+			<td>Hasło:</td>
+			<td><input type="password" wicket:id="password" /></td>
+		</tr>
+		<tr>
+			<td>Powtórz Hasło:</td>
+			<td><input type="password" wicket:id="repassword" /></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2"><input
+				type="submit"
+				value="save" /></td>
+		</tr>
+	</table>
+	</form>
+</wicket:extend>
+</body>
+</html>

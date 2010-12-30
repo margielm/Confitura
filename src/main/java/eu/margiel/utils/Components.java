@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
@@ -31,6 +32,11 @@ import wicket.contrib.tinymce.settings.TinyMCESettings;
 public class Components {
 	public static <T extends Serializable> TextField<T> textField(String id, IModel<T> model) {
 		return new TextField<T>(id, model);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static PasswordTextField passwordField(String id, IModel<? extends Serializable> model, boolean required) {
+		return (PasswordTextField) new PasswordTextField(id, (IModel<String>) model).setRequired(required);
 	}
 
 	public static <T extends Serializable> TextField<T> textField(String id) {

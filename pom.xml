@@ -23,9 +23,15 @@
 		<hades.version>2.0.1.RELEASE</hades.version>
 		<hibernate.version>3.6.0.Final</hibernate.version>
 		<lambdaj.version>2.3.1</lambdaj.version>
+		<jasypt.version>1.7</jasypt.version>
 	</properties>
 	<dependencies>
-			<dependency>
+		<dependency>
+	      <groupId>org.jasypt</groupId>
+	      <artifactId>jasypt</artifactId>
+	      <version>${jasypt.version}</version>
+	    </dependency>
+		<dependency>
 			<groupId>com.googlecode.lambdaj</groupId>
 			<artifactId>lambdaj</artifactId>
 			<version>${lambdaj.version}</version>
@@ -236,7 +242,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>7.1.5.v20100705</version>
 				<configuration>
-					<scanIntervalSeconds>30</scanIntervalSeconds>
+					<scanIntervalSeconds>120</scanIntervalSeconds>
 					<webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
 				</configuration>
 			</plugin>
