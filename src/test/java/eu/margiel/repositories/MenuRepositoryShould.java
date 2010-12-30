@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import eu.margiel.domain.HorizontalMenu;
 import eu.margiel.domain.MainMenu;
 import eu.margiel.domain.MenuItem;
 
@@ -21,7 +20,6 @@ public class MenuRepositoryShould {
 	@Autowired
 	private MenuRepository repository;
 	private MenuItem mainMenu = new MainMenu().children(new MenuItem("main item"));
-	private MenuItem horizontalMenu = new HorizontalMenu().children(new MenuItem("horizontal item"));
 
 	@Test
 	public void saveMenuItem() {
@@ -33,7 +31,6 @@ public class MenuRepositoryShould {
 	@Test
 	public void saveAndFetchMainMenu() {
 		repository.save(mainMenu);
-		repository.save(horizontalMenu);
 
 		MenuItem fetchedMenu = repository.getMainMenu();
 

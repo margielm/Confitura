@@ -1,6 +1,5 @@
 package eu.margiel.domain;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,9 +8,6 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
@@ -29,10 +25,7 @@ import com.google.common.collect.Lists;
 		name = "menu_type",
 		discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("I")
-public class MenuItem implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+public class MenuItem extends AbstractEntity {
 	private String name;
 	private boolean published = true;
 
@@ -139,10 +132,6 @@ public class MenuItem implements Serializable {
 
 	public boolean isPublished() {
 		return published;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public int getPosition() {

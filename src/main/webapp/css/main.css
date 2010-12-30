@@ -626,6 +626,8 @@ table.timetable a:hover {
 -moz-background-origin:padding;
 background:#f7f5ef none repeat scroll 0 0;
 }
+table.c4p td{
+	padding: 0px;
 
 
 /* ----------- CMS ELEMENTS ------------- */

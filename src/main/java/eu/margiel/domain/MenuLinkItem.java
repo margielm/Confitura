@@ -1,20 +1,12 @@
 package eu.margiel.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.google.common.base.Objects;
 
 @SuppressWarnings("serial")
 @Entity
-public class MenuLinkItem implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+public class MenuLinkItem extends AbstractEntity {
 
 	private String name;
 	private Integer linkTo;

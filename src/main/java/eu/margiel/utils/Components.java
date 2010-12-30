@@ -48,6 +48,13 @@ public class Components {
 	}
 
 	@SuppressWarnings("unchecked")
+	public static <T extends Serializable> TextArea<T> richEditorSimple(String id, IModel<T> model) {
+		TextArea<T> richEditor = (TextArea<T>) richEditorSimple(id);
+		richEditor.setModel(model);
+		return richEditor;
+	}
+
+	@SuppressWarnings("unchecked")
 	public static <T extends Serializable> TextArea<T> richEditor(String id, IModel<T> model) {
 		TextArea<T> richEditor = (TextArea<T>) richEditor(id);
 		richEditor.setModel(model);

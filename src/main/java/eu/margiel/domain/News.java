@@ -1,20 +1,12 @@
 package eu.margiel.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @SuppressWarnings("serial")
 @Entity
-public class News implements Serializable {
-	@SuppressWarnings("unused")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+public class News extends AbstractEntity {
 	private Date creationDate = new Date();
 	private String title;
 	private String shortDescription;
