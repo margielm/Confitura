@@ -1,32 +1,55 @@
 package eu.margiel.pages.admin;
 
+import static ch.lambdaj.Lambda.*;
 import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Maps.*;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.annotation.PostConstruct;
 
 import org.apache.wicket.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import eu.margiel.domain.MenuLinkItem;
+import eu.margiel.domain.SimpleContent;
+import eu.margiel.pages.javarsovia.DynamicMenuLink;
+import eu.margiel.pages.javarsovia.MenuLink;
+import eu.margiel.pages.javarsovia.SingleMenuLink;
 import eu.margiel.pages.javarsovia.ViewNewsPage;
+import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
+import eu.margiel.repositories.SimpleContentRepository;
 
+@Component
 public class MenuItemList {
-	private static Map<String, Class<?>> items = newHashMap();
+	@Autowired
+	private SimpleContentRepository repository;
+	private List<MenuLink> links = newArrayList();
 
-	public static void add(String item, Class<ViewNewsPage> clazz) {
-		items.put(item, clazz);
+	@PostConstruct
+	public void initLinks() {
+		links.add(new SingleMenuLink("Aktualności", ViewNewsPage.class));
+		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}
 
-	public static List<String> all() {
-		return newArrayList(items.keySet());
+	public Page getPageFor(MenuLinkItem menuLinkItem) {
+		MenuLink menuLink = getMenuLinkFor(menuLinkItem.getName());
+		if (menuLink != null)
+			return menuLink.getPage(menuLinkItem.getLinkTo());
+		return null;
 	}
 
-	public static Page getPageFor(String linkTo) {
-		try {
-			return (Page) items.get(linkTo).newInstance();
-		} catch (Exception e) {
-			throw new RuntimeException("Can not create page for " + items.get(linkTo));
-		}
+	MenuLink getMenuLinkFor(String link) {
+		return selectFirst(links, having(on(MenuLink.class).containsLink(link)));
+	}
+
+	public void add(MenuLink menuLink) {
+		links.add(menuLink);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<MenuLinkItem> getAllItems() {
+		return (List<MenuLinkItem>) collect(collect(links, on(MenuLink.class).getAllItems()));
 	}
 
 }

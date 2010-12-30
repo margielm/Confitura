@@ -15,15 +15,12 @@ import org.wicketstuff.annotation.mount.MountPath;
 import eu.margiel.components.LabeledLink;
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.News;
-import eu.margiel.pages.admin.MenuItemList;
 import eu.margiel.repositories.NewsRepository;
 
 @SuppressWarnings("serial")
 @MountPath(path = "news")
 public class ViewNewsPage extends BaseWebPage {
-	static {
-		MenuItemList.add("news", ViewNewsPage.class);
-	}
+
 	@SpringBean
 	private NewsRepository repository;
 

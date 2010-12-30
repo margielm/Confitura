@@ -22,8 +22,14 @@
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<hades.version>2.0.1.RELEASE</hades.version>
 		<hibernate.version>3.6.0.Final</hibernate.version>
+		<lambdaj.version>2.3.1</lambdaj.version>
 	</properties>
 	<dependencies>
+			<dependency>
+			<groupId>com.googlecode.lambdaj</groupId>
+			<artifactId>lambdaj</artifactId>
+			<version>${lambdaj.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.synyx.hades</groupId>
 			<artifactId>org.synyx.hades</artifactId>

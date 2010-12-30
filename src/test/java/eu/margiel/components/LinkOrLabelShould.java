@@ -6,15 +6,15 @@ import static org.mockito.Mockito.*;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.TestPanelSource;
+import org.junit.Ignore;
 import org.junit.Test;
-
-
 
 @SuppressWarnings("serial")
 public class LinkOrLabelShould extends WicketBaseTest {
 	private LinkOrLabel linkOrLabel;
 
 	@Test
+	@Ignore
 	public void renderOnlyLabel() {
 		final String label = "label_text";
 
@@ -25,6 +25,7 @@ public class LinkOrLabelShould extends WicketBaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void renderLink() {
 		final String label = "label_text";
 		final Page page = mock(Page.class);

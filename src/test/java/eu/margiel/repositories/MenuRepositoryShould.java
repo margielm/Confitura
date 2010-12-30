@@ -31,16 +31,6 @@ public class MenuRepositoryShould {
 	}
 
 	@Test
-	public void saveAndFetchHorizontalMenu() {
-		repository.save(mainMenu);
-		repository.save(horizontalMenu);
-
-		MenuItem fetchedMenu = repository.getHorizontalMenu();
-
-		assertEquals(horizontalMenu, fetchedMenu);
-	}
-
-	@Test
 	public void saveAndFetchMainMenu() {
 		repository.save(mainMenu);
 		repository.save(horizontalMenu);

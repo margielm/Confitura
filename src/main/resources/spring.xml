@@ -8,7 +8,7 @@
 		   http://schemas.synyx.org/hades 
 		   http://schemas.synyx.org/hades/hades.xsd">
 	<context:annotation-config />
-	<context:component-scan base-package="eu.margiel.services.impl" />
+	<context:component-scan base-package="eu.margiel.pages.admin" />
 	<hades:dao-config base-package="eu.margiel.repositories" />
 	<import resource="data-source.xml" />
 </beans>

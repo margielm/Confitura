@@ -1,18 +1,24 @@
 package eu.margiel.domain;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @SuppressWarnings("serial")
 @Entity
-@DiscriminatorValue("STATIC")
-public class StaticContent extends DynamicContent {
+public class SimpleContent implements WithTitle {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
 	private String title;
 
 	@Lob
 	private String content;
 
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -27,8 +33,7 @@ public class StaticContent extends DynamicContent {
 	}
 
 	@Override
-	public String getName() {
-		return title;
+	public Integer getId() {
+		return id;
 	}
-
 }

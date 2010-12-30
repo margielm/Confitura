@@ -11,10 +11,9 @@
 
 <wicket:extend>
 	<wicket:link>
-		<a href="/eu/margiel/admin/EditableContentPage.html">Add</a>
+		<a href="AddSimpleContentPage.html">Add</a>
 	</wicket:link>
 	<table
-		wicket:id="table"
 		style="width: 100%"
 		border="1">
 		<thead>
@@ -25,16 +24,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr wicket:id="editable_content_list">
+			<tr wicket:id="rows">
 				<td wicket:id="title"></td>
-				<td style="width: 50px;"><a
-					href="#"
-					wicket:id="remove"><img
-					src="/images/remove.png"
-					style="width: 15px;" /></a></td>
-				<td style="width: 50px;"><a
-					href="#"
-					wicket:id="edit">edit</a></td>
+	        	<td><a href="#" wicket:id="edit">edit</a></td>
+	        	<td><a href="#" wicket:id="delete">delete</a></td>
 			</tr>
 		</tbody>
 	</table>

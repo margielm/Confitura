@@ -13,6 +13,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.Folder;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
+import eu.margiel.pages.javarsovia.ViewNewsPage;
 import eu.margiel.utils.FileResource;
 
 public class Javarsovia extends WebApplication {
@@ -23,7 +24,6 @@ public class Javarsovia extends WebApplication {
 
 	@Override
 	protected void init() {
-		super.init();
 		getMarkupSettings().setStripWicketTags(true);
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
@@ -52,8 +52,8 @@ public class Javarsovia extends WebApplication {
 	}
 
 	@Override
-	public Class<HomePage> getHomePage() {
-		return HomePage.class;
+	public Class<ViewNewsPage> getHomePage() {
+		return ViewNewsPage.class;
 	}
 
 	@Override

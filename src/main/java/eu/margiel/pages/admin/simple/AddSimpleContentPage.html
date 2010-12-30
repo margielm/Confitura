@@ -11,17 +11,22 @@
 <body>
 
 <wicket:extend>
-	<form wicket:id="form">title: <input
-		type="text"
-		wicket:id="title" />
-	<div style="height: 420px"><textarea
-		id="editor"
-		wicket:id="editor"
-		style="height: 400px;" ></textarea></div>
+	<form wicket:id="form">
+	<table>
+		<tr>
+			<td>Tytuł: <input
+				type="text"
+				wicket:id="title"
+				id="tile"
+				style="width: 100%;" /></td>
+		</tr>
+		<tr>
+			<td><textarea wicket:id="content"></textarea></td>
+		</tr>
+	</table>
 	<input
 		type="submit"
-		value="zapisz2"/>
-	</form>
+		value="save" /></form>
 </wicket:extend>
 </body>
 </html>

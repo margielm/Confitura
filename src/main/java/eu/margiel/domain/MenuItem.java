@@ -16,6 +16,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 
 import com.google.common.base.Objects;
@@ -44,10 +45,8 @@ public class MenuItem implements Serializable {
 
 	private int position;
 
-	// @ManyToOne(cascade = CascadeType.ALL)
-	// private DynamicContent content;
-
-	private String linkTo;
+	@OneToOne(cascade = CascadeType.ALL)
+	private MenuLinkItem linkItem;
 
 	MenuItem() {
 	}
@@ -182,7 +181,7 @@ public class MenuItem implements Serializable {
 		return this;
 	}
 
-	public String getLinkTo() {
-		return linkTo;
+	public MenuLinkItem getLinkItem() {
+		return linkItem;
 	}
 }

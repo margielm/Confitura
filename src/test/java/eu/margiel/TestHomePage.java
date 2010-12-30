@@ -19,7 +19,7 @@ public class TestHomePage {
 
 			@Override
 			public Panel getTestPanel(String id) {
-				return new MainMenuPanel(id, mainMenu);
+				return new MainMenuPanel(id, mainMenu, null);
 			}
 		});
 

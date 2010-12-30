@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
 
-	<display-name>Casa en sol</display-name>
+	<display-name>Javarsovia</display-name>
 
 	<!-- There are three means to configure Wickets configuration mode and they are tested in the order given. 1) A system property: 
 		-Dwicket.configuration 2) servlet specific <init-param> 3) context specific <context-param> The value might be either "development" 

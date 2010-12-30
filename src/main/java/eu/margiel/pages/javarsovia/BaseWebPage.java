@@ -5,12 +5,16 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import eu.margiel.components.MainMenuPanel;
-import eu.margiel.services.MenuService;
+import eu.margiel.pages.admin.MenuItemList;
+import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")
 public class BaseWebPage extends WebPage {
 	@SpringBean
-	private MenuService testService;
+	private MenuRepository repository;
+	@SpringBean
+	private MenuItemList menuItemList;
+
 	private WebMarkupContainer wrapper;
 
 	public BaseWebPage() {
@@ -23,8 +27,6 @@ public class BaseWebPage extends WebPage {
 		};
 		wrapper.setOutputMarkupId(true);
 		add(wrapper);
-		add(new MainMenuPanel("mainMenu", testService.getMainMenu()));
-		// add(new MainMenuPanel("horizontalMenu",
-		// testService.getHorizontalMenu()));
+		add(new MainMenuPanel("mainMenu", repository.getMainMenu(), menuItemList));
 	}
 }

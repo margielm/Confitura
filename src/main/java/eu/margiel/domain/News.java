@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @SuppressWarnings("serial")
 @Entity
 public class News implements Serializable {
+	@SuppressWarnings("unused")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;

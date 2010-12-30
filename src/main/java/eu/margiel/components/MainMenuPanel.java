@@ -6,13 +6,17 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import eu.margiel.domain.MenuItem;
+import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.pages.admin.MenuItemList;
 
 @SuppressWarnings({ "serial" })
 public class MainMenuPanel extends Panel {
 
-	public MainMenuPanel(String id, MenuItem mainMenu) {
+	private final MenuItemList menuItemList;
+
+	public MainMenuPanel(String id, MenuItem mainMenu, MenuItemList menuItemList) {
 		super(id);
+		this.menuItemList = menuItemList;
 		add(new ListView<MenuItem>("menuItems", mainMenu.getChildren()) {
 			@Override
 			protected void populateItem(ListItem<MenuItem> item) {
@@ -26,30 +30,19 @@ public class MainMenuPanel extends Panel {
 						item.setVisible(submenu.isPublished());
 						item.add(createLink("submenuItem", submenu));
 					}
-
 				});
-
 			}
-
 		});
 	}
 
 	private LinkOrLabel createLink(String id, MenuItem menuItem) {
-		return new LinkOrLabel(id, menuItem.getName(), getPageForContentType(menuItem));
+		return new LinkOrLabel(id, menuItem.getName(), getPageFor(menuItem));
 	}
 
-	private Page getPageForContentType(MenuItem menuItem) {
-		// DynamicContent content = menuItem.getContent();
-		// if (content instanceof OfferContent)
-		// return new OfferListPage(menuItem.getName(), ((OfferContent)
-		// content).getOfferType());
-		// else if (content instanceof StaticContent)
-		// return new ViewContentPage(menuItem.getName(), (StaticContent)
-		// content);
-		// else
-		String linkTo = menuItem.getLinkTo();
-		if (linkTo == null)
+	private Page getPageFor(MenuItem menuItem) {
+		MenuLinkItem linkItem = menuItem.getLinkItem();
+		if (linkItem == null)
 			return null;
-		return MenuItemList.getPageFor(linkTo);
+		return menuItemList.getPageFor(linkItem);
 	}
 }

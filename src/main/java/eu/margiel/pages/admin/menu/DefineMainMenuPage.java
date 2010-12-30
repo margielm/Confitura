@@ -17,7 +17,8 @@ public class DefineMainMenuPage extends DefineMenuBasePage {
 
 	@Override
 	protected MainMenu getMenu() {
-		return menuService.getMainMenu();
+		MainMenu menu = repository.getMainMenu();
+		return menu != null ? menu : new MainMenu();
 	}
 
 	@Override
@@ -40,7 +41,6 @@ public class DefineMainMenuPage extends DefineMenuBasePage {
 				item.getModelObject().addEmptyChild();
 				target.addComponent(form);
 			}
-
 		});
 	}
 
