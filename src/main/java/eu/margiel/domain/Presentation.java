@@ -3,7 +3,7 @@ package eu.margiel.domain;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 @Entity
 public class Presentation extends AbstractEntity {
 	@ManyToOne
@@ -22,5 +22,9 @@ public class Presentation extends AbstractEntity {
 	public Presentation speaker(Speaker speaker) {
 		this.speaker = speaker;
 		return this;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 }

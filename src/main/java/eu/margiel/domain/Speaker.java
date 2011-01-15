@@ -44,4 +44,8 @@ public class Speaker extends User {
 		this.presentations.add(presentation);
 	}
 
+	public String getFullName() {
+		return getFirstName() + " " + getLastName();
+	}
+
 }

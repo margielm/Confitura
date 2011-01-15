@@ -36,12 +36,7 @@ public class ViewNewsPage extends BaseWebPage {
 		@Override
 		protected void populateItem(ListItem<News> item) {
 			final News news = item.getModelObject();
-			item.add(new LabeledLink("title", news.getTitle()) {
-				@Override
-				public void onClick() {
-					setResponse(ViewNewsDetailsPage.class, news.getTitle());
-				}
-			});
+			item.add(new LabeledLink("title", news.getTitle(), news.getTitle(), ViewNewsDetailsPage.class));
 			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
 			item.add(new Link("more") {
