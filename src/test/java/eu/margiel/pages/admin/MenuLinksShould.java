@@ -10,8 +10,8 @@ import org.junit.Test;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.pages.javarsovia.SingleMenuLink;
 
-public class MenuItemListShould {
-	private MenuItemList menuItemList = new MenuItemList();
+public class MenuLinksShould {
+	private MenuLinks menuItemList = new MenuLinks();
 	private SingleMenuLink a = new SingleMenuLink("a", TestWebPage1.class);
 	private SingleMenuLink b = new SingleMenuLink("b", TestWebPage2.class);
 
@@ -30,8 +30,8 @@ public class MenuItemListShould {
 		menuItemList.add(a);
 		menuItemList.add(b);
 
-		assertThat(menuItemList.getMenuLinkFor("a")).isSameAs(a);
-		assertThat(menuItemList.getMenuLinkFor("b")).isSameAs(b);
+		assertThat(menuItemList.getMenuLinkFor(new MenuLinkItem(null, "a"))).isSameAs(a);
+		assertThat(menuItemList.getMenuLinkFor(new MenuLinkItem(null, "b"))).isSameAs(b);
 	}
 
 	class TestWebPage1 extends Page {

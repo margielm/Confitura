@@ -6,7 +6,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import eu.margiel.JavarsoviaBasePage;
 import eu.margiel.JavarsoviaSession;
 import eu.margiel.components.MainMenuPanel;
-import eu.margiel.pages.admin.MenuItemList;
+import eu.margiel.pages.admin.MenuLinks;
 import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")
@@ -14,7 +14,7 @@ public class BaseWebPage extends JavarsoviaBasePage {
 	@SpringBean
 	protected MenuRepository menuRepository;
 	@SpringBean
-	private MenuItemList menuItemList;
+	private MenuLinks menuItemList;
 
 	private WebMarkupContainer wrapper;
 

@@ -19,7 +19,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.admin.MenuItemList;
+import eu.margiel.pages.admin.MenuLinks;
 import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")
@@ -28,7 +28,7 @@ public abstract class DefineMenuBasePage extends AdminBasePage {
 	@SpringBean
 	protected MenuRepository repository;
 	@SpringBean
-	protected MenuItemList menuItemList;
+	protected MenuLinks menuItemList;
 
 	protected Form<MenuItem> form = new Form<MenuItem>("form");
 	protected MenuItem menu = getMenu();
@@ -76,17 +76,9 @@ public abstract class DefineMenuBasePage extends AdminBasePage {
 	}
 
 	private void createDropDown(String id, final ListItem<MenuItem> item) {
-		// PropertyModel<DynamicContent> model =
-		// propertyModel(item.getModelObject(), "content");
-		// DropDownChoice<DynamicContent> contentDropDown = dropDown(id +
-		// "_content", model, getDynamicContents());
-		// if (item.getModelObject().getContent() != null)
-		// contentDropDown.setDefaultModelObject(item.getModelObject().getContent());
 		PropertyModel<MenuLinkItem> model = propertyModel(item.getModelObject(), "linkItem");
 		DropDownChoice<MenuLinkItem> comboBox = dropDown(id + "_content", model, menuItemList.getAllItems());
-		comboBox.setChoiceRenderer(new ChoiceRenderer<MenuLinkItem>("name", "name"));
-		// DropDownChoice<String> comboBox = new DropDownChoice<String>(id +
-		// "_content", MenuItemList.all());
+		comboBox.setChoiceRenderer(new ChoiceRenderer<MenuLinkItem>("title", "title"));
 		item.add(comboBox);
 	}
 

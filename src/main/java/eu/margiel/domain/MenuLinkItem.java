@@ -8,28 +8,28 @@ import com.google.common.base.Objects;
 @Entity
 public class MenuLinkItem extends AbstractEntity {
 
-	private String name;
-	private Integer linkTo;
+	private String title;
+	private Integer itemId;
 
 	public MenuLinkItem() {
 	}
 
-	public MenuLinkItem(Integer id, String name) {
-		this.linkTo = id;
-		this.name = name;
+	public MenuLinkItem(Integer itemId, String title) {
+		this.itemId = itemId;
+		this.title = title;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public Integer getLinkTo() {
-		return linkTo;
+	public Integer getItemId() {
+		return itemId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, name, linkTo);
+		return Objects.hashCode(id, title, itemId);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class MenuLinkItem extends AbstractEntity {
 			return false;
 		MenuLinkItem other = (MenuLinkItem) obj;
 		return Objects.equal(id, other.id)
-				&& Objects.equal(name, other.name)
-				&& Objects.equal(linkTo, other.linkTo);
+				&& Objects.equal(title, other.title)
+				&& Objects.equal(itemId, other.itemId);
 	}
 
 }

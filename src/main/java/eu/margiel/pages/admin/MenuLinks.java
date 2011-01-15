@@ -7,10 +7,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.wicket.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.domain.SimpleContent;
 import eu.margiel.pages.javarsovia.DynamicMenuLink;
@@ -22,7 +22,7 @@ import eu.margiel.pages.javarsovia.c4p.LoginSpeakerPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
 @Component
-public class MenuItemList {
+public class MenuLinks {
 	@Autowired
 	private SimpleContentRepository repository;
 	private List<MenuLink> links = newArrayList();
@@ -34,26 +34,12 @@ public class MenuItemList {
 		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}
 
-	public Page getPageFor(MenuLinkItem menuLinkItem) {
-		MenuLink menuLink = getMenuLinkFor(menuLinkItem.getName());
-		if (menuLink != null)
-			return menuLink.getPage(menuLinkItem.getLinkTo());
-		return null;
-	}
+	// public MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
+	// return getMenuLinkFor(menuLinkItem.getTitle());
+	// }
 
-	public MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
-		return getMenuLinkFor(menuLinkItem.getName());
-	}
-
-	public Class<? extends Page> getPage(MenuLinkItem menuLinkItem) {
-		MenuLink menuLink = getMenuLinkFor(menuLinkItem.getName());
-		if (menuLink != null)
-			return menuLink.getPageClazz();
-		return null;
-	}
-
-	MenuLink getMenuLinkFor(String link) {
-		return selectFirst(links, having(on(MenuLink.class).containsLink(link)));
+	MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
+		return selectFirst(links, having(on(MenuLink.class).containsLink(menuLinkItem.getTitle())));
 	}
 
 	public void add(MenuLink menuLink) {
@@ -63,6 +49,12 @@ public class MenuItemList {
 	@SuppressWarnings("unchecked")
 	public List<MenuLinkItem> getAllItems() {
 		return (List<MenuLinkItem>) collect(collect(links, on(MenuLink.class).getAllItems()));
+	}
+
+	public MenuLink getMenuLinkFor(MenuItem menuItem) {
+		if (menuItem != null && menuItem.getLinkItem() != null)
+			return getMenuLinkFor(menuItem.getLinkItem());
+		return null;
 	}
 
 }

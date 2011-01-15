@@ -17,12 +17,12 @@ public abstract class MenuLink {
 	}
 
 	public Boolean containsLink(String link) {
-		return selectFirst(getAllItems(), having(on(MenuLinkItem.class).getName(), is(link))) != null;
+		return selectFirst(getAllItems(), having(on(MenuLinkItem.class).getTitle(), is(link))) != null;
 	}
 
 	public abstract List<MenuLinkItem> getAllItems();
 
-	public Class<? extends Page> getPageClazz() {
+	public Class<? extends Page> getPageClass() {
 		return pageClazz;
 	}
 
