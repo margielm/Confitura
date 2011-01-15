@@ -1,12 +1,10 @@
-package eu.margiel.components;
+package eu.margiel.components.menu;
 
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import eu.margiel.domain.MenuItem;
-import eu.margiel.pages.admin.MenuLinks;
-import eu.margiel.pages.javarsovia.MenuLink;
 
 @SuppressWarnings({ "serial" })
 public class MainMenuPanel extends Panel {

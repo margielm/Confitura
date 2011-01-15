@@ -5,7 +5,7 @@ import org.apache.wicket.util.tester.TestPanelSource;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Test;
 
-import eu.margiel.components.MainMenuPanel;
+import eu.margiel.components.menu.MainMenuPanel;
 import eu.margiel.domain.MenuItem;
 
 @SuppressWarnings("serial")

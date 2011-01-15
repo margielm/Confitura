@@ -17,7 +17,7 @@ import eu.margiel.domain.Speaker;
 import eu.margiel.repositories.PresentationRepository;
 import eu.margiel.repositories.SpeakerRepository;
 
-@MountPath(path = "c4p/viewSpeaker")
+@MountPath(path = "c4p/speaker")
 public class ViewSpeakerPage extends SpeakerBasePage {
 
 	@SpringBean

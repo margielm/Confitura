@@ -269,7 +269,7 @@ ul#menu li ul.navigation-2 li a {
 	color: #acacac;
 }
 
-#lewa_kolumna .tytul {
+#lewa_kolumna .tytul a, #lewa_kolumna .tytul  {
 	margin-top: 0px;
 	font-family: Georgia;
 	font-size: 30px;

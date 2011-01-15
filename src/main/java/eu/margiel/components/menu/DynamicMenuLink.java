@@ -1,4 +1,4 @@
-package eu.margiel.pages.javarsovia;
+package eu.margiel.components.menu;
 
 import static com.google.common.collect.Lists.*;
 

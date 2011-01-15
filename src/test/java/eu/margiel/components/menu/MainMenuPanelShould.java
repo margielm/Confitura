@@ -1,4 +1,4 @@
-package eu.margiel.components;
+package eu.margiel.components.menu;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,7 @@ import org.apache.wicket.util.tester.TestPanelSource;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import eu.margiel.components.WicketBaseTest;
 import eu.margiel.domain.MainMenu;
 import eu.margiel.domain.MenuItem;
 

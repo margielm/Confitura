@@ -16,10 +16,10 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import eu.margiel.components.menu.MenuLinks;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.admin.MenuLinks;
 import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")

@@ -1,4 +1,4 @@
-package eu.margiel.pages.javarsovia;
+package eu.margiel.pages.javarsovia.news;
 
 import static eu.margiel.utils.Components.*;
 import static org.joda.time.LocalDate.*;
@@ -9,6 +9,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.News;
+import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.NewsRepository;
 
 @MountPath(path = "news/view")

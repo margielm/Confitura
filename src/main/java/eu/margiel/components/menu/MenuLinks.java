@@ -1,4 +1,4 @@
-package eu.margiel.pages.admin;
+package eu.margiel.components.menu;
 
 import static ch.lambdaj.Lambda.*;
 import static com.google.common.collect.Lists.*;
@@ -13,12 +13,9 @@ import org.springframework.stereotype.Component;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.domain.SimpleContent;
-import eu.margiel.pages.javarsovia.DynamicMenuLink;
-import eu.margiel.pages.javarsovia.MenuLink;
-import eu.margiel.pages.javarsovia.SingleMenuLink;
-import eu.margiel.pages.javarsovia.ViewNewsPage;
 import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
 import eu.margiel.pages.javarsovia.c4p.login.LoginSpeakerPage;
+import eu.margiel.pages.javarsovia.news.ViewNewsPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
 @Component

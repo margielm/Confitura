@@ -16,7 +16,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.Folder;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
-import eu.margiel.pages.javarsovia.ViewNewsPage;
+import eu.margiel.pages.javarsovia.news.ViewNewsPage;
 import eu.margiel.utils.FileResource;
 
 public class Javarsovia extends WebApplication {

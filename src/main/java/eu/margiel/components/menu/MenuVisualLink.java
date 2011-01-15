@@ -1,4 +1,4 @@
-package eu.margiel.components;
+package eu.margiel.components.menu;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
@@ -9,7 +9,6 @@ import com.google.common.collect.ImmutableMap;
 
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.MenuItem;
-import eu.margiel.pages.javarsovia.MenuLink;
 
 @SuppressWarnings("serial")
 public class MenuVisualLink extends Panel {

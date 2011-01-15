@@ -5,8 +5,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import eu.margiel.JavarsoviaBasePage;
 import eu.margiel.JavarsoviaSession;
-import eu.margiel.components.MainMenuPanel;
-import eu.margiel.pages.admin.MenuLinks;
+import eu.margiel.components.menu.MainMenuPanel;
+import eu.margiel.components.menu.MenuLinks;
 import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")

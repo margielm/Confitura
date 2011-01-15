@@ -1,4 +1,4 @@
-package eu.margiel.pages.javarsovia;
+package eu.margiel.components.menu;
 
 import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;
