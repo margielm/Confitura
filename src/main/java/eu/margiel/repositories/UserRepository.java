@@ -6,4 +6,6 @@ import eu.margiel.domain.User;
 
 public interface UserRepository extends GenericDao<User, Integer> {
 
+	public User readByUserName(String userName);
+
 }

@@ -8,7 +8,6 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
@@ -19,7 +18,6 @@ public class AddUserPage extends AdminBasePage {
 	private User user = new User();
 	@SpringBean
 	private UserRepository repository;
-	transient private StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
 	public AddUserPage() {
 		final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
@@ -27,10 +25,10 @@ public class AddUserPage extends AdminBasePage {
 		final PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
 		Form<User> form = new UserForm(password, repassword, feedbackPanel);
 		form.add(feedbackPanel);
-		form.add(textField("firstName", propertyModel(user, "firstName")).setRequired(true));
-		form.add(textField("lastName", propertyModel(user, "lastName")).setRequired(true));
-		form.add(textField("userName", propertyModel(user, "userName")).setRequired(true));
-		form.add(textField("eMail", propertyModel(user, "eMail")).setRequired(true));
+		form.add(textField("firstName", propertyModel(user, "firstName"), true));
+		form.add(textField("lastName", propertyModel(user, "lastName"), true));
+		form.add(textField("userName", propertyModel(user, "userName"), true));
+		form.add(textField("mail", propertyModel(user, "mail"), true));
 		form.add(password);
 		form.add(repassword);
 		add(form);
@@ -55,14 +53,10 @@ public class AddUserPage extends AdminBasePage {
 				feedbackPanel.error("Hasła nie pasują");
 				return;
 			} else {
-				encryptPassword();
+				user.encryptPassword();
 				repository.save(user);
 			}
 		}
 
-		private void encryptPassword() {
-			String encryptedPassword = passwordEncryptor.encryptPassword(user.getPassword());
-			user.password(encryptedPassword);
-		}
 	}
 }

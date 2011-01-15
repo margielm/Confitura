@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+	<div class="tekst">
+	<table style="padding:0px; width:100%;" class="c4p">
+		<tr>
+			<td>Imię</td>
+			<td wicket:id="firstName"></td>
+		</tr>
+		<tr>
+			<td>Nazwisko</td>
+			<td wicket:id="lastName"></td>
+		</tr>
+		<tr>
+			<td>e-mail</td>
+			<td wicket:id="eMail"></td>
+		</tr>
+		<tr>
+			<td>strona WWW/Blog</td>
+			<td wicket:id="webPage"></td>
+		</tr>
+		<tr>
+			<td>twitter</td>
+			<td wicket:id="twitter"></td>
+		</tr>
+		<tr>
+			<td colspan="2">O sobie:</td>
+		</tr>
+		<tr>
+			<td colspan="2" wicket:id="bio"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<wicket:link>
+					<a href="RegisterSpeakerPage.html">Edytuj dane</a>
+					<a href="AddPresentationPage.html">Dodaj Prezentacje</a>
+				</wicket:link>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table style="width:100%" border="1">
+					<thead>
+						<tr>
+							<th>tytuł</th>
+							<th style="width: 50px;"></th>
+							<th style="width: 50px;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr wicket:id="presentations">
+							<td wicket:id="title"></td>
+				        	<td style="text-align: center;"><a href="#" wicket:id="edit">edit</a></td>
+	        				<td style="text-align: center;"><a href="#" wicket:id="delete">delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</table>
+	</div>
+</wicket:extend>
+</body>
+</html>

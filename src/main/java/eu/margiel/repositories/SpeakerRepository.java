@@ -6,4 +6,6 @@ import eu.margiel.domain.Speaker;
 
 public interface SpeakerRepository extends GenericDao<Speaker, Integer> {
 
+	Speaker readByMail(String eMail);
+
 }

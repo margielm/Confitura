@@ -1,17 +1,18 @@
 package eu.margiel.pages.javarsovia;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import eu.margiel.JavarsoviaBasePage;
+import eu.margiel.JavarsoviaSession;
 import eu.margiel.components.MainMenuPanel;
 import eu.margiel.pages.admin.MenuItemList;
 import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")
-public class BaseWebPage extends WebPage {
+public class BaseWebPage extends JavarsoviaBasePage {
 	@SpringBean
-	private MenuRepository repository;
+	protected MenuRepository menuRepository;
 	@SpringBean
 	private MenuItemList menuItemList;
 
@@ -27,6 +28,11 @@ public class BaseWebPage extends WebPage {
 		};
 		wrapper.setOutputMarkupId(true);
 		add(wrapper);
-		add(new MainMenuPanel("mainMenu", repository.getMainMenu(), menuItemList));
+		add(new MainMenuPanel("mainMenu", menuRepository.getMainMenu(), menuItemList));
+	}
+
+	@Override
+	public JavarsoviaSession getSession() {
+		return JavarsoviaSession.get();
 	}
 }

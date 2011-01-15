@@ -12,9 +12,9 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/casaensol_2?characterEncoding=UTF-8" />
-		<property name="username" value="casaensol_2" />
-		<property name="password" value="casaensol_2" />
+		<property name="url" value="jdbc:mysql://localhost:3306/javarsovia?characterEncoding=UTF-8" />
+		<property name="username" value="javarsovia" />
+		<property name="password" value="javarsovia" />
 	</bean>
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />

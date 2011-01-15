@@ -5,34 +5,48 @@ import static eu.margiel.utils.Models.*;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.Speaker;
-import eu.margiel.pages.javarsovia.BaseWebPage;
-import eu.margiel.repositories.SpeakerRepository;
+import eu.margiel.repositories.PresentationRepository;
 
-public class AddPresentationPage extends BaseWebPage {
+@MountPath(path = "c4p/presentation")
+public class AddPresentationPage extends SpeakerBasePage {
+
 	@SpringBean
-	private SpeakerRepository repository;
-	private Speaker speaker = new Speaker();
-	private Presentation presentation = new Presentation();
+	private PresentationRepository repository;
+
+	public AddPresentationPage() {
+		Speaker speaker = getSession().getSpeaker();
+		Presentation presentation = new Presentation();
+		speaker.addPresentation(presentation);
+		init(presentation);
+	}
+
+	public AddPresentationPage(Presentation presentation) {
+		init(presentation);
+	}
+
+	private void init(final Presentation presentation) {
+		add(new PresentationForm("form", presentation));
+	}
 
 	@SuppressWarnings("serial")
-	public AddPresentationPage() {
-		Form<Void> form = new Form<Void>("form") {
-			@Override
-			protected void onSubmit() {
-				repository.save(speaker.presentation(presentation));
-			}
-		};
-		form.add(textField("firstName", propertyModel(speaker, "firstName")));
-		form.add(textField("lastName", propertyModel(speaker, "lastName")));
-		form.add(textField("eMail", propertyModel(speaker, "eMail")));
-		form.add(textField("webPage", propertyModel(speaker, "webPage")));
-		form.add(textField("twitter", propertyModel(speaker, "twitter")));
-		form.add(richEditorSimple("bio", propertyModel(speaker, "bio")));
-		form.add(textField("title", propertyModel(presentation, "title")));
-		form.add(richEditorSimple("description", propertyModel(presentation, "description")));
-		add(form);
+	private final class PresentationForm extends Form<Void> {
+		private final Presentation presentation;
+
+		private PresentationForm(String id, Presentation presentation) {
+			super(id);
+			this.presentation = presentation;
+			add(textField("title", propertyModel(presentation, "title"), true));
+			add(richEditorSimple("description", propertyModel(presentation, "description")));
+		}
+
+		@Override
+		protected void onSubmit() {
+			repository.save(presentation);
+			setResponsePage(ViewSpeakerPage.class);
+		}
 	}
 }

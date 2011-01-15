@@ -8,19 +8,25 @@
 <head>
 </head>
 <body>
-
 <wicket:extend>
-	<table style="width: 100%;">
-		<tr>
-		<th>Tytuł</th>
-        <th></th>
-        <th></th>
-		</tr>
-	    <tr wicket:id="rows">
-	        <td><span wicket:id="title">[title]</span></td>
-	        <td><a href="#" wicket:id="edit">edit</a></td>
-	        <td><a href="#" wicket:id="delete">delete</a></td>
-	    </tr>
+<wicket:link>
+	<a href="AddNewsPage.html">Dodaj</a>
+</wicket:link>
+	<table style="width: 100%;" border="1">
+		<thead>
+			<tr>
+			<th>Tytuł</th>
+	        <th></th>
+	        <th></th>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr wicket:id="rows">
+		        <td><span wicket:id="title">[title]</span></td>
+		        <td><a href="#" wicket:id="edit">edit</a></td>
+		        <td><a href="#" wicket:id="delete">delete</a></td>
+		    </tr>
+	    </tbody>
 	</table>
 </wicket:extend>
 </body>

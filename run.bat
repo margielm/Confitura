@@ -1,1 +1,1 @@
-mvn jetty:run
+mvn jetty:run -o

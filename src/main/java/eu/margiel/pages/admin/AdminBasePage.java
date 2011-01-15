@@ -5,6 +5,9 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 
 import eu.margiel.Javarsovia;
+import eu.margiel.JavarsoviaSession;
+import eu.margiel.components.nogeneric.Link;
+import eu.margiel.pages.admin.login.LoginPage;
 
 @SuppressWarnings("serial")
 public class AdminBasePage extends WebPage {
@@ -18,10 +21,21 @@ public class AdminBasePage extends WebPage {
 			}
 		};
 		wrapper.setOutputMarkupId(true);
+		add(new Link("logout") {
+
+			@Override
+			public void onClick() {
+				JavarsoviaSession.get().invalidateNow();
+				setResponsePage(LoginPage.class);
+			}
+
+		});
 		add(wrapper);
+		if (JavarsoviaSession.get().isUserAvailable() == false)
+			setResponsePage(LoginPage.class);
 	}
 
-	protected Javarsovia getCasaensolApp() {
+	protected Javarsovia getApp() {
 		return (Javarsovia) Application.get();
 	}
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+	<div class="tekst">
+	<form wicket:id="form">
+	<div wicket:id="feedback" />
+	<table style="padding:0px;" class="c4p">
+		<tr>
+			<td>Imię</td>
+			<td><input type="text" wicket:id="firstName"/></td>
+		</tr>
+		<tr>
+			<td>Nazwisko</td>
+			<td><input type="text" wicket:id="lastName"/></td>
+		</tr>
+		<tr>
+			<td>e-mail</td>
+			<td><input type="text" wicket:id="mail"/></td>
+		</tr>
+		<tr>
+			<td>Hasło</td>
+			<td><input type="password" wicket:id="password"/></td>
+		</tr>
+		<tr>
+			<td>Powtórz hasło</td>
+			<td><input type="password" wicket:id="repassword"/></td>
+		</tr>
+		<tr>
+			<td>strona WWW/Blog</td>
+			<td><input type="text" wicket:id="webPage"/></td>
+		</tr>
+		<tr>
+			<td>twitter</td>
+			<td><input type="text" wicket:id="twitter"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">O sobie:</td>
+		</tr>
+		<tr>
+			<td colspan="2"><textarea  wicket:id="bio"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: right;"><input type="submit" value="zapisz"/></td>
+		</tr>
+	</table>
+</form>
+	</div>
+</wicket:extend>
+</body>
+</html>

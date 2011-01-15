@@ -1,26 +1,47 @@
 package eu.margiel.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings("serial")
 @Entity
-public class Speaker extends AbstractEntity {
-	private String firstName;
-	private String lastName;
-	private String eMail;
+public class Speaker extends User {
 	private String webPage;
 	private String twitter;
 	@Lob
 	private String bio;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Presentation presentation;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "speaker")
+	private List<Presentation> presentations;
 
-	public Speaker presentation(Presentation presentation) {
-		this.presentation = presentation;
+	public String getWebPage() {
+		return webPage;
+	}
+
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public Speaker mail(String mail) {
+		this.mail = mail;
 		return this;
+	}
+
+	public List<Presentation> getPresentations() {
+		return presentations;
+	}
+
+	public void addPresentation(Presentation presentation) {
+		presentation.speaker(this);
+		this.presentations.add(presentation);
 	}
 
 }

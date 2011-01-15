@@ -34,8 +34,14 @@ public class Components {
 		return new TextField<T>(id, model);
 	}
 
+	public static <T extends Serializable> TextField<T> textField(String id, IModel<T> model, boolean required) {
+		TextField<T> textField = new TextField<T>(id, model);
+		textField.setRequired(required);
+		return textField;
+	}
+
 	@SuppressWarnings("unchecked")
-	public static PasswordTextField passwordField(String id, IModel<? extends Serializable> model, boolean required) {
+	public static <T extends Serializable> PasswordTextField passwordField(String id, IModel<T> model, boolean required) {
 		return (PasswordTextField) new PasswordTextField(id, (IModel<String>) model).setRequired(required);
 	}
 

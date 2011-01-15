@@ -5,6 +5,9 @@ import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.wicket.Application;
+import org.apache.wicket.Request;
+import org.apache.wicket.Response;
+import org.apache.wicket.Session;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebRequest;
@@ -20,6 +23,11 @@ public class Javarsovia extends WebApplication {
 	private Folder mainFilesFolder;
 
 	public Javarsovia() {
+	}
+
+	@Override
+	public Session newSession(Request request, Response response) {
+		return new JavarsoviaSession(request);
 	}
 
 	@Override

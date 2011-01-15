@@ -5,7 +5,7 @@ public class GalleryPhotosProvider extends PhotosProvider {
 
 	@Override
 	String getSubpath() {
-		return "gallery";
+		return "gallery/photos";
 	}
 
 }
