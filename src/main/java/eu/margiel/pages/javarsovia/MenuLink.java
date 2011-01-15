@@ -10,9 +10,9 @@ import org.apache.wicket.Page;
 import eu.margiel.domain.MenuLinkItem;
 
 public abstract class MenuLink {
-	final Class<?> pageClazz;
+	final Class<? extends Page> pageClazz;
 
-	public MenuLink(Class<?> pageClazz) {
+	public MenuLink(Class<? extends Page> pageClazz) {
 		this.pageClazz = pageClazz;
 	}
 
@@ -22,16 +22,16 @@ public abstract class MenuLink {
 
 	public abstract List<MenuLinkItem> getAllItems();
 
-	public Class<?> getPageClazz() {
+	public Class<? extends Page> getPageClazz() {
 		return pageClazz;
 	}
 
 	public Page getPage(Integer id) {
 		try {
 			if (id == null)
-				return (Page) pageClazz.newInstance();
+				return pageClazz.newInstance();
 			else
-				return (Page) pageClazz.getConstructor(Integer.class).newInstance(id);
+				return pageClazz.getConstructor(Integer.class).newInstance(id);
 		} catch (Exception ex) {
 			throw new RuntimeException("Can not create page for " + pageClazz, ex);
 		}

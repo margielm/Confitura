@@ -41,6 +41,17 @@ public class MenuItemList {
 		return null;
 	}
 
+	public MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
+		return getMenuLinkFor(menuLinkItem.getName());
+	}
+
+	public Class<? extends Page> getPage(MenuLinkItem menuLinkItem) {
+		MenuLink menuLink = getMenuLinkFor(menuLinkItem.getName());
+		if (menuLink != null)
+			return menuLink.getPageClazz();
+		return null;
+	}
+
 	MenuLink getMenuLinkFor(String link) {
 		return selectFirst(links, having(on(MenuLink.class).containsLink(link)));
 	}

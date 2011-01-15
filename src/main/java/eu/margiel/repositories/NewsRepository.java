@@ -6,4 +6,6 @@ import eu.margiel.domain.News;
 
 public interface NewsRepository extends GenericDao<News, Integer> {
 
+	public News readByTitle(String title);
+
 }

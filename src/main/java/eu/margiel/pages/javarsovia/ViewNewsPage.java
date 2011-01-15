@@ -37,22 +37,18 @@ public class ViewNewsPage extends BaseWebPage {
 		protected void populateItem(ListItem<News> item) {
 			final News news = item.getModelObject();
 			item.add(new LabeledLink("title", news.getTitle()) {
-
 				@Override
 				public void onClick() {
-					setResponsePage(new ViewNewsDetailsPage(news));
+					setResponse(ViewNewsDetailsPage.class, news.getTitle());
 				}
-
 			});
 			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
 			item.add(new Link("more") {
-
 				@Override
 				public void onClick() {
-					setResponsePage(new ViewNewsDetailsPage(news));
+					setResponse(ViewNewsDetailsPage.class, news.getTitle());
 				}
-
 			});
 		}
 	}

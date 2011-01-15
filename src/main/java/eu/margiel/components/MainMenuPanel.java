@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.pages.admin.MenuItemList;
+import eu.margiel.pages.javarsovia.MenuLink;
 
 @SuppressWarnings({ "serial" })
 public class MainMenuPanel extends Panel {
@@ -36,13 +37,23 @@ public class MainMenuPanel extends Panel {
 	}
 
 	private LinkOrLabel createLink(String id, MenuItem menuItem) {
-		return new LinkOrLabel(id, menuItem.getName(), getPageFor(menuItem));
+		MenuLink menuLink = getMenuLinkFor(menuItem);
+		if (menuLink != null)
+			return new LinkOrLabel(id, menuItem.getName(), menuLink.getPageClazz(), menuItem.getLinkItem().getLinkTo());
+		return null;
 	}
 
-	private Page getPageFor(MenuItem menuItem) {
+	private Class<? extends Page> getPageFor(MenuItem menuItem) {
 		MenuLinkItem linkItem = menuItem.getLinkItem();
 		if (linkItem == null)
 			return null;
-		return menuItemList.getPageFor(linkItem);
+		return menuItemList.getPage(linkItem);
+	}
+
+	private MenuLink getMenuLinkFor(MenuItem menuItem) {
+		MenuLinkItem linkItem = menuItem.getLinkItem();
+		if (linkItem == null)
+			return null;
+		return menuItemList.getMenuLinkFor(linkItem);
 	}
 }
