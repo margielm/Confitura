@@ -8,13 +8,15 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.annotation.mount.MountPath;
 
-import eu.margiel.components.nogeneric.Link;
+import eu.margiel.components.DeleteLink;
+import eu.margiel.components.EditLink;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.admin.simple.ListSimpleContentPage;
 import eu.margiel.repositories.UserRepository;
 
+@MountPath(path = "admin/users")
 public class ListUserPage extends AdminBasePage {
 	@SpringBean
 	private UserRepository repository;
@@ -35,19 +37,8 @@ public class ListUserPage extends AdminBasePage {
 			item.add(label("userName", user.getUserName()));
 			item.add(label("firstName", user.getFirstName()));
 			item.add(label("lastName", user.getLastName()));
-			item.add(new Link("edit") {
-				@Override
-				public void onClick() {
-					// setResponsePage(new AddSimpleContentPage(user));
-				}
-			});
-			item.add(new Link("delete") {
-				@Override
-				public void onClick() {
-					repository.delete(user);
-					setResponsePage(ListSimpleContentPage.class);
-				}
-			});
+			item.add(new EditLink(user, AddUserPage.class));
+			item.add(new DeleteLink(user, repository, ListUserPage.class));
 		}
 	}
 

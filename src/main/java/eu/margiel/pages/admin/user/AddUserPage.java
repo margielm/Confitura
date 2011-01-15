@@ -3,48 +3,56 @@ package eu.margiel.pages.admin.user;
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
 
+import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.annotation.mount.MountPath;
+import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.UserRepository;
 
+@MountPath(path = "admin/users/view")
+@MountMixedParam(parameterNames = "id")
 public class AddUserPage extends AdminBasePage {
 
-	private User user = new User();
 	@SpringBean
 	private UserRepository repository;
 
 	public AddUserPage() {
-		final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-		final PasswordTextField password = passwordField("password", propertyModel(user, "password"), true);
-		final PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
-		Form<User> form = new UserForm(password, repassword, feedbackPanel);
-		form.add(feedbackPanel);
-		form.add(textField("firstName", propertyModel(user, "firstName"), true));
-		form.add(textField("lastName", propertyModel(user, "lastName"), true));
-		form.add(textField("userName", propertyModel(user, "userName"), true));
-		form.add(textField("mail", propertyModel(user, "mail"), true));
-		form.add(password);
-		form.add(repassword);
-		add(form);
+		initPage(new User());
+	}
+
+	public AddUserPage(PageParameters params) {
+		initPage(repository.readByPrimaryKey(params.getAsInteger("id")));
+	}
+
+	private void initPage(User user) {
+		add(new UserForm(user));
 	}
 
 	@SuppressWarnings("serial")
 	private final class UserForm extends Form<User> {
+		private final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+		private final PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
 		private final PasswordTextField password;
-		private final PasswordTextField repassword;
-		private final FeedbackPanel feedbackPanel;
+		private final User user;
 
-		private UserForm(PasswordTextField password, PasswordTextField repassword, FeedbackPanel feedbackPanel) {
+		private UserForm(User user) {
 			super("form");
-			this.password = password;
-			this.repassword = repassword;
-			this.feedbackPanel = feedbackPanel;
+			this.user = user;
+			this.password = passwordField("password", propertyModel(user, "password"), true);
+			add(feedbackPanel);
+			add(textField("firstName", propertyModel(user, "firstName"), true));
+			add(textField("lastName", propertyModel(user, "lastName"), true));
+			add(textField("userName", propertyModel(user, "userName"), true));
+			add(textField("mail", propertyModel(user, "mail"), true));
+			add(password);
+			add(repassword);
 		}
 
 		@Override
