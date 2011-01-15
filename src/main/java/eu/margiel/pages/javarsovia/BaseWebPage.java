@@ -24,7 +24,6 @@ public class BaseWebPage extends JavarsoviaBasePage {
 			public boolean isTransparentResolver() {
 				return true;
 			}
-
 		};
 		wrapper.setOutputMarkupId(true);
 		add(wrapper);

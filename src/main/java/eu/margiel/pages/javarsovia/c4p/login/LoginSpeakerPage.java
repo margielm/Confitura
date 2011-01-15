@@ -1,4 +1,4 @@
-package eu.margiel.pages.javarsovia.c4p;
+package eu.margiel.pages.javarsovia.c4p.login;
 
 import static eu.margiel.utils.Components.*;
 
@@ -12,6 +12,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import eu.margiel.JavarsoviaSession;
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.javarsovia.BaseWebPage;
+import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.repositories.SpeakerRepository;
 
 @MountPath(path = "cp4/login")

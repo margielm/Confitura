@@ -11,6 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.nogeneric.Link;
+import eu.margiel.components.user.UserInfoPanel;
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.Speaker;
 import eu.margiel.repositories.PresentationRepository;
@@ -26,12 +27,7 @@ public class ViewSpeakerPage extends SpeakerBasePage {
 
 	public ViewSpeakerPage() {
 		Speaker speaker = fetchSpeaker();
-		add(label("firstName", speaker.getFirstName()));
-		add(label("lastName", speaker.getLastName()));
-		add(label("eMail", speaker.getMail()));
-		add(label("webPage", speaker.getWebPage()));
-		add(label("twitter", speaker.getTwitter()));
-		add(richLabel("bio", speaker.getBio()));
+		add(new UserInfoPanel("info", speaker));
 		add(new PresentationGrid(speaker.getPresentations()));
 	}
 

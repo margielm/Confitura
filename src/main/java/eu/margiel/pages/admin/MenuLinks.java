@@ -18,7 +18,7 @@ import eu.margiel.pages.javarsovia.MenuLink;
 import eu.margiel.pages.javarsovia.SingleMenuLink;
 import eu.margiel.pages.javarsovia.ViewNewsPage;
 import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
-import eu.margiel.pages.javarsovia.c4p.LoginSpeakerPage;
+import eu.margiel.pages.javarsovia.c4p.login.LoginSpeakerPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
 @Component

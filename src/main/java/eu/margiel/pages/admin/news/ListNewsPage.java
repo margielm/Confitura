@@ -11,7 +11,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 
 import eu.margiel.components.DeleteLink;
-import eu.margiel.components.EditLink;
+import eu.margiel.components.RedirectLink;
 import eu.margiel.domain.News;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.NewsRepository;
@@ -36,7 +36,7 @@ public class ListNewsPage extends AdminBasePage {
 		protected void populateItem(Item<News> item) {
 			final News news = item.getModelObject();
 			item.add(label("title", news.getTitle()));
-			item.add(new EditLink(news, AddNewsPage.class));
+			item.add(new RedirectLink("edit", news, AddNewsPage.class));
 			item.add(new DeleteLink(news, repository, ListNewsPage.class));
 
 		}

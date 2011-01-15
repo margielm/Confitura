@@ -63,6 +63,7 @@ public class AddUserPage extends AdminBasePage {
 			} else {
 				user.encryptPassword();
 				repository.save(user);
+				setResponsePage(ListUserPage.class);
 			}
 		}
 

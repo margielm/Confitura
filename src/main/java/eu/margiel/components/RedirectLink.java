@@ -9,12 +9,12 @@ import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.AbstractEntity;
 
 @SuppressWarnings("serial")
-public class EditLink extends Link {
+public class RedirectLink extends Link {
 	private final AbstractEntity entity;
 	private final Class<? extends Page> page;
 
-	public EditLink(AbstractEntity entity, Class<? extends Page> page) {
-		super("edit");
+	public RedirectLink(String id, AbstractEntity entity, Class<? extends Page> page) {
+		super(id);
 		this.entity = entity;
 		this.page = page;
 	}

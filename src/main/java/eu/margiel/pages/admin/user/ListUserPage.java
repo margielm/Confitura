@@ -11,7 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.DeleteLink;
-import eu.margiel.components.EditLink;
+import eu.margiel.components.RedirectLink;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.UserRepository;
@@ -37,7 +37,7 @@ public class ListUserPage extends AdminBasePage {
 			item.add(label("userName", user.getUserName()));
 			item.add(label("firstName", user.getFirstName()));
 			item.add(label("lastName", user.getLastName()));
-			item.add(new EditLink(user, AddUserPage.class));
+			item.add(new RedirectLink("edit", user, AddUserPage.class));
 			item.add(new DeleteLink(user, repository, ListUserPage.class));
 		}
 	}
