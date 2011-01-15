@@ -10,8 +10,8 @@ import eu.margiel.domain.AbstractEntity;
 
 @SuppressWarnings("serial")
 public class RedirectLink extends Link {
-	private final AbstractEntity entity;
-	private final Class<? extends Page> page;
+	private AbstractEntity entity;
+	private Class<? extends Page> page;
 
 	public RedirectLink(String id, AbstractEntity entity, Class<? extends Page> page) {
 		super(id);
@@ -19,8 +19,16 @@ public class RedirectLink extends Link {
 		this.page = page;
 	}
 
+	public RedirectLink(String id, Class<? extends Page> page) {
+		super(id);
+		this.page = page;
+	}
+
 	@Override
 	public void onClick() {
-		setResponsePage(page, new PageParameters(ImmutableMap.of("id", entity.getId())));
+		if (entity != null)
+			setResponsePage(page, new PageParameters(ImmutableMap.of("id", entity.getId())));
+		else
+			setResponsePage(page);
 	}
 }

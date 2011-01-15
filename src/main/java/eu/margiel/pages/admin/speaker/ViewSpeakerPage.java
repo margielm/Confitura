@@ -18,6 +18,6 @@ public class ViewSpeakerPage extends AdminBasePage {
 
 	public ViewSpeakerPage(PageParameters params) {
 		Speaker speaker = repository.readByPrimaryKey(params.getAsInteger("id"));
-		add(new UserInfoPanel("info", speaker));
+		add(new UserInfoPanel("info", speaker, false));
 	}
 }

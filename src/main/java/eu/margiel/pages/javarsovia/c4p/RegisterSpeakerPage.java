@@ -5,6 +5,7 @@ import static eu.margiel.utils.Models.*;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -34,11 +35,12 @@ public class RegisterSpeakerPage extends BaseWebPage {
 	}
 
 	@SuppressWarnings("serial")
-	private final class SpeakerForm extends Form<Void> {
+	final class SpeakerForm extends Form<Void> {
 		private PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
 		private FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");;
+		FileUploadField fileUploadField = new FileUploadField("photo");;
 		private PasswordTextField password;
-		private Speaker speaker;
+		Speaker speaker;
 
 		private SpeakerForm(String id, Speaker speaker) {
 			super(id);
@@ -53,6 +55,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			add(password);
 			add(repassword);
 			add(feedbackPanel);
+			add(fileUploadField);
 		}
 
 		@Override
@@ -60,10 +63,15 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			if (password.getValue().equals(repassword.getValue()) == false) {
 				feedbackPanel.error("Hasła nie pasują");
 				return;
-			} else {
-				speaker.encryptPassword();
-				repository.save(speaker);
-			}
+			} else
+				saveSpeaker();
+		}
+
+		private void saveSpeaker() {
+			speaker.encryptPassword();
+			repository.save(speaker);
+			new SpeakerPhotoProvider().savePhoto(fileUploadField.getFileUpload(), speaker);
+
 		}
 	}
 }

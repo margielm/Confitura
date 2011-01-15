@@ -5,6 +5,7 @@ import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.wicket.Application;
+import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
@@ -21,6 +22,10 @@ import eu.margiel.utils.FileResource;
 
 public class Javarsovia extends WebApplication {
 	private Folder mainFilesFolder;
+
+	public static Javarsovia get() {
+		return (Javarsovia) WebApplication.get();
+	}
 
 	public Javarsovia() {
 	}
@@ -60,7 +65,7 @@ public class Javarsovia extends WebApplication {
 	}
 
 	@Override
-	public Class<ViewNewsPage> getHomePage() {
+	public Class<? extends Page> getHomePage() {
 		return ViewNewsPage.class;
 	}
 

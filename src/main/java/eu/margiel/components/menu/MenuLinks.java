@@ -31,10 +31,6 @@ public class MenuLinks {
 		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}
 
-	// public MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
-	// return getMenuLinkFor(menuLinkItem.getTitle());
-	// }
-
 	MenuLink getMenuLinkFor(MenuLinkItem menuLinkItem) {
 		return selectFirst(links, having(on(MenuLink.class).containsLink(menuLinkItem.getTitle())));
 	}
