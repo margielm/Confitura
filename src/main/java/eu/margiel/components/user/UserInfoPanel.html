@@ -10,7 +10,7 @@
 		<img src="#" wicket:id="photo" style="width: 80px"/>
 	</div>
 	<div>
-	<table style="padding:0px; width:70%;" class="c4p">
+	<table style="padding:0px; width:100%;" class="c4p">
 				<tr>
 			<td style="width: 150px;">Imię</td>
 			<td wicket:id="firstName"></td>
@@ -39,25 +39,20 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="#" wicket:id="edit">Edytuj</a>
-				<a href="#" wicket:id="add_presentation">Dodaj prezentacje</a>
+				<a href="#" wicket:id="edit">Edytuj</a> |
+				<a href="#" wicket:id="changePassword">Zmień Hasło</a> |
+				<a href="#" wicket:id="add_presentation">Dodaj prezentacje</a> |
+				<a href="#" wicket:id="logout">Wyloguj</a>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
 				<table style="width:100%" border="1">
-					<thead>
-						<tr>
-							<th>tytuł</th>
-							<th style="width: 50px;"></th>
-							<th style="width: 50px;"></th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr wicket:id="presentations">
 							<td wicket:id="title"></td>
-				        	<td style="text-align: center;"><a href="#" wicket:id="edit">edit</a></td>
-	        				<td style="text-align: center;"><a href="#" wicket:id="delete">delete</a></td>
+				        	<td style="text-align: center; width: 50px;"><a href="#" wicket:id="edit">edytuj</a></td>
+	        				<td style="text-align: center; width: 50px;"><a href="#" wicket:id="delete">usuń</a></td>
 						</tr>
 					</tbody>
 				</table>

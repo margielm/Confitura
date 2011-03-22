@@ -10,14 +10,15 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import eu.margiel.JavarsoviaBasePage;
+import eu.margiel.domain.Admin;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminHomePage;
-import eu.margiel.repositories.UserRepository;
+import eu.margiel.repositories.AdminRepository;
 
 @SuppressWarnings("serial")
 public class LoginPage extends JavarsoviaBasePage {
 	@SpringBean
-	private UserRepository repository;
+	private AdminRepository repository;
 	private TextField<String> userName = textField("userName", new Model<String>());
 	private PasswordTextField password = new PasswordTextField("password", new Model<String>());
 	private FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
@@ -38,7 +39,7 @@ public class LoginPage extends JavarsoviaBasePage {
 
 	private void checkLogin() {
 		if (userName.getInput().equals("admin")) {
-			login(new User("admin"));
+			login(new Admin("admin"));
 			return;
 		}
 		User user = repository.readByUserName(userName.getInput());

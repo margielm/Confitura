@@ -9,7 +9,6 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-
 import eu.margiel.components.DeleteLink;
 import eu.margiel.components.RedirectLink;
 import eu.margiel.domain.News;
@@ -34,7 +33,7 @@ public class ListNewsPage extends AdminBasePage {
 
 		@Override
 		protected void populateItem(Item<News> item) {
-			final News news = item.getModelObject();
+			News news = item.getModelObject();
 			item.add(label("title", news.getTitle()));
 			item.add(new RedirectLink("edit", news, AddNewsPage.class));
 			item.add(new DeleteLink(news, repository, ListNewsPage.class));

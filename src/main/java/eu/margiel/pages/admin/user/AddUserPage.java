@@ -12,26 +12,27 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
+import eu.margiel.domain.Admin;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.repositories.UserRepository;
+import eu.margiel.repositories.AdminRepository;
 
 @MountPath(path = "admin/users/view")
 @MountMixedParam(parameterNames = "id")
 public class AddUserPage extends AdminBasePage {
 
 	@SpringBean
-	private UserRepository repository;
+	private AdminRepository repository;
 
 	public AddUserPage() {
-		initPage(new User());
+		initPage(new Admin());
 	}
 
 	public AddUserPage(PageParameters params) {
 		initPage(repository.readByPrimaryKey(params.getAsInteger("id")));
 	}
 
-	private void initPage(User user) {
+	private void initPage(Admin user) {
 		add(new UserForm(user));
 	}
 
@@ -40,17 +41,17 @@ public class AddUserPage extends AdminBasePage {
 		private final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
 		private final PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
 		private final PasswordTextField password;
-		private final User user;
+		private final Admin admin;
 
-		private UserForm(User user) {
+		private UserForm(Admin admin) {
 			super("form");
-			this.user = user;
-			this.password = passwordField("password", propertyModel(user, "password"), true);
+			this.admin = admin;
+			this.password = passwordField("password", propertyModel(admin, "password"), true);
 			add(feedbackPanel);
-			add(textField("firstName", propertyModel(user, "firstName"), true));
-			add(textField("lastName", propertyModel(user, "lastName"), true));
-			add(textField("userName", propertyModel(user, "userName"), true));
-			add(textField("mail", propertyModel(user, "mail"), true));
+			add(textField("firstName", propertyModel(admin, "firstName"), true));
+			add(textField("lastName", propertyModel(admin, "lastName"), true));
+			add(textField("userName", propertyModel(admin, "userName"), true));
+			add(textField("mail", propertyModel(admin, "mail"), true));
 			add(password);
 			add(repassword);
 		}
@@ -61,8 +62,8 @@ public class AddUserPage extends AdminBasePage {
 				feedbackPanel.error("Hasła nie pasują");
 				return;
 			} else {
-				user.encryptPassword();
-				repository.save(user);
+				admin.encryptPassword();
+				repository.save(admin);
 				setResponsePage(ListUserPage.class);
 			}
 		}

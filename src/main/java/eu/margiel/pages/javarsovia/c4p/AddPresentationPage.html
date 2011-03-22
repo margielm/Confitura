@@ -16,7 +16,7 @@
 			<td colspan="2">Tytuł prezentacji</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="text" wicket:id="title"/></td>
+			<td colspan="2" ><input type="text" wicket:id="title" style="width: 100%"/></td>
 		</tr>
 		<tr>
 			<td colspan="2">O prezentacji:</td>
@@ -25,7 +25,10 @@
 			<td colspan="2"><textarea  wicket:id="description" style="width: 200px;"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2" style="text-align: right;"><input type="submit" value="zapisz"/></td>
+			<td colspan="2" style="text-align: right;">
+				<input type="button" value="anuluj" wicket:id="cancel"/>
+				<input type="submit" value="zapisz"/>
+			</td>
 		</tr>
 	</table>
 </form>

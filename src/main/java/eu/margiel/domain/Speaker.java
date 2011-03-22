@@ -1,8 +1,9 @@
 package eu.margiel.domain;
 
+import static com.google.common.collect.Lists.*;
+
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -15,8 +16,8 @@ public class Speaker extends User {
 	private String twitter;
 	@Lob
 	private String bio;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "speaker")
-	private List<Presentation> presentations;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
+	private List<Presentation> presentations = newArrayList();
 
 	public String getWebPage() {
 		return webPage;
@@ -42,10 +43,6 @@ public class Speaker extends User {
 	public void addPresentation(Presentation presentation) {
 		presentation.speaker(this);
 		this.presentations.add(presentation);
-	}
-
-	public String getFullName() {
-		return getFirstName() + " " + getLastName();
 	}
 
 }

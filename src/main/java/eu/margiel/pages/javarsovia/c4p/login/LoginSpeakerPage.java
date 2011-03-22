@@ -10,7 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.JavarsoviaSession;
-import eu.margiel.domain.Speaker;
+import eu.margiel.domain.User;
 import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.repositories.SpeakerRepository;
@@ -40,7 +40,7 @@ public class LoginSpeakerPage extends BaseWebPage {
 
 		@Override
 		protected void onSubmit() {
-			Speaker speaker = repository.readByMail(mail.getValue());
+			User speaker = repository.readByMail(mail.getValue());
 			if (speaker != null && speaker.passwordIsCorrect(password.getValue())) {
 				JavarsoviaSession.get().setUser(speaker);
 				setResponsePage(ViewSpeakerPage.class);

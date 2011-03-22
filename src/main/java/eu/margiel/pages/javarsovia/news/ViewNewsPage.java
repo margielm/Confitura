@@ -38,6 +38,7 @@ public class ViewNewsPage extends BaseWebPage {
 		protected void populateItem(ListItem<News> item) {
 			final News news = item.getModelObject();
 			item.add(new LabeledLink("title", news.getTitle(), news.getTitle(), ViewNewsDetailsPage.class));
+			item.add(label("autor", news.getAutor().getFullName()));
 			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
 			item.add(new Link("more") {

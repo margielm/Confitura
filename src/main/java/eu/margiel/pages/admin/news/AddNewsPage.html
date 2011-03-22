@@ -12,35 +12,30 @@
 <wicket:extend>
 	<div wicket:id="feedback"></div>
 	<form wicket:id="form">
-	<table>
+	<table style="width: 100%;">
 		<tr>
 			<td>
-			<table>
-				<tr>
-					<td colspan="4">Title<input
-						type="text"
-						wicket:id="title"
-						id="tile" style="width: 100%;"/></td>
-				</tr>
-			</table>
+				Tytuł:
+				<input type="text" wicket:id="title" id="tile" style="width: 70%;"/>
 			</td>
 		</tr>
 		<tr>
-			<td>Short description</td>
+			<td>Krótki opis</td>
 		</tr>
 		<tr>
 			<td><textarea wicket:id="shortDescription"></textarea></td>
 		</tr>
 		<tr>
-			<td>Description</td>
+			<td>Pełny opis</td>
 		</tr>
 		<tr>
 			<td><textarea wicket:id="description"></textarea></td>
 		</tr>
 		<tr>
-			<td><input
-				type="submit"
-				value="save" /></td>
+			<td>
+				<input type="button" value="anuluj" wicket:id="cancel"/>
+				<input type="submit" value="zapisz" />
+			</td>
 		</tr>
 	</table>
 	</form>

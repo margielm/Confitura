@@ -1,10 +1,14 @@
 package eu.margiel.components.menu;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import eu.margiel.domain.MenuItem;
+import eu.margiel.utils.Components;
 
 @SuppressWarnings({ "serial" })
 public class MainMenuPanel extends Panel {
@@ -20,7 +24,10 @@ public class MainMenuPanel extends Panel {
 				MenuItem menuItem = item.getModelObject();
 				item.setVisible(menuItem.isPublished());
 				item.add(createLink("menuItem", menuItem));
-				item.add(new ListView<MenuItem>("submenuItems", menuItem.getChildren()) {
+				MarkupContainer submenu = new WebMarkupContainer("submenuParent");
+				submenu.setVisible(menuItem.hasChildren());
+				item.add(submenu);
+				submenu.add(new ListView<MenuItem>("submenu", menuItem.getChildren()) {
 					@Override
 					protected void populateItem(ListItem<MenuItem> item) {
 						MenuItem submenu = item.getModelObject();
@@ -32,11 +39,11 @@ public class MainMenuPanel extends Panel {
 		});
 	}
 
-	private MenuVisualLink createLink(String id, MenuItem menuItem) {
+	private Component createLink(String id, MenuItem menuItem) {
 		MenuLink menuLink = menuItemList.getMenuLinkFor(menuItem);
 		if (menuLink != null)
 			return new MenuVisualLink(id, menuItem, menuLink);
-		return null;
+		return Components.label(id, menuItem.getName());
 	}
 
 }

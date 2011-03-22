@@ -10,6 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
+import eu.margiel.JavarsoviaSession;
 import eu.margiel.domain.News;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.NewsRepository;
@@ -30,7 +31,7 @@ public class AddNewsPage extends AdminBasePage {
 
 	private void initPage(News news) {
 		add(new FeedbackPanel("feedback"));
-		add(new AddNewsForm("form", news));
+		add(new AddNewsForm(news));
 	}
 
 	@SuppressWarnings("serial")
@@ -38,16 +39,18 @@ public class AddNewsPage extends AdminBasePage {
 
 		private final News news;
 
-		private AddNewsForm(String id, News news) {
-			super(id);
+		private AddNewsForm(News news) {
+			super("form");
 			this.news = news;
-			add(textField("title", propertyModel(news, "title")));
-			add(richEditor("shortDescription", propertyModel(news, "shortDescription")));
+			add(textField("title", propertyModel(news, "title"), true));
+			add(richEditor("shortDescription", propertyModel(news, "shortDescription"), true));
 			add(richEditor("description", propertyModel(news, "description")));
+			add(cancelLink(ListNewsPage.class));
 		}
 
 		@Override
 		protected void onSubmit() {
+			news.autor(JavarsoviaSession.get().getAdmin());
 			repository.save(news);
 			setResponsePage(ListNewsPage.class);
 		}

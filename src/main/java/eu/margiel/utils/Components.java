@@ -3,6 +3,7 @@ package eu.margiel.utils;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -28,6 +29,7 @@ import wicket.contrib.tinymce.settings.SearchReplacePlugin;
 import wicket.contrib.tinymce.settings.SpellCheckPlugin;
 import wicket.contrib.tinymce.settings.TablePlugin;
 import wicket.contrib.tinymce.settings.TinyMCESettings;
+import eu.margiel.components.RedirectLink;
 
 public class Components {
 	public static <T extends Serializable> TextField<T> textField(String id, IModel<T> model) {
@@ -67,9 +69,23 @@ public class Components {
 	}
 
 	@SuppressWarnings("unchecked")
+	public static <T extends Serializable> TextArea<T> richEditorSimple(String id, IModel<T> model, boolean required) {
+		TextArea<T> richEditor = (TextArea<T>) richEditorSimple(id);
+		richEditor.setModel(model);
+		richEditor.setRequired(required);
+		return richEditor;
+	}
+
+	@SuppressWarnings("unchecked")
 	public static <T extends Serializable> TextArea<T> richEditor(String id, IModel<T> model) {
 		TextArea<T> richEditor = (TextArea<T>) richEditor(id);
 		richEditor.setModel(model);
+		return richEditor;
+	}
+
+	public static <T extends Serializable> TextArea<T> richEditor(String id, IModel<T> model, boolean required) {
+		TextArea<T> richEditor = richEditor(id, model);
+		richEditor.setRequired(required);
 		return richEditor;
 	}
 
@@ -210,6 +226,14 @@ public class Components {
 
 	public static Label richLabel(String id, String content) {
 		return (Label) new Label(id, content).setEscapeModelStrings(false);
+	}
+
+	public static RedirectLink redirectLink(String id, Class<? extends Page> page) {
+		return new RedirectLink(id, page);
+	}
+
+	public static RedirectLink cancelLink(Class<? extends Page> page) {
+		return new RedirectLink("cancel", page);
 	}
 
 }

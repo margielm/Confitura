@@ -1,50 +1,26 @@
 package eu.margiel.pages.javarsovia.c4p;
 
-import org.apache.wicket.Application;
-import org.apache.wicket.Resource;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
-import org.apache.wicket.util.file.File;
-import org.apache.wicket.util.file.Folder;
 
-import eu.margiel.Javarsovia;
-import eu.margiel.domain.Speaker;
+import eu.margiel.domain.User;
 
-public class SpeakerPhotoProvider {
+public class SpeakerPhotoProvider extends PhotoProvider {
 
-	private static final String IMAGE_NAME = "photo.jpg";
-
-	public void savePhoto(FileUpload fileUpload, Speaker speaker) {
-		try {
-			String photoPath = getFolderFor(speaker);
-			Folder folder = new Folder(getApp().getMainFilesFolder(), photoPath);
-			folder.mkdirs();
-			File file = new File(folder, IMAGE_NAME);
-			file.createNewFile();
-			fileUpload.writeTo(file);
-			getApp().addImageToResources(getPathTo(speaker), file);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void savePhoto(FileUpload fileUpload, User speaker) {
+		saveFile(fileUpload, ROOT_FOLDER + "/speakers", getFileNameFor(speaker));
 	}
 
-	private String getFolderFor(Speaker speaker) {
-		return "speakers/" + speaker.getId();
+	public String getPathTo(User speaker) {
+		return getPathTo(getFileNameFor(speaker));
 	}
 
-	private String getPathTo(Speaker speaker) {
-		return getFolderFor(speaker) + "/" + IMAGE_NAME;
+	private String getFileNameFor(User speaker) {
+		return speaker.getId() + ".jpg";
 	}
 
-	public Resource getPhotoFor(Speaker speaker) {
-		return getResource(getPathTo(speaker));
-	}
-
-	private Resource getResource(String path) {
-		return getApp().getSharedResources().get(Application.class, path, null, null, false);
-	}
-
-	private Javarsovia getApp() {
-		return Javarsovia.get();
+	@Override
+	protected String getMainFolder() {
+		return ROOT_FOLDER + "/speakers";
 	}
 
 }

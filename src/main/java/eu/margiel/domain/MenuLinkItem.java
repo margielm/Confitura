@@ -29,7 +29,7 @@ public class MenuLinkItem extends AbstractEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, title, itemId);
+		return Objects.hashCode(getId(), title, itemId);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class MenuLinkItem extends AbstractEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		MenuLinkItem other = (MenuLinkItem) obj;
-		return Objects.equal(id, other.id)
+		return Objects.equal(getId(), other.getId())
 				&& Objects.equal(title, other.title)
 				&& Objects.equal(itemId, other.itemId);
 	}

@@ -1,24 +1,19 @@
 package eu.margiel.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 @SuppressWarnings("serial")
-@Entity
+@MappedSuperclass
 public class User extends AbstractEntity {
 	private transient StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
 	private String firstName;
 	private String lastName;
-	private String userName;
 	protected String mail;
 	private String password;
 
 	public User() {
-	}
-
-	public User(String userName) {
-		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -30,18 +25,16 @@ public class User extends AbstractEntity {
 		return this;
 	}
 
-	public User firstName(String firstName) {
+	@SuppressWarnings("unchecked")
+	public <T extends User> T firstName(String firstName) {
 		this.firstName = firstName;
-		return this;
+		return (T) this;
 	}
 
-	public User lastName(String lastName) {
+	@SuppressWarnings("unchecked")
+	public <T extends User> T lastName(String lastName) {
 		this.lastName = lastName;
-		return this;
-	}
-
-	public String getUserName() {
-		return userName;
+		return (T) this;
 	}
 
 	public String getFirstName() {
@@ -62,6 +55,15 @@ public class User extends AbstractEntity {
 
 	public void encryptPassword() {
 		this.password = encryptor.encryptPassword(this.password);
+	}
+
+	public void passwordWithEncryption(String password) {
+		this.password = password;
+		encryptPassword();
+	}
+
+	public String getFullName() {
+		return getFirstName() + " " + getLastName();
 	}
 
 }

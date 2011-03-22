@@ -4,6 +4,7 @@ import org.apache.wicket.Request;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
 
+import eu.margiel.domain.Admin;
 import eu.margiel.domain.Speaker;
 import eu.margiel.domain.User;
 
@@ -24,17 +25,21 @@ public class JavarsoviaSession extends WebSession {
 		this.user = user;
 	}
 
-	public boolean isUserAvailable() {
-		return user != null;
+	public boolean isAdminAvailable() {
+		return user != null && user instanceof Admin;
 	}
 
 	public boolean isSpeakerAvailable() {
-		return isUserAvailable() && user instanceof Speaker;
+		return user != null && user instanceof Speaker;
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T extends User> T getUser() {
 		return (T) this.user;
+	}
+
+	public Admin getAdmin() {
+		return (Admin) this.user;
 	}
 
 	public Speaker getSpeaker() {

@@ -9,7 +9,7 @@ import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.components.LabeledLink;
 import eu.margiel.domain.Presentation;
-import eu.margiel.domain.Speaker;
+import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.pages.admin.speaker.ViewSpeakerPage;
 import eu.margiel.repositories.PresentationRepository;
@@ -23,7 +23,7 @@ public class ViewPresentationPage extends AdminBasePage {
 	public ViewPresentationPage(PageParameters params) {
 
 		Presentation presentation = repository.readByPrimaryKey(params.getAsInteger("id"));
-		Speaker speaker = presentation.getSpeaker();
+		User speaker = presentation.getSpeaker();
 		add(new LabeledLink("speaker", speaker.getFullName(), speaker.getId(), ViewSpeakerPage.class));
 		add(label("title", presentation.getTitle()));
 		add(richLabel("desc", presentation.getDescription()));

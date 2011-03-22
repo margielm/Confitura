@@ -6,16 +6,16 @@ import javax.persistence.ManyToOne;
 @SuppressWarnings({ "serial" })
 @Entity
 public class Presentation extends AbstractEntity {
-	@ManyToOne
-	private Speaker speaker;
 	private String title;
 	private String description;
+	@ManyToOne
+	private Speaker speaker;
 
 	public String getTitle() {
 		return title;
 	}
 
-	public Speaker getSpeaker() {
+	public User getSpeaker() {
 		return speaker;
 	}
 

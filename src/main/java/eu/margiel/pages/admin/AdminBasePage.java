@@ -35,7 +35,7 @@ public class AdminBasePage extends JavarsoviaBasePage {
 
 		});
 		add(wrapper);
-		if (JavarsoviaSession.get().isUserAvailable() == false)
+		if (JavarsoviaSession.get().isAdminAvailable() == false)
 			setResponsePage(LoginPage.class);
 	}
 

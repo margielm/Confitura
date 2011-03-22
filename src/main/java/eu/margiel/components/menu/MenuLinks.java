@@ -14,7 +14,7 @@ import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.domain.SimpleContent;
 import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
-import eu.margiel.pages.javarsovia.c4p.login.LoginSpeakerPage;
+import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.pages.javarsovia.news.ViewNewsPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
@@ -27,7 +27,7 @@ public class MenuLinks {
 	@PostConstruct
 	public void initLinks() {
 		links.add(new SingleMenuLink("Aktualności", ViewNewsPage.class));
-		links.add(new SingleMenuLink("C4P", LoginSpeakerPage.class));
+		links.add(new SingleMenuLink("C4P", ViewSpeakerPage.class));
 		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}
 

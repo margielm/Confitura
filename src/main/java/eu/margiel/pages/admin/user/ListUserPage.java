@@ -12,28 +12,28 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.DeleteLink;
 import eu.margiel.components.RedirectLink;
-import eu.margiel.domain.User;
+import eu.margiel.domain.Admin;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.repositories.UserRepository;
+import eu.margiel.repositories.AdminRepository;
 
 @MountPath(path = "admin/users")
 public class ListUserPage extends AdminBasePage {
 	@SpringBean
-	private UserRepository repository;
+	private AdminRepository repository;
 
 	public ListUserPage() {
 		add(new UserGrid(repository.readAll()));
 	}
 
 	@SuppressWarnings("serial")
-	private final class UserGrid extends DataView<User> {
-		private UserGrid(List<User> list) {
-			super("rows", new ListDataProvider<User>(list));
+	private final class UserGrid extends DataView<Admin> {
+		private UserGrid(List<Admin> list) {
+			super("rows", new ListDataProvider<Admin>(list));
 		}
 
 		@Override
-		protected void populateItem(Item<User> item) {
-			final User user = item.getModelObject();
+		protected void populateItem(Item<Admin> item) {
+			final Admin user = item.getModelObject();
 			item.add(label("userName", user.getUserName()));
 			item.add(label("firstName", user.getFirstName()));
 			item.add(label("lastName", user.getLastName()));

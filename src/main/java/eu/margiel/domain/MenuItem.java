@@ -138,15 +138,11 @@ public class MenuItem extends AbstractEntity {
 		return position;
 	}
 
-	// public DynamicContent getContent() {
-	// return content;
-	// }
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof MenuItem) {
 			MenuItem o = (MenuItem) obj;
-			return Objects.equal(id, o.id)
+			return Objects.equal(getId(), o.getId())
 					&& Objects.equal(name, o.name)
 					&& Objects.equal(published, o.published)
 					&& Objects.equal(parent, o.parent)
@@ -157,12 +153,13 @@ public class MenuItem extends AbstractEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, name, published);
+		return Objects.hashCode(getId(), name, published);
 	}
 
 	@Override
 	public String toString() {
-		return "MenuItem [id=" + id + ", name=" + name + ", published=" + published + ", children=" + children + "]";
+		return "MenuItem [id=" + getId() + ", name=" + name + ", published=" + published + ", children=" + children
+				+ "]";
 	}
 
 	public MenuItem addMenuItem(MenuItem menuItem) {
@@ -172,5 +169,9 @@ public class MenuItem extends AbstractEntity {
 
 	public MenuLinkItem getLinkItem() {
 		return linkItem;
+	}
+
+	public boolean hasChildren() {
+		return children.isEmpty() == false;
 	}
 }

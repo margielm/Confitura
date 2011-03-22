@@ -12,6 +12,7 @@ import org.apache.wicket.util.file.Folder;
 import eu.margiel.Javarsovia;
 
 public class TestPage extends WebPage {
+	@SuppressWarnings("serial")
 	private final class TestForm extends Form<Void> {
 		private FileUploadField fileField = new FileUploadField("file");
 
@@ -27,7 +28,7 @@ public class TestPage extends WebPage {
 			try {
 				FileUpload fileUpload = fileField.getFileUpload();
 				String path = "speakers/speaker";
-				Folder folder = new Folder(Javarsovia.get().getMainFilesFolder(), path);
+				Folder folder = new Folder("", path);
 				folder.mkdirs();
 				File file = new File(folder, "photo.jpg");
 				System.out.println(file.getAbsolutePath());
@@ -35,7 +36,6 @@ public class TestPage extends WebPage {
 				System.out.println(file.getPath());
 				file.createNewFile();
 				fileUpload.writeTo(file);
-				Javarsovia.get().addImageToResources("a", file);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

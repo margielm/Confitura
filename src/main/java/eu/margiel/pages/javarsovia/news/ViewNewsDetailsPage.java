@@ -20,6 +20,7 @@ public class ViewNewsDetailsPage extends BaseWebPage {
 
 	public ViewNewsDetailsPage(PageParameters params) {
 		News news = repository.readByTitle(params.getString("id"));
+		add(label("autor", news.getAutor().getFullName()));
 		add(label("title", news.getTitle()));
 		add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 		add(richLabel("shortDescription", news.getShortDescription()));
