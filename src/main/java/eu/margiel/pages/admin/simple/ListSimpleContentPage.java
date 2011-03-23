@@ -10,7 +10,8 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import eu.margiel.components.nogeneric.Link;
+import eu.margiel.components.DeleteLink;
+import eu.margiel.components.RedirectLink;
 import eu.margiel.domain.SimpleContent;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.SimpleContentRepository;
@@ -33,21 +34,10 @@ public class ListSimpleContentPage extends AdminBasePage {
 
 		@Override
 		protected void populateItem(Item<SimpleContent> item) {
-			final SimpleContent staticContent = item.getModelObject();
-			item.add(label("title", staticContent.getTitle()));
-			item.add(new Link("edit") {
-				@Override
-				public void onClick() {
-					setResponsePage(new AddSimpleContentPage(staticContent));
-				}
-			});
-			item.add(new Link("delete") {
-				@Override
-				public void onClick() {
-					repository.delete(staticContent);
-					setResponsePage(ListSimpleContentPage.class);
-				}
-			});
+			SimpleContent simpleContent = item.getModelObject();
+			item.add(label("title", simpleContent.getTitle()));
+			item.add(new RedirectLink("edit", simpleContent, AddSimpleContentPage.class));
+			item.add(new DeleteLink(simpleContent, repository, ListSimpleContentPage.class));
 		}
 	}
 }
