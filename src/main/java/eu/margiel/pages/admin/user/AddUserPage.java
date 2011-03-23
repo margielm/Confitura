@@ -54,6 +54,7 @@ public class AddUserPage extends AdminBasePage {
 			add(textField("mail", propertyModel(admin, "mail"), true));
 			add(password);
 			add(repassword);
+			add(cancelLink(ListUserPage.class));
 		}
 
 		@Override

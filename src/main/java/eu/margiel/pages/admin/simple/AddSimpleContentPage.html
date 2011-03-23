@@ -12,21 +12,21 @@
 
 <wicket:extend>
 	<form wicket:id="form">
-	<table>
-		<tr>
-			<td>Tytuł: <input
-				type="text"
-				wicket:id="title"
-				id="tile"
-				style="width: 100%;" /></td>
-		</tr>
-		<tr>
-			<td><textarea wicket:id="content"></textarea></td>
-		</tr>
-	</table>
-	<input
-		type="submit"
-		value="save" /></form>
+		<table>
+			<tr>
+				<td>Tytuł: <input
+					type="text"
+					wicket:id="title"
+					id="tile"
+					style="width: 100%;" /></td>
+			</tr>
+			<tr>
+				<td><textarea wicket:id="content"></textarea></td>
+			</tr>
+		</table>
+		<input type="submit" value="Zapisz" />
+		<input type="button" value="Anuluj" wicket:id="cancel" />
+	</form>
 </wicket:extend>
 </body>
 </html>

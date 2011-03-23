@@ -38,6 +38,7 @@ public class AddSimpleContentPage extends AdminBasePage {
 		};
 		form.add(textField("title", new PropertyModel<String>(simpleContent, "title")));
 		form.add(richEditor("content", new PropertyModel<String>(simpleContent, "content")));
+		form.add(cancelLink(ListSimpleContentPage.class));
 		add(form);
 	}
 
