@@ -17,6 +17,7 @@ import eu.margiel.components.RedirectLink;
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.Speaker;
+import eu.margiel.pages.admin.presentation.ViewPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.AddPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.ChangePasswordPage;
 import eu.margiel.pages.javarsovia.c4p.EditSpeakerPage;
@@ -65,6 +66,7 @@ public class UserInfoPanel extends Panel {
 		protected void populateItem(Item<Presentation> item) {
 			Presentation presentation = item.getModelObject();
 			item.add(label("title", presentation.getTitle()));
+			item.add(new RedirectLink("view", presentation, ViewPresentationPage.class).setVisible(!editable));
 			item.add(new RedirectLink("edit", presentation, AddPresentationPage.class).setVisible(editable));
 			item.add(new DeleteLink(presentation, repository, ViewSpeakerPage.class).setVisible(editable));
 		}

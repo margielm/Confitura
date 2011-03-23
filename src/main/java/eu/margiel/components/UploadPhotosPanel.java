@@ -48,6 +48,7 @@ public class UploadPhotosPanel extends Panel {
 			@Override
 			public void onClick() {
 				file.delete();
+				setResponsePage(page);
 			}
 
 		};
