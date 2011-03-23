@@ -24,10 +24,10 @@ public class MainMenuPanel extends Panel {
 				MenuItem menuItem = item.getModelObject();
 				item.setVisible(menuItem.isPublished());
 				item.add(createLink("menuItem", menuItem));
-				MarkupContainer submenu = new WebMarkupContainer("submenuParent");
+				MarkupContainer submenu = new WebMarkupContainer("submenu");
 				submenu.setVisible(menuItem.hasChildren());
 				item.add(submenu);
-				submenu.add(new ListView<MenuItem>("submenu", menuItem.getChildren()) {
+				submenu.add(new ListView<MenuItem>("submenuItems", menuItem.getChildren()) {
 					@Override
 					protected void populateItem(ListItem<MenuItem> item) {
 						MenuItem submenu = item.getModelObject();

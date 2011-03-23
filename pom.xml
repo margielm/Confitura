@@ -155,7 +155,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.2.139</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>

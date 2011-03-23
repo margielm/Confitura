@@ -10,13 +10,19 @@
 		   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/javarsovia?characterEncoding=UTF-8" />
 		<property name="username" value="javarsovia" />
 		<property name="password" value="javarsovia" />
+	</bean> -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:tcp://localhost/javarsovia" />
+		<property name="username" value="javarsovia" />
+		<property name="password" value="javarsovia" />
 	</bean>
-		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
