@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.List;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
@@ -25,9 +26,11 @@ import eu.margiel.pages.javarsovia.c4p.GalleryPhotoProvider;
 public class UploadPhotosPanel extends Panel {
 	private ListView<File> imagesList;
 	private transient GalleryPhotoProvider provider = new GalleryPhotoProvider();
+	private Class<? extends Page> page;
 
-	public UploadPhotosPanel(String id) {
+	public UploadPhotosPanel(String id, Class<? extends Page> page) {
 		super(id);
+		this.page = page;
 		add(new FeedbackPanel("uploadFeedback"));
 		add(new FileUploadForm("photo_upload"));
 		add(createImagesList());
@@ -79,6 +82,7 @@ public class UploadPhotosPanel extends Panel {
 		protected void onSubmit() {
 			for (FileUpload image : images)
 				provider.savePhoto(image);
+			setResponsePage(page);
 		}
 
 	}

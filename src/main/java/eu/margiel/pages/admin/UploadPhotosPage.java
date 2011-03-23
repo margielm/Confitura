@@ -9,6 +9,6 @@ import eu.margiel.components.UploadPhotosPanel;
 public class UploadPhotosPage extends AdminBasePage {
 
 	public UploadPhotosPage(PageParameters parameters) {
-		add(new UploadPhotosPanel("upload_photos"));
+		add(new UploadPhotosPanel("upload_photos", this.getClass()));
 	}
 }
