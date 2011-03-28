@@ -12,39 +12,55 @@
 <wicket:extend>
 	<form wicket:id="form">
 	<div wicket:id="feedback"></div>
-	<table>
-		<tr>
-			<td>Imię:</td>
-			<td> <input type="text" wicket:id="firstName" /></td>
-		</tr>
-		<tr>
-			<td>Nazwisko:</td>
-			<td><input type="text" wicket:id="lastName" /></td>
-		</tr>
-		<tr>
-			<td>Login:</td>
-			<td><input type="text" wicket:id="userName" /></td>
-		</tr>
-		<tr>
-			<td>e-mail:</td>
-			<td><input type="text" wicket:id="mail" /></td>
-		</tr>
-		<tr>
-			<td>Hasło:</td>
-			<td><input type="password" wicket:id="password" /></td>
-		</tr>
-		<tr>
-			<td>Powtórz Hasło:</td>
-			<td><input type="password" wicket:id="repassword" /></td>
-		</tr>
-		
-		<tr>
-			<td colspan="2">
-			 	<input type="submit" value="Zapisz" />
-			 	<input type="button" value="Anuluj" wicket:id="cancel" />
-			 </td>
-		</tr>
-	</table>
+	<div>
+		<div style="float: left;">
+			<img width="80" height="109"  wicket:id="photoView" />
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td>Imię:</td>
+					<td> <input type="text" wicket:id="firstName" /></td>
+				</tr>
+				<tr>
+					<td>Nazwisko:</td>
+					<td><input type="text" wicket:id="lastName" /></td>
+				</tr>
+				<tr>
+					<td>Login:</td>
+					<td><input type="text" wicket:id="userName" /></td>
+				</tr>
+				<tr>
+					<td>e-mail:</td>
+					<td><input type="text" wicket:id="mail" /></td>
+				</tr>
+				<tr>
+					<td>Hasło:</td>
+					<td><input type="password" wicket:id="password" /></td>
+				</tr>
+				<tr>
+					<td>Powtórz Hasło:</td>
+					<td><input type="password" wicket:id="repassword" /></td>
+				</tr>
+				<tr>
+					<td>Zdjęcie</td>
+					<td><input type="file" wicket:id="photo"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">O sobie:</td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea wicket:id="bio"> </textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: right;">
+					 	<input type="button" value="Anuluj" wicket:id="cancel" />
+					 	<input type="submit" value="Zapisz" />
+					 </td>
+				</tr>
+			</table>
+		</div>
+	</div>
 	</form>
 </wicket:extend>
 </body>

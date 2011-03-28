@@ -1,5 +1,6 @@
 package eu.margiel.domain;
 
+import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -12,6 +13,8 @@ public class User extends AbstractEntity {
 	private String lastName;
 	protected String mail;
 	private String password;
+	@Lob
+	private String bio;
 
 	public User() {
 	}
@@ -64,6 +67,10 @@ public class User extends AbstractEntity {
 
 	public String getFullName() {
 		return getFirstName() + " " + getLastName();
+	}
+
+	public String getBio() {
+		return bio;
 	}
 
 }

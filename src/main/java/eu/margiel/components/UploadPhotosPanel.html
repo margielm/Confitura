@@ -16,18 +16,23 @@
 		type="submit"
 		value="Wyślij!" /> <span wicket:id="upload_progress">[[ajax upload progressbar]]</span></fieldset>
 	</form>
+	<form wicket:id="folderForm">
+		Nazwa:<input type="text" wicket:id="folderName"/>
+		<input type="submit" value="Nowy Folder"/>
+	</form>
 	<div><span wicket:id="uploadFeedback" /></div>
 	<div wicket:id="images_container">
-	<div wicket:id="images">
-	<div style="float: left; padding: 10px; height: 120px; text-align: center;">
-	<div><img wicket:id="image" style="width: 80px"/> <a
-		href="#"
-		style="position: relative; left: -20px;"
-		wicket:id="remove"><img
-		src="/images/remove.png"
-		style="width: 15px;" /></a></div>
-	</div>
-	</div>
+		<div wicket:id="images">
+			<div style="float: left; padding: 10px; height: 120px; text-align: center;">
+				<div><img wicket:id="image" style="width: 80px"/> <a
+					href="#"
+					style="position: relative; left: -20px;"
+					wicket:id="remove"><img
+					src="/images/remove.png"
+					style="width: 15px;" /></a>
+				</div>
+			</div>
+		</div>
 	</div>
 </wicket:panel>
 </html>

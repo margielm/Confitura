@@ -17,7 +17,7 @@ public class EditSpeakerPage extends SpeakerBasePage {
 
 	@SpringBean
 	private SpeakerRepository repository;
-	private transient SpeakerPhotoProvider photoProvider = new SpeakerPhotoProvider();
+	private transient SpeakerPhotoProvider photoProvider = new SpeakerPhotoProvider("speaker");
 
 	public EditSpeakerPage() {
 		add(new EditSpeakerForm(getSession().getSpeaker()));
@@ -27,7 +27,7 @@ public class EditSpeakerPage extends SpeakerBasePage {
 	@SuppressWarnings("serial")
 	private final class EditSpeakerForm extends Form<Void> {
 		private final Speaker speaker;
-		private FileUploadField fileUploadField = new FileUploadField("photo");;
+		private FileUploadField fileUploadField = new FileUploadField("photo");
 
 		private EditSpeakerForm(Speaker speaker) {
 			super("form");

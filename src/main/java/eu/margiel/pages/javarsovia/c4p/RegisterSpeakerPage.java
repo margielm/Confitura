@@ -28,7 +28,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 	@SpringBean
 	private SpeakerRepository repository;
 
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider();
+	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
 
 	public RegisterSpeakerPage(PageParameters params) {
 		add(new SpeakerForm(getSpeaker()));

@@ -29,7 +29,7 @@ import eu.margiel.repositories.PresentationRepository;
 public class UserInfoPanel extends Panel {
 	@SpringBean
 	private PresentationRepository repository;
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider();
+	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
 	private final boolean editable;
 
 	public UserInfoPanel(String id, Speaker speaker, boolean editable) {

@@ -14,7 +14,7 @@ public class GalleryPhotoProvider extends PhotoProvider {
 	}
 
 	@Override
-	protected String getMainFolder() {
+	public String getMainFolder() {
 		return ROOT_FOLDER + "/photos/";
 	}
 

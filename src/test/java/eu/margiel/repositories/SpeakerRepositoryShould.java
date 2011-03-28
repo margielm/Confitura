@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import eu.margiel.domain.Speaker;
-import eu.margiel.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-spring.xml")
@@ -26,7 +25,7 @@ public class SpeakerRepositoryShould {
 		repository.saveAndFlush(expectedSpeaker);
 		repository.saveAndFlush(new Speaker().mail("michal.nowak@domena.pl"));
 
-		User foundSpeaker = repository.readByMail(mail);
+		Speaker foundSpeaker = repository.readByMail(mail);
 
 		assertEquals(expectedSpeaker, foundSpeaker);
 	}

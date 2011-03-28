@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.domain.SimpleContent;
+import eu.margiel.pages.javarsovia.ViewPeoplePage;
 import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
 import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.pages.javarsovia.news.ViewNewsPage;
@@ -26,7 +27,8 @@ public class MenuLinks {
 
 	@PostConstruct
 	public void initLinks() {
-		links.add(new SingleMenuLink("Aktualności", ViewNewsPage.class));
+		links.add(new SingleMenuLink("Kapitula", ViewPeoplePage.class));
+		links.add(new SingleMenuLink("Aktualnosci", ViewNewsPage.class));
 		links.add(new SingleMenuLink("C4P", ViewSpeakerPage.class));
 		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}

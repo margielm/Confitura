@@ -6,10 +6,12 @@ import java.util.List;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 import wicket.contrib.tinymce.TinyMceBehavior;
@@ -234,6 +236,11 @@ public class Components {
 
 	public static RedirectLink cancelLink(Class<? extends Page> page) {
 		return new RedirectLink("cancel", page);
+	}
+
+	public static <T extends FormComponent<?>> T withLabel(String label, T comp) {
+		comp.setLabel(new Model<String>(label));
+		return comp;
 	}
 
 }

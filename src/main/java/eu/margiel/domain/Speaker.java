@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @SuppressWarnings("serial")
@@ -14,8 +13,6 @@ import javax.persistence.OneToMany;
 public class Speaker extends User {
 	private String webPage;
 	private String twitter;
-	@Lob
-	private String bio;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
 	private List<Presentation> presentations = newArrayList();
 
@@ -25,10 +22,6 @@ public class Speaker extends User {
 
 	public String getTwitter() {
 		return twitter;
-	}
-
-	public String getBio() {
-		return bio;
 	}
 
 	public Speaker mail(String mail) {

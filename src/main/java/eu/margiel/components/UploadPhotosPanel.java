@@ -1,6 +1,7 @@
 package eu.margiel.components;
 
 import static com.google.common.collect.Lists.*;
+import static eu.margiel.utils.Components.*;
 
 import java.io.File;
 import java.util.List;
@@ -10,13 +11,16 @@ import org.apache.wicket.Page;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.MultiFileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.lang.Bytes;
 
 import eu.margiel.components.nogeneric.Link;
@@ -33,6 +37,7 @@ public class UploadPhotosPanel extends Panel {
 		this.page = page;
 		add(new FeedbackPanel("uploadFeedback"));
 		add(new FileUploadForm("photo_upload"));
+		add(new FolderForm());
 		add(createImagesList());
 	}
 
@@ -86,6 +91,22 @@ public class UploadPhotosPanel extends Panel {
 			setResponsePage(page);
 		}
 
+	}
+
+	private final class FolderForm extends Form<Void> {
+		private TextField<String> folder = textField("folderName", new Model<String>());
+
+		private FolderForm() {
+			super("folderForm");
+			add(folder);
+		}
+
+		@Override
+		protected void onSubmit() {
+			String folderName = folder.getValue();
+			new Folder(provider.getMainFolder(), folderName).mkdir();
+			setResponsePage(page);
+		}
 	}
 
 }

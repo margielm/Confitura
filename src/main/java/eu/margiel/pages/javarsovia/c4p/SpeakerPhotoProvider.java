@@ -2,25 +2,31 @@ package eu.margiel.pages.javarsovia.c4p;
 
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 
-import eu.margiel.domain.User;
+import eu.margiel.domain.AbstractEntity;
 
 public class SpeakerPhotoProvider extends PhotoProvider {
+	private String subfolder = "speakers";
 
-	public void savePhoto(FileUpload fileUpload, User speaker) {
-		saveFile(fileUpload, ROOT_FOLDER + "/speakers", getFileNameFor(speaker));
+	public SpeakerPhotoProvider(String subfolder) {
+		super();
+		this.subfolder = subfolder;
 	}
 
-	public String getPathTo(User speaker) {
-		return getPathTo(getFileNameFor(speaker));
+	public void savePhoto(FileUpload fileUpload, AbstractEntity entity) {
+		saveFile(fileUpload, getMainFolder(), getFileNameFor(entity));
 	}
 
-	private String getFileNameFor(User speaker) {
-		return speaker.getId() + ".jpg";
+	public String getPathTo(AbstractEntity entity) {
+		return getPathTo(getFileNameFor(entity));
+	}
+
+	private String getFileNameFor(AbstractEntity entity) {
+		return entity.getId() + ".jpg";
 	}
 
 	@Override
 	protected String getMainFolder() {
-		return ROOT_FOLDER + "/speakers";
+		return ROOT_FOLDER + "/" + subfolder;
 	}
 
 }
