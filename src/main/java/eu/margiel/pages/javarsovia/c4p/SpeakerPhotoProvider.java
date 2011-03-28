@@ -13,7 +13,8 @@ public class SpeakerPhotoProvider extends PhotoProvider {
 	}
 
 	public void savePhoto(FileUpload fileUpload, AbstractEntity entity) {
-		saveFile(fileUpload, getMainFolder(), getFileNameFor(entity));
+		if (fileUpload != null)
+			saveFile(fileUpload, getMainFolder(), getFileNameFor(entity));
 	}
 
 	public String getPathTo(AbstractEntity entity) {
