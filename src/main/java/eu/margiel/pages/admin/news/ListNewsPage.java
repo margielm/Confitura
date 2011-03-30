@@ -7,6 +7,7 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.joda.time.LocalDateTime;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.DeleteLink;
@@ -35,6 +36,8 @@ public class ListNewsPage extends AdminBasePage {
 		protected void populateItem(Item<News> item) {
 			News news = item.getModelObject();
 			item.add(label("title", news.getTitle()));
+			item.add(label("author", news.getAutor().getFullName()));
+			item.add(label("date", new LocalDateTime(news.getCreationDate()).toString("HH:mm dd-MM-yyyy")));
 			item.add(new RedirectLink("edit", news, AddNewsPage.class));
 			item.add(new DeleteLink(news, repository, ListNewsPage.class));
 
