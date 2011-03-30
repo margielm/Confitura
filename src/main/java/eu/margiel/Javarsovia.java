@@ -44,7 +44,7 @@ public class Javarsovia extends WebApplication {
 
 	protected void productionInit() {
 		addComponentInstantiationListener(new SpringComponentInjector(this));
-		getSharedResources().putClassAlias(Application.class, "images");
+		getSharedResources().putClassAlias(Application.class, "confitura");
 	}
 
 	@Override

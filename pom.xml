@@ -21,16 +21,16 @@
 		<joda-time.version>1.6.2</joda-time.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<hades.version>2.0.2.RELEASE</hades.version>
-		<hibernate.version>3.6.1.Final</hibernate.version> 
+		<hibernate.version>3.6.1.Final</hibernate.version>
 		<lambdaj.version>2.3.1</lambdaj.version>
 		<jasypt.version>1.7</jasypt.version>
 	</properties>
 	<dependencies>
 		<dependency>
-	      <groupId>org.jasypt</groupId>
-	      <artifactId>jasypt</artifactId>
-	      <version>${jasypt.version}</version>
-	    </dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>${jasypt.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.googlecode.lambdaj</groupId>
 			<artifactId>lambdaj</artifactId>
@@ -83,6 +83,11 @@
 					<artifactId>spring-core</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-rome</artifactId>
+			<version>1.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.wicketstuff</groupId>
@@ -185,7 +190,7 @@
 
 	</dependencies>
 	<build>
-	<finalName>ROOT</finalName>
+		<finalName>ROOT</finalName>
 		<resources>
 			<resource>
 				<filtering>false</filtering>
@@ -271,6 +276,11 @@
 			<id>JBOSS</id>
 			<name>JBoss Repository</name>
 			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+		<repository>
+			<id>wicket-stuff-repository</id>
+			<name>Wicket-Stuff Repository</name>
+			<url>http://www.wicketstuff.org/maven/repository/</url>
 		</repository>
 	</repositories>
 </project>
