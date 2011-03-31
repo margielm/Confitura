@@ -2,14 +2,12 @@ package eu.margiel.pages.javarsovia.news;
 
 import static eu.margiel.utils.Components.*;
 import static org.joda.time.LocalDate.*;
-import static org.synyx.hades.domain.Order.*;
 
 import java.util.List;
 
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.synyx.hades.domain.Sort;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.LabeledLink;
@@ -26,7 +24,7 @@ public class ViewNewsPage extends BaseWebPage {
 	private NewsRepository repository;
 
 	public ViewNewsPage() {
-		add(new NewsList("news", repository.readAll(new Sort(DESCENDING, "creationDate"))));
+		add(new NewsList("news", repository.fetchPublished()));
 	}
 
 	private final class NewsList extends ListView<News> {

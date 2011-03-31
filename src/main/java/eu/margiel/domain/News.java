@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 @SuppressWarnings("serial")
 @Entity
 public class News extends AbstractEntity {
+	private boolean published = false;
 	private Date creationDate = new Date();
 	private String title;
 	@Lob
@@ -43,4 +44,22 @@ public class News extends AbstractEntity {
 		return autor;
 	}
 
+	public News title(String title) {
+		this.title = title;
+		return this;
+	}
+
+	public News published(boolean published) {
+		this.published = published;
+		return this;
+	}
+
+	public News creationDate(Date creationDate) {
+		this.creationDate = creationDate;
+		return this;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
 }
