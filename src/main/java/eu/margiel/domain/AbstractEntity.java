@@ -14,4 +14,8 @@ public class AbstractEntity extends AbstractPersistable<Integer> {
 		return (T) this;
 	}
 
+	public boolean isNotNew() {
+		return isNew() == false;
+	}
+
 }

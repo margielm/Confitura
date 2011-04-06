@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<wicket:link>
+		<a href="AddSponsorPage.html">Dodaj</a>
+	</wicket:link>
+	<table
+		style="width: 100%"
+		border="1">
+		<thead>
+			<tr>
+				<th>Nazwa</th>
+				<th>Typ</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr wicket:id="rows">
+				<td wicket:id="name"></td>
+				<td wicket:id="type"></td>
+	        	<td><a href="#" wicket:id="edit">Edytuj</a></td>
+	        	<td><a href="#" wicket:id="delete">Usuń</a></td>
+			</tr>
+		</tbody>
+	</table>
+</wicket:extend>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+<form wicket:id="form">
+	<div>
+		<div style="float: left;">
+			<img width="80"  wicket:id="logoView" />
+		</div>
+		<div>
+<table>
+	<tr>
+		<td>Nazwa:</td>
+		<td><input type="text" wicket:id="name" /></td>
+	</tr>
+	<tr>
+		<td>Strona WWW:</td>
+		<td><input type="text" wicket:id="webPage" /></td>
+	</tr>
+	<tr>
+		<td>Typ:</td>
+		<td><select wicket:id="type" /></td>
+	</tr>
+	<tr>
+		<td>Logo:</td>
+		<td><input type="file" wicket:id="logo"/></td>
+	</tr>
+	<tr>
+		<td colspan="2">Opis na stronę:</td>
+	</tr>
+	<tr>
+		<td colspan="2"><textarea wicket:id="desc" ></textarea></td>
+	</tr>
+	<tr>
+		<td colspan="2">Opis do folderu (jeśli inny):</td>
+	</tr>
+	<tr>
+		<td colspan="2"><textarea wicket:id="folderDesc" ></textarea></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: right;">
+			<input type="button" wicket:id="cancel" value="anuluj"/>
+			<input type="submit" value="zapisz"/>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</form>
+</wicket:extend>
+</body>
+</html>

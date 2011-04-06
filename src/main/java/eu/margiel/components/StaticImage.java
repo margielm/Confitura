@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.WebComponent;
 public class StaticImage extends WebComponent {
 
 	private final String path;
+	private String alt;
 
 	public StaticImage(String id, String path) {
 		super(id);
@@ -18,6 +19,13 @@ public class StaticImage extends WebComponent {
 		super.onComponentTag(tag);
 		checkComponentTag(tag, "img");
 		tag.put("src", path);
+		if (alt != null)
+			tag.put("alt", alt);
+	}
+
+	public StaticImage alt(String alt) {
+		this.alt = alt;
+		return this;
 	}
 
 }

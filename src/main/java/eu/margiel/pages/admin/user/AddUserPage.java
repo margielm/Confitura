@@ -56,7 +56,7 @@ public class AddUserPage extends AdminBasePage {
 			this.admin = admin;
 			this.repassword = withLabel("hasło", passwordField("repassword", new Model<String>(), admin.isNew()));
 			this.password = withLabel("Powtórz hasło", passwordField("password", new Model<String>(), admin.isNew()));
-			add(new StaticImage("photoView", provider.getPathTo(admin)).setVisible(admin.isNew() == false));
+			add(new StaticImage("photoView", provider.getPathTo(admin)).setVisible(admin.isNotNew()));
 			add(withLabel("Imię", textField("firstName", propertyModel(admin, "firstName"), true)));
 			add(withLabel("Nazwisko", textField("lastName", propertyModel(admin, "lastName"), true)));
 			add(withLabel("nazwa użytkownika", textField("userName", propertyModel(admin, "userName"), true)));

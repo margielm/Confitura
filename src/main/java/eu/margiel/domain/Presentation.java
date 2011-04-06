@@ -1,12 +1,14 @@
 package eu.margiel.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @SuppressWarnings({ "serial" })
 @Entity
 public class Presentation extends AbstractEntity {
 	private String title;
+	@Lob
 	private String description;
 	@ManyToOne
 	private Speaker speaker;

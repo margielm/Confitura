@@ -11,6 +11,7 @@ import eu.margiel.JavarsoviaSession;
 import eu.margiel.components.menu.MainMenuPanel;
 import eu.margiel.components.menu.MenuLinks;
 import eu.margiel.pages.javarsovia.news.NewsFeed;
+import eu.margiel.pages.javarsovia.sponsor.SponsorWidget;
 import eu.margiel.repositories.MenuRepository;
 import eu.margiel.repositories.NewsRepository;
 
@@ -41,6 +42,7 @@ public class BaseWebPage extends JavarsoviaBasePage {
 		}));
 		add(wrapper);
 		add(new MainMenuPanel("mainMenu", menuRepository.getMainMenu(), menuItemList));
+		add(new SponsorWidget("sponsors"));
 	}
 
 	@Override
