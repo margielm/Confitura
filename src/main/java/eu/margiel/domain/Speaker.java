@@ -24,9 +24,10 @@ public class Speaker extends User {
 		return twitter;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
 	public Speaker mail(String mail) {
-		this.mail = mail;
-		return this;
+		return super.mail(mail);
 	}
 
 	public List<Presentation> getPresentations() {

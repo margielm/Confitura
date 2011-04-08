@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.util.tester.TestPanelSource;
+import org.apache.wicket.util.tester.ITestPanelSource;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class LinkOrLabelShould extends WicketBaseTest {
 	}
 
 	private void createPanel(final String label, final Page page) {
-		tester.startPanel(new TestPanelSource() {
+		tester.startPanel(new ITestPanelSource() {
 
 			@Override
 			public Panel getTestPanel(String id) {

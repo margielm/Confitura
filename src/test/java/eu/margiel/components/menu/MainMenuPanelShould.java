@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.util.tester.ITestPanelSource;
 import org.apache.wicket.util.tester.TagTester;
-import org.apache.wicket.util.tester.TestPanelSource;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -52,7 +52,7 @@ public class MainMenuPanelShould extends WicketBaseTest {
 	}
 
 	private void createPanelWith(final MenuItem mainMenu) {
-		tester.startPanel(new TestPanelSource() {
+		tester.startPanel(new ITestPanelSource() {
 			@Override
 			public Panel getTestPanel(String panelId) {
 				return new MainMenuPanel(panelId, mainMenu, null);

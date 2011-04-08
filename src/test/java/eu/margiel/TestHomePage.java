@@ -3,7 +3,7 @@ package eu.margiel;
 import static org.mockito.Mockito.*;
 
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.util.tester.TestPanelSource;
+import org.apache.wicket.util.tester.ITestPanelSource;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class TestHomePage {
 	@Test
 	public void testRenderMyPage() {
 		final MenuItem mainMenu = new MenuItem("parent").addMenuItem(new MenuItem("1"));
-		tester.startPanel(new TestPanelSource() {
+		tester.startPanel(new ITestPanelSource() {
 
 			@Override
 			public Panel getTestPanel(String id) {

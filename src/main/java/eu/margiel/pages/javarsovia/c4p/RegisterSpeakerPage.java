@@ -28,6 +28,8 @@ public class RegisterSpeakerPage extends BaseWebPage {
 	@SpringBean
 	private SpeakerRepository repository;
 
+	private SpeakerMailSender mailSender = new SpeakerMailSender();
+
 	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
 
 	public RegisterSpeakerPage(PageParameters params) {
@@ -73,6 +75,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			speaker.encryptPassword();
 			repository.save(speaker);
 			provider.savePhoto(fileUploadField.getFileUpload(), speaker);
+			mailSender.sendMessage(speaker);
 			JavarsoviaSession.get().setUser(speaker);
 			setResponsePage(ViewSpeakerPage.class);
 		}

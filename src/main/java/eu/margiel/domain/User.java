@@ -73,4 +73,10 @@ public class User extends AbstractEntity {
 		return bio;
 	}
 
+	@SuppressWarnings("unchecked")
+	public <T extends User> T mail(String mail) {
+		this.mail = mail;
+		return (T) this;
+	}
+
 }
