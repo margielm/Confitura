@@ -29,11 +29,11 @@
 		<mail.version>1.4.4</mail.version>
 	</properties>
 	<dependencies>
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>${velocity.version}</version>
-			<exclusions>
+			<!-- <exclusions>
 			<exclusion>
 				<groupId>dom4j</groupId>
 				<artifactId>dom4j</artifactId>
@@ -46,8 +46,8 @@
 				  <groupId>commons-collections</groupId>
 				  <artifactId>commons-collections</artifactId>
 			</exclusion>
-			</exclusions>
-		</dependency> -->
+			</exclusions> -->
+		</dependency>
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>

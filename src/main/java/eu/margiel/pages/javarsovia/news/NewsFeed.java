@@ -58,7 +58,7 @@ public class NewsFeed extends FeedResource {
 
 	private SyndContent createDescription(News news) {
 		SyndContent description = new SyndContentImpl();
-		description.setType("text/plain");
+		description.setType("text/plain; charset=UTF-8");
 		description.setValue(news.getShortDescription());
 		return description;
 	}

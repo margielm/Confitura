@@ -12,10 +12,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+
 import com.google.common.collect.Maps;
 
 public abstract class MailSender {
-	// private VelocityContext ctx = new VelocityContext();
+	private VelocityContext ctx = new VelocityContext();
 	private Session session;
 	protected Map<String, Object> properties = Maps.newHashMap();
 
@@ -56,13 +59,12 @@ public abstract class MailSender {
 
 	public String getText(String template) {
 		StringWriter message = new StringWriter();
-		// ctx.put("v", properties);
-		// try {
-		// Velocity.evaluate(ctx, message, "message", template);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-
+		ctx.put("v", properties);
+		try {
+			Velocity.evaluate(ctx, message, "message", template);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return message.toString();
 	}
 
