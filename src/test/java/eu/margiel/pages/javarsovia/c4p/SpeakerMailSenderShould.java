@@ -7,26 +7,31 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import eu.margiel.domain.MailTemplate;
 import eu.margiel.domain.Speaker;
-import eu.margiel.pages.admin.speaker.AdminSpeakerMailSender;
+import eu.margiel.pages.admin.c4p.speaker.AdminSpeakerMailSender;
+import eu.margiel.repositories.MailTemplateRepository;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SpeakerMailSenderShould {
-	SpeakerMailSender sender = new SpeakerMailSender();
+	@Mock
+	private MailTemplateRepository repository;
+	@InjectMocks
+	private SpeakerMailSender sender = new SpeakerMailSender(repository);
 
 	@Test
 	public void getTemplatePopulatedWithFirstName() {
-		sender.firstName("Michał");
+		when(repository.readByType("speaker")).thenReturn(new MailTemplate().template("Witaj $firstName $lastName"));
+		sender.firstName("Michał").lastName("Margiel");
 
 		String message = sender.getContent();
 
-		assertThat(message)
-					.isEqualTo("<html><p>" +
-							"Witaj Michał,<br />" +
-							"Dziękujemy za zgłoszemnie się jako prelegent na konferencję Confitura 2011.<br />" +
-							"Pozdrawiamy!<br /><br />" +
-							"Kapituła Confitury 2011" +
-							"</p></html>");
+		assertThat(message).isEqualTo("Witaj Michał Margiel");
 	}
 
 	@Test

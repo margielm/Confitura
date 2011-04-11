@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<form wicket:id="form">
+	<table style="width: 100%;">
+		<tr>
+			<td>
+				Dostępne zmienne: $firstName, $lastName
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Tytuł: <input type="text" wicket:id="subject" style="width: 400px;"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Treść:
+			</td>
+		</tr>
+		<tr>
+			<td><textarea wicket:id="template"></textarea></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="anuluj" wicket:id="cancel"/>
+				<input type="submit" value="zapisz" />
+			</td>
+		</tr>
+	</table>
+	</form>
+</wicket:extend>
+</body>
+</html>

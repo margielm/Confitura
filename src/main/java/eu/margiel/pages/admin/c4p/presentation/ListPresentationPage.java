@@ -1,4 +1,4 @@
-package eu.margiel.pages.admin.presentation;
+package eu.margiel.pages.admin.c4p.presentation;
 
 import static eu.margiel.utils.Components.*;
 

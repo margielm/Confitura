@@ -3,7 +3,6 @@ package eu.margiel.utils;
 import static javax.mail.Message.RecipientType.*;
 
 import java.io.StringWriter;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -15,12 +14,9 @@ import javax.mail.internet.MimeMessage;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
-import com.google.common.collect.Maps;
-
 public abstract class MailSender {
-	private VelocityContext ctx = new VelocityContext();
+	protected VelocityContext ctx = new VelocityContext();
 	private Session session;
-	protected Map<String, Object> properties = Maps.newHashMap();
 
 	public MailSender() {
 		Properties properties = new Properties();
@@ -49,7 +45,6 @@ public abstract class MailSender {
 		msg.setRecipient(TO, new InternetAddress(recipient));
 		msg.setContent(getContent(), "text/html; charset=UTF-8");
 		msg.setSubject(getSubject());
-		properties.clear();
 		return msg;
 	}
 
@@ -59,7 +54,6 @@ public abstract class MailSender {
 
 	public String getText(String template) {
 		StringWriter message = new StringWriter();
-		ctx.put("v", properties);
 		try {
 			Velocity.evaluate(ctx, message, "message", template);
 		} catch (Exception e) {
@@ -77,7 +71,7 @@ public abstract class MailSender {
 	public abstract String getTemplate();
 
 	protected void put(String name, Object value) {
-		properties.put(name, value);
+		ctx.put(name, value);
 	}
 
 }

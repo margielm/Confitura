@@ -1,4 +1,4 @@
-package eu.margiel.pages.admin.presentation;
+package eu.margiel.pages.admin.c4p.presentation;
 
 import static eu.margiel.utils.Components.*;
 
@@ -11,7 +11,7 @@ import eu.margiel.components.LabeledLink;
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.admin.speaker.ViewSpeakerPage;
+import eu.margiel.pages.admin.c4p.speaker.ViewSpeakerPage;
 import eu.margiel.repositories.PresentationRepository;
 
 @MountPath(path = "admin/presentations/view")

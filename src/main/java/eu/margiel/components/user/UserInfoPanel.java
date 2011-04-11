@@ -17,7 +17,7 @@ import eu.margiel.components.RedirectLink;
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.Speaker;
-import eu.margiel.pages.admin.presentation.ViewPresentationPage;
+import eu.margiel.pages.admin.c4p.presentation.ViewPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.AddPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.ChangePasswordPage;
 import eu.margiel.pages.javarsovia.c4p.EditSpeakerPage;

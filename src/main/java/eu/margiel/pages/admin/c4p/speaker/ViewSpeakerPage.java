@@ -1,4 +1,4 @@
-package eu.margiel.pages.admin.speaker;
+package eu.margiel.pages.admin.c4p.speaker;
 
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;

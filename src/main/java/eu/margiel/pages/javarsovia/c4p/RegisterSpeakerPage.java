@@ -18,6 +18,7 @@ import eu.margiel.JavarsoviaSession;
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.pages.javarsovia.c4p.login.LoginSpeakerPage;
+import eu.margiel.repositories.MailTemplateRepository;
 import eu.margiel.repositories.SpeakerRepository;
 import eu.margiel.utils.Models;
 
@@ -27,8 +28,8 @@ public class RegisterSpeakerPage extends BaseWebPage {
 
 	@SpringBean
 	private SpeakerRepository repository;
-
-	private SpeakerMailSender mailSender = new SpeakerMailSender();
+	@SpringBean
+	private MailTemplateRepository mailTemplateRepository;
 
 	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
 
@@ -75,7 +76,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			speaker.encryptPassword();
 			repository.save(speaker);
 			provider.savePhoto(fileUploadField.getFileUpload(), speaker);
-			mailSender.sendMessage(speaker);
+			new SpeakerMailSender(mailTemplateRepository).sendMessage(speaker);
 			JavarsoviaSession.get().setUser(speaker);
 			setResponsePage(ViewSpeakerPage.class);
 		}

@@ -1,4 +1,4 @@
-package eu.margiel.pages.admin.speaker;
+package eu.margiel.pages.admin.c4p.speaker;
 
 import static eu.margiel.utils.Components.*;
 
