@@ -4,6 +4,7 @@ import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
 
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.extensions.validation.validator.RfcCompliantEmailAddressValidator;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
@@ -11,7 +12,6 @@ import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.JavarsoviaSession;
@@ -55,7 +55,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			add(textField("firstName", propertyModel(speaker, "firstName"), true).setLabel(new Model<String>("imię")));
 			add(textField("lastName", propertyModel(speaker, "lastName"), true));
 			add(textField("mail", Models.<String> propertyModel(speaker, "mail"), true)
-					.add(EmailAddressValidator.getInstance()));
+					.add(RfcCompliantEmailAddressValidator.getInstance()));
 			add(textField("webPage", propertyModel(speaker, "webPage")));
 			add(textField("twitter", propertyModel(speaker, "twitter")));
 			add(richEditorSimple("bio", propertyModel(speaker, "bio")));
