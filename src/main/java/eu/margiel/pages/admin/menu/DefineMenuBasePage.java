@@ -5,6 +5,8 @@ import static eu.margiel.utils.Models.*;
 
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.IAjaxCallDecorator;
+import org.apache.wicket.ajax.calldecorator.AjaxPreprocessingCallDecorator;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -24,6 +26,33 @@ import eu.margiel.repositories.MenuRepository;
 
 @SuppressWarnings("serial")
 public abstract class DefineMenuBasePage extends AdminBasePage {
+
+	private final class RemoveButton extends AjaxButton {
+		private final ListItem<MenuItem> item;
+
+		private RemoveButton(String id, Form<?> form, ListItem<MenuItem> item) {
+			super(id, form);
+			this.item = item;
+		}
+
+		@Override
+		protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+			item.getModelObject().remove();
+			target.addComponent(form);
+		}
+
+		@Override
+		protected IAjaxCallDecorator getAjaxCallDecorator() {
+			return new AjaxPreprocessingCallDecorator(super.getAjaxCallDecorator()) {
+				private static final long serialVersionUID = 7495281332320552876L;
+
+				@Override
+				public CharSequence preDecorateScript(CharSequence script) {
+					return "if(!confirm('Na pewno usunąć?')) return false;" + script;
+				}
+			};
+		}
+	}
 
 	@SpringBean
 	protected MenuRepository repository;
@@ -104,15 +133,7 @@ public abstract class DefineMenuBasePage extends AdminBasePage {
 	}
 
 	private void createRemoveButton(String id, final ListItem<MenuItem> item) {
-		item.add(new AjaxButton(id + "_remove", form) {
-
-			@Override
-			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				item.getModelObject().remove();
-				target.addComponent(form);
-			}
-
-		});
+		item.add(new RemoveButton(id + "_remove", form, item));
 	}
 
 	protected MarkupContainer createAddItemButton() {

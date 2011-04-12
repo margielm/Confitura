@@ -1,6 +1,7 @@
 package eu.margiel.components;
 
 import org.apache.wicket.Page;
+import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.synyx.hades.dao.GenericDao;
 
 import eu.margiel.components.nogeneric.Link;
@@ -18,6 +19,7 @@ public class DeleteLink extends Link {
 		this.entity = entity;
 		this.repository = repository;
 		this.page = page;
+		add(new SimpleAttributeModifier("onclick", "return confirm('Na pewno usunąć?');"));
 	}
 
 	@Override
