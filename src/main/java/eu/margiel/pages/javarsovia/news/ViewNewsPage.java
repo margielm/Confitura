@@ -13,12 +13,11 @@ import org.wicketstuff.annotation.mount.MountPath;
 import eu.margiel.components.LabeledLink;
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.News;
-import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.NewsRepository;
 
 @SuppressWarnings("serial")
 @MountPath(path = "news")
-public class ViewNewsPage extends BaseWebPage {
+public class ViewNewsPage extends NewsBasePage {
 
 	@SpringBean
 	private NewsRepository repository;
@@ -36,7 +35,7 @@ public class ViewNewsPage extends BaseWebPage {
 		protected void populateItem(ListItem<News> item) {
 			final News news = item.getModelObject();
 			item.add(new LabeledLink("title", news.getTitle(), news.getTitle(), ViewNewsDetailsPage.class));
-			item.add(label("autor", news.getAutor().getFullName()));
+			item.add(linktToAuthor(news));
 			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
 			item.add(new Link("more") {
@@ -46,6 +45,7 @@ public class ViewNewsPage extends BaseWebPage {
 				}
 			});
 		}
+
 	}
 
 }

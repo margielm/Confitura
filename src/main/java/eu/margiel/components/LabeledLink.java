@@ -22,4 +22,19 @@ public class LabeledLink extends Panel {
 		};
 		add(link.add(label("label", label)));
 	}
+
+	public LabeledLink(String id, String label) {
+		super(id);
+		Link link = new Link("link") {
+			@Override
+			public void onClick() {
+				LabeledLink.this.onClick();
+			}
+		};
+		add(link.add(label("label", label)));
+	}
+
+	protected void onClick() {
+
+	}
 }

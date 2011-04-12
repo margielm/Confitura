@@ -9,18 +9,17 @@ import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.News;
-import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.NewsRepository;
 
 @MountPath(path = "news/view")
 @MountMixedParam(parameterNames = "id")
-public class ViewNewsDetailsPage extends BaseWebPage {
+public class ViewNewsDetailsPage extends NewsBasePage {
 	@SpringBean
 	private NewsRepository repository;
 
 	public ViewNewsDetailsPage(PageParameters params) {
 		News news = repository.readByTitle(params.getString("id"));
-		add(label("autor", news.getAutor().getFullName()));
+		add(linktToAuthor(news));
 		add(label("title", news.getTitle()));
 		add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
 		add(richLabel("shortDescription", news.getShortDescription()));

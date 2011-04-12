@@ -1,6 +1,7 @@
 package eu.margiel.pages.javarsovia;
 
 import static eu.margiel.utils.Components.*;
+import static eu.margiel.utils.Models.*;
 
 import java.util.List;
 
@@ -38,13 +39,14 @@ public class ViewPeoplePage extends BaseWebPage {
 		protected void populateItem(ListItem<Admin> item) {
 			Admin admin = item.getModelObject();
 			item.add(new AttributeModifier("class", getCssClass(item)));
+			item.add(new AttributeModifier("id", model(admin.getUserName())));
 			item.add(label("name", admin.getFullName()));
 			item.add(richLabel("bio", admin.getBio()));
 			item.add(new StaticImage("photo", provider.getPathTo(admin)));
 		}
 
 		private Model<String> getCssClass(ListItem<Admin> item) {
-			return new Model<String>(item.getIndex() % 2 == 0 ? "odd" : "");
+			return model(item.getIndex() % 2 == 0 ? "odd" : "");
 		}
 	}
 }
