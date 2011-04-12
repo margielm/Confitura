@@ -626,14 +626,12 @@ table.timetable a:hover {
 -moz-background-origin:padding;
 background:#f7f5ef none repeat scroll 0 0;
 }
+
 table.c4p td{
 	padding: 0px;
-
-
-/* ----------- CMS ELEMENTS ------------- */
-
-
-#NewsPostDetailCategory, #NewsPostDetailAuthor {
+}
+ 
+#NewsPostDetailCategory, #NewsPostDetailAuthor { 
 	font-size: 12px;
 	color: #362f2d;
 	text-align: left;
