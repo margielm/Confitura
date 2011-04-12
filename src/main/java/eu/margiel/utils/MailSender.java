@@ -40,11 +40,11 @@ public abstract class MailSender {
 	}
 
 	private Message createMessage(String recipient) throws Exception {
-		Message msg = new MimeMessage(session);
+		MimeMessage msg = new MimeMessage(session);
 		msg.setFrom(new InternetAddress("rejestracja@javarsovia.pl", "Confitura 2011", "UTF-8"));
 		msg.setRecipient(TO, new InternetAddress(recipient));
 		msg.setContent(getContent(), "text/html; charset=UTF-8");
-		msg.setSubject(getSubject());
+		msg.setSubject(getSubject(), "UTF-8");
 		return msg;
 	}
 
