@@ -4,6 +4,7 @@ import static eu.margiel.utils.Components.*;
 
 import java.util.List;
 
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -39,8 +40,8 @@ public class UserInfoPanel extends Panel {
 		add(label("firstName", speaker.getFirstName()));
 		add(label("lastName", speaker.getLastName()));
 		add(label("eMail", speaker.getMail()));
-		add(label("webPage", speaker.getWebPage()));
-		add(label("twitter", speaker.getTwitter()));
+		add(new ExternalLink("webPage", speaker.getWebPage(), speaker.getWebPage()));
+		add(new ExternalLink("twitter", speaker.getTwitterUrl(), speaker.getTwitter()));
 		add(richLabel("bio", speaker.getBio()));
 		add(redirectLink("edit", EditSpeakerPage.class).setVisible(editable));
 		add(redirectLink("changePassword", ChangePasswordPage.class).setVisible(editable));

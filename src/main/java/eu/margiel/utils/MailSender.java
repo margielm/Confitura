@@ -32,7 +32,7 @@ public abstract class MailSender {
 		try {
 			Message msg = createMessage(recipient);
 			Transport t = session.getTransport("smtps");
-			t.connect("smtp.gmail.com", "rejestracja@javarsovia.pl", "java4ever");
+			t.connect("smtp.gmail.com", "confitura@confitura.pl", "java4ever");
 			t.sendMessage(msg, msg.getAllRecipients());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public abstract class MailSender {
 
 	private Message createMessage(String recipient) throws Exception {
 		MimeMessage msg = new MimeMessage(session);
-		msg.setFrom(new InternetAddress("rejestracja@javarsovia.pl", "Confitura 2011", "UTF-8"));
+		msg.setFrom(new InternetAddress("confitura@confitura.pl", "Confitura 2011", "UTF-8"));
 		msg.setRecipient(TO, new InternetAddress(recipient));
 		msg.setContent(getContent(), "text/html; charset=UTF-8");
 		msg.setSubject(getSubject(), "UTF-8");

@@ -25,6 +25,11 @@ public class MailTemplate extends AbstractEntity {
 		return this;
 	}
 
+	public MailTemplate subject(String subject) {
+		this.subject = subject;
+		return this;
+	}
+
 	public String getTemplate() {
 		return template;
 	}

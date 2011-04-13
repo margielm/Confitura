@@ -24,6 +24,10 @@ public class Speaker extends User {
 		return twitter;
 	}
 
+	public String getTwitterUrl() {
+		return "http://www.twitter.com/" + twitter;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Speaker mail(String mail) {
