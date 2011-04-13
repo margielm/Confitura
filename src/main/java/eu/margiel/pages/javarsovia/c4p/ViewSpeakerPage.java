@@ -14,7 +14,7 @@ public class ViewSpeakerPage extends SpeakerBasePage {
 	private SpeakerRepository speakerRepository;
 
 	public ViewSpeakerPage() {
-		add(new UserInfoPanel("info", fetchSpeaker(), true));
+		add(new UserInfoPanel("info", getSession().setUser(fetchSpeaker()), true));
 	}
 
 	private Speaker fetchSpeaker() {

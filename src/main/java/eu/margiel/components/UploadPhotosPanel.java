@@ -24,7 +24,6 @@ import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.lang.Bytes;
 
 import eu.margiel.components.nogeneric.Link;
-import eu.margiel.pages.javarsovia.c4p.GalleryPhotoProvider;
 
 @SuppressWarnings("serial")
 public class UploadPhotosPanel extends Panel {

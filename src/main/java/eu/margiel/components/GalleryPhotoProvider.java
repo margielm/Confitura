@@ -1,4 +1,4 @@
-package eu.margiel.pages.javarsovia.c4p;
+package eu.margiel.components;
 
 import static com.google.common.collect.Lists.*;
 
@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.util.file.Folder;
+
+import eu.margiel.pages.javarsovia.c4p.PhotoProvider;
 
 public class GalleryPhotoProvider extends PhotoProvider {
 

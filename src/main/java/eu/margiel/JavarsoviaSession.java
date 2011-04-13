@@ -21,8 +21,9 @@ public class JavarsoviaSession extends WebSession {
 		return (JavarsoviaSession) Session.get();
 	}
 
-	public void setUser(User user) {
+	public <T extends User> T setUser(T user) {
 		this.user = user;
+		return user;
 	}
 
 	public boolean isAdminAvailable() {
