@@ -73,12 +73,16 @@ public class RegisterSpeakerPage extends BaseWebPage {
 		}
 
 		private void saveSpeaker() {
-			speaker.encryptPassword();
-			repository.save(speaker);
-			provider.savePhoto(fileUploadField.getFileUpload(), speaker);
-			new SpeakerMailSender(mailTemplateRepository).sendMessage(speaker);
-			JavarsoviaSession.get().setUser(speaker);
-			setResponsePage(ViewSpeakerPage.class);
+			if (repository.readByMail(speaker.getMail()) != null)
+				feedbackPanel.info("Podany e-mail jest już zarejestrowany!");
+			else {
+				speaker.encryptPassword();
+				repository.save(speaker);
+				provider.savePhoto(fileUploadField.getFileUpload(), speaker);
+				new SpeakerMailSender(mailTemplateRepository).sendMessage(speaker);
+				JavarsoviaSession.get().setUser(speaker);
+				setResponsePage(ViewSpeakerPage.class);
+			}
 		}
 	}
 }

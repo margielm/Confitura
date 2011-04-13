@@ -19,13 +19,13 @@ public class SpeakerRepositoryShould {
 	private SpeakerRepository repository;
 
 	@Test
-	public void findSpeakerByEMail() {
+	public void findSpeakerByMailCaseInsensitive() {
 		String mail = "jan.kowalski@domena.pl";
 		Speaker expectedSpeaker = new Speaker().mail(mail);
 		repository.saveAndFlush(expectedSpeaker);
 		repository.saveAndFlush(new Speaker().mail("michal.nowak@domena.pl"));
 
-		Speaker foundSpeaker = repository.readByMail(mail);
+		Speaker foundSpeaker = repository.readByMail(mail.toUpperCase());
 
 		assertEquals(expectedSpeaker, foundSpeaker);
 	}
