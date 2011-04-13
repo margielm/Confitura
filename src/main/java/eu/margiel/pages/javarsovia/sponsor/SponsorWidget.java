@@ -78,7 +78,7 @@ public class SponsorWidget extends Panel {
 
 		private void addUpToTwoEmptySponsors(List<Sponsor> sponsors) {
 			while (sponsors.size() < 2) {
-				sponsors.add(new Sponsor("Zostań naszym partnerem", "mailto:konferencja@javarsovia.pl"));
+				sponsors.add(new Sponsor("Zostań naszym partnerem", "mailto:confitura@confitura.pl"));
 			}
 		}
 	}
