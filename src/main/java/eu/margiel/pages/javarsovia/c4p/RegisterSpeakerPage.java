@@ -42,7 +42,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 
 	final class SpeakerForm extends Form<Void> {
 		private PasswordTextField repassword = passwordField("repassword", new Model<String>(), true);
-		private FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");;
+		private FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
 		private FileUploadField fileUploadField = new FileUploadField("photo");;
 		private PasswordTextField password;
 		private Speaker speaker;

@@ -6,6 +6,7 @@ import static eu.margiel.utils.Models.*;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
@@ -47,11 +48,13 @@ public class AddSponsorPage extends AdminBasePage {
 			add(new StaticImage("logoView", sponsor.getPathToPhoto()).setVisible(sponsor.isNotNew()));
 			add(textField("name", propertyModel(sponsor, "name"), true));
 			add(textField("webPage", propertyModel(sponsor, "webPage"), true));
-			add(dropDown("type", Models.<String> propertyModel(sponsor, "type"), SponsorType.allShortNames()));
+			add(dropDown("type", Models.<String> propertyModel(sponsor, "type"), SponsorType.allShortNames())
+					.setRequired(true));
 			add(richEditor("desc", propertyModel(sponsor, "description"), true));
 			add(richEditor("folderDesc", propertyModel(sponsor, "folderDescription")));
-			add(fileUpload);
+			add(fileUpload.setRequired(true));
 			add(cancelLink(ListSponsorPage.class));
+			add(new FeedbackPanel("feedback"));
 		}
 
 		@Override
