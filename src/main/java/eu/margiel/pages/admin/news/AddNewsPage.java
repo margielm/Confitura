@@ -54,7 +54,8 @@ public class AddNewsPage extends AdminBasePage {
 
 		@Override
 		protected void onSubmit() {
-			news.autor(JavarsoviaSession.get().getAdmin());
+			if (news.isNew())
+				news.autor(JavarsoviaSession.get().getAdmin());
 			repository.save(news);
 			setResponsePage(ListNewsPage.class);
 		}
