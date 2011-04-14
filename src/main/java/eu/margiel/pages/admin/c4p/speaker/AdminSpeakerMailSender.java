@@ -1,7 +1,10 @@
 package eu.margiel.pages.admin.c4p.speaker;
 
+import org.springframework.stereotype.Component;
+
 import eu.margiel.utils.MailSender;
 
+@Component
 public class AdminSpeakerMailSender extends MailSender {
 
 	@Override

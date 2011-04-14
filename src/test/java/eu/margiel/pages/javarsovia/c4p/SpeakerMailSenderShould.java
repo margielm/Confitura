@@ -22,7 +22,7 @@ public class SpeakerMailSenderShould {
 	@Mock
 	private MailTemplateRepository repository;
 	@InjectMocks
-	private SpeakerMailSender sender = new SpeakerMailSender(repository);
+	private SpeakerMailSender sender = new SpeakerMailSender();
 
 	@Test
 	public void getTemplatePopulatedWithFirstName() {
