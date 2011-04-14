@@ -1,6 +1,5 @@
 package eu.margiel.pages.javarsovia.sponsor;
 
-import static com.google.common.collect.Lists.*;
 import static eu.margiel.utils.Components.*;
 
 import java.util.List;
@@ -25,9 +24,9 @@ public class SponsorWidget extends Panel {
 	@SpringBean
 	private SponsorRepository repository;
 
-	public SponsorWidget(String id) {
+	public SponsorWidget(String id, List<SponsorType> types) {
 		super(id);
-		add(new SponsorsByTypeList(newArrayList(SponsorType.values())));
+		add(new SponsorsByTypeList(types));
 	}
 
 	private final class SponsorsByTypeList extends ListView<SponsorType> {

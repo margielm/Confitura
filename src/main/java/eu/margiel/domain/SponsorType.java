@@ -7,7 +7,8 @@ import com.google.common.collect.Lists;
 public enum SponsorType {
 	GOLD("Złoty", "Partnerzy Złoci"),
 	SILVER("Srebrny", "Partnerzy Srebrni"),
-	BRONZ("Brązowy", "Partnerzy Brązowi");
+	BRONZ("Brązowy", "Partnerzy Brązowi"),
+	MEDIA("Medialny", "Patroni Medialni");
 	private String shortName;
 	private String fullName;
 
@@ -37,5 +38,9 @@ public enum SponsorType {
 		for (SponsorType type : values())
 			result.add(type.getShortName());
 		return result;
+	}
+
+	public static List<SponsorType> sponsors() {
+		return Lists.newArrayList(GOLD, SILVER, BRONZ);
 	}
 }

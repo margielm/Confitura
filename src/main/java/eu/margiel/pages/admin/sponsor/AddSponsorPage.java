@@ -58,6 +58,7 @@ public class AddSponsorPage extends AdminBasePage {
 		protected void onSubmit() {
 			repository.save(sponsor);
 			sponsor.savePhoto(fileUpload.getFileUpload());
+			setResponsePage(ListSponsorPage.class);
 		}
 	}
 }

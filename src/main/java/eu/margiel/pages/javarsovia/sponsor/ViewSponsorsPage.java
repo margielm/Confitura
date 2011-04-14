@@ -1,6 +1,5 @@
 package eu.margiel.pages.javarsovia.sponsor;
 
-import static com.google.common.collect.Lists.*;
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
 import static eu.margiel.utils.PageParametersBuilder.*;
@@ -44,7 +43,7 @@ public class ViewSponsorsPage extends BaseWebPage {
 
 	@SuppressWarnings("serial")
 	private ListView<SponsorType> createSponsorTypeList() {
-		return new ListView<SponsorType>("sponsorType", newArrayList(SponsorType.values())) {
+		return new ListView<SponsorType>("sponsorType", SponsorType.sponsors()) {
 
 			@Override
 			protected void populateItem(ListItem<SponsorType> item) {
