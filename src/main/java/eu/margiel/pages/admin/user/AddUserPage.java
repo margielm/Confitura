@@ -73,7 +73,7 @@ public class AddUserPage extends AdminBasePage {
 
 		@Override
 		protected void onSubmit() {
-			setPasswordOnNewUser();
+			setPasswordIfAvailable();
 			save();
 			setResponsePage(ListUserPage.class);
 		}
@@ -83,9 +83,10 @@ public class AddUserPage extends AdminBasePage {
 			provider.savePhoto(fileUploadField.getFileUpload(), admin);
 		}
 
-		private void setPasswordOnNewUser() {
-			if (admin.isNew())
-				admin.passwordWithEncryption(password.getValue());
+		private void setPasswordIfAvailable() {
+			String passwordString = password.getValue();
+			if (passwordString.isEmpty() == false)
+				admin.passwordWithEncryption(passwordString);
 		}
 
 	}

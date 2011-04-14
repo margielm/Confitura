@@ -2,12 +2,14 @@ package eu.margiel.domain;
 
 import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
 public class User extends AbstractEntity {
+	@Transient
 	private transient StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
 	private String firstName;
 	private String lastName;
