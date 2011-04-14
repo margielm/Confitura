@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+<div class="tekst">
+	<table cellspacing="2" border="0" class="people">
+		<thead>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<span wicket:id="sponsorType">
+						|<a href="#" wicket:id="type" style=""><span wicket:id="label"/></a>|
+					</span>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr  wicket:id="sponsor" id="id">
+				<td valign="top" ><a href="#" wicket:id="link"><img  wicket:id="logo" /></a></td>
+				<td valign="top" wicket:id="info" class="odd">
+					<p><strong wicket:id="name" /></p>
+					<p wicket:id="desc"></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</wicket:extend>
+</body>
+</html>

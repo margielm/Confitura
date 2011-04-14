@@ -17,6 +17,7 @@ import eu.margiel.pages.javarsovia.ViewPeoplePage;
 import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
 import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.pages.javarsovia.news.ViewNewsPage;
+import eu.margiel.pages.javarsovia.sponsor.ViewSponsorsPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
 @Component
@@ -30,6 +31,7 @@ public class MenuLinks {
 		links.add(new SingleMenuLink("Kapitula", ViewPeoplePage.class));
 		links.add(new SingleMenuLink("Aktualnosci", ViewNewsPage.class));
 		links.add(new SingleMenuLink("C4P", ViewSpeakerPage.class));
+		links.add(new SingleMenuLink("Sponsorzy", ViewSponsorsPage.class));
 		links.add(new DynamicMenuLink<SimpleContent>(repository, ViewSimpleContentPage.class));
 	}
 

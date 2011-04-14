@@ -27,33 +27,6 @@ import eu.margiel.repositories.MenuRepository;
 @SuppressWarnings("serial")
 public abstract class DefineMenuBasePage extends AdminBasePage {
 
-	private final class RemoveButton extends AjaxButton {
-		private final ListItem<MenuItem> item;
-
-		private RemoveButton(String id, Form<?> form, ListItem<MenuItem> item) {
-			super(id, form);
-			this.item = item;
-		}
-
-		@Override
-		protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-			item.getModelObject().remove();
-			target.addComponent(form);
-		}
-
-		@Override
-		protected IAjaxCallDecorator getAjaxCallDecorator() {
-			return new AjaxPreprocessingCallDecorator(super.getAjaxCallDecorator()) {
-				private static final long serialVersionUID = 7495281332320552876L;
-
-				@Override
-				public CharSequence preDecorateScript(CharSequence script) {
-					return "if(!confirm('Na pewno usunąć?')) return false;" + script;
-				}
-			};
-		}
-	}
-
 	@SpringBean
 	protected MenuRepository repository;
 	@SpringBean
@@ -175,5 +148,32 @@ public abstract class DefineMenuBasePage extends AdminBasePage {
 	}
 
 	protected abstract MenuItem getMenu();
+
+	private final class RemoveButton extends AjaxButton {
+		private final ListItem<MenuItem> item;
+
+		private RemoveButton(String id, Form<?> form, ListItem<MenuItem> item) {
+			super(id, form);
+			this.item = item;
+		}
+
+		@Override
+		protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+			item.getModelObject().remove();
+			target.addComponent(form);
+		}
+
+		@Override
+		protected IAjaxCallDecorator getAjaxCallDecorator() {
+			return new AjaxPreprocessingCallDecorator(super.getAjaxCallDecorator()) {
+				private static final long serialVersionUID = 7495281332320552876L;
+
+				@Override
+				public CharSequence preDecorateScript(CharSequence script) {
+					return "if(!confirm('Na pewno usunąć?')) return false;" + script;
+				}
+			};
+		}
+	}
 
 }
