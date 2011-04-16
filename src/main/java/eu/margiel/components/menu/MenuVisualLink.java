@@ -1,11 +1,10 @@
 package eu.margiel.components.menu;
 
+import static eu.margiel.utils.PageParametersBuilder.*;
+
 import org.apache.wicket.Page;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
-
-import com.google.common.collect.ImmutableMap;
 
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.MenuItem;
@@ -37,9 +36,9 @@ public class MenuVisualLink extends Panel {
 		@Override
 		public void onClick() {
 			if (isVisible()) {
-				if (itemId != null) {
-					setResponsePage(pageClass, new PageParameters(ImmutableMap.of("id", itemId)));
-				} else
+				if (itemId != null)
+					setResponsePage(pageClass, paramsFor("id", itemId));
+				else
 					setResponsePage(pageClass);
 			}
 		}
