@@ -38,7 +38,7 @@ public class LoginPage extends JavarsoviaBasePage {
 	}
 
 	private void checkLogin() {
-		if (userName.getInput().equals("admin") && repository.count() > 0) {
+		if (userName.getInput().equals("admin") && repository.count() == 0) {
 			login(new Admin("admin"));
 			return;
 		}
