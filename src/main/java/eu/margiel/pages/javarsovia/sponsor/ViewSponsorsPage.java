@@ -40,7 +40,7 @@ public class ViewSponsorsPage extends BaseWebPage {
 				SponsorType type = item.getModelObject();
 				item.add(label("sponsorType", type.getFullName()));
 				List<Sponsor> sponsors = repository.readByType(type.getShortName());
-				item.add(createSponsorsListFor(sponsors));
+				item.add(createSponsorsListFor(sponsors)).setVisible(sponsors.size() > 0);
 			}
 		};
 	}
