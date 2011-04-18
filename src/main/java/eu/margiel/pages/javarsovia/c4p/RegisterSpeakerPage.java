@@ -30,8 +30,6 @@ public class RegisterSpeakerPage extends BaseWebPage {
 	@SpringBean
 	private SpeakerMailSender mailSender;
 
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
-
 	public RegisterSpeakerPage(PageParameters params) {
 		add(new SpeakerForm(getSpeaker()));
 	}
@@ -51,15 +49,15 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			super("form");
 			this.speaker = speaker;
 			this.password = passwordField("password", propertyModel(speaker, "password"), true);
-			add(textField("firstName", propertyModel(speaker, "firstName"), true).setLabel(new Model<String>("imię")));
-			add(textField("lastName", propertyModel(speaker, "lastName"), true));
-			add(textField("mail", Models.<String> propertyModel(speaker, "mail"), true)
-					.add(RfcCompliantEmailAddressValidator.getInstance()));
+			add(withLabel("imię", textField("firstName", propertyModel(speaker, "firstName"), true)));
+			add(withLabel("nazwisko", textField("lastName", propertyModel(speaker, "lastName"), true)));
+			add(withLabel("e-mail", textField("mail", Models.<String> propertyModel(speaker, "mail"), true)
+					.add(RfcCompliantEmailAddressValidator.getInstance())));
 			add(textField("webPage", propertyModel(speaker, "webPage")));
 			add(textField("twitter", propertyModel(speaker, "twitter")));
-			add(richEditorSimple("bio", propertyModel(speaker, "bio")));
-			add(password);
-			add(repassword);
+			add(withLabel("O sobie", richEditorSimple("bio", propertyModel(speaker, "bio"))));
+			add(withLabel("hasło", password));
+			add(withLabel("powtórz hasło", repassword));
 			add(feedbackPanel);
 			add(fileUploadField);
 			add(cancelLink(LoginSpeakerPage.class));
@@ -77,7 +75,7 @@ public class RegisterSpeakerPage extends BaseWebPage {
 			else {
 				speaker.encryptPassword();
 				repository.save(speaker);
-				provider.savePhoto(fileUploadField.getFileUpload(), speaker);
+				speaker.savePhoto(fileUploadField.getFileUpload());
 				mailSender.sendMessage(speaker);
 				JavarsoviaSession.get().setUser(speaker);
 				setResponsePage(ViewSpeakerPage.class);

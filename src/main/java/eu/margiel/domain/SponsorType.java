@@ -5,9 +5,9 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 public enum SponsorType {
+	PLATINUM("Platynowy", "Partnerzy Platynowi"),
 	GOLD("Złoty", "Partnerzy Złoci"),
 	SILVER("Srebrny", "Partnerzy Srebrni"),
-	BRONZ("Brązowy", "Partnerzy Brązowi"),
 	MEDIA("Medialny", "Patroni Medialni");
 	private String shortName;
 	private String fullName;
@@ -41,6 +41,6 @@ public enum SponsorType {
 	}
 
 	public static List<SponsorType> sponsors() {
-		return Lists.newArrayList(GOLD, SILVER, BRONZ);
+		return Lists.newArrayList(PLATINUM, GOLD, SILVER);
 	}
 }

@@ -6,12 +6,12 @@
 	xml:lang="en"
 	lang="en">
 	<wicket:panel>
-	<div style="float: left;">
+	<div style="float: right;">
 		<img src="#" wicket:id="photo" style="width: 80px"/>
 	</div>
 	<div>
 	<table style="padding:0px; width:100%;" class="c4p">
-				<tr>
+		<tr>
 			<td style="width: 150px;">Imię</td>
 			<td wicket:id="firstName"></td>
 		</tr>
@@ -45,23 +45,19 @@
 				<a href="#" wicket:id="logout">Wyloguj</a>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				<table style="width:100%" border="1">
-					<tbody>
-						<tr wicket:id="presentations">
-							<td wicket:id="title"></td>
-				        	<td style="text-align: center; width: 50px;">
-				        		<a href="#" wicket:id="edit">edytuj</a>
-				        		<a href="#" wicket:id="view">pokaż</a>
-				        	</td>
-	        				<td style="text-align: center; width: 50px;"><a href="#" wicket:id="delete">usuń</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</table>
+		</table>
+		<table style="width:100%"  class="people">
+			<tbody>
+				<tr wicket:id="presentations" class="">
+					<td wicket:id="title"></td>
+		        	<td style="text-align: center; width: 50px;">
+		        		<a href="#" wicket:id="edit">edytuj</a>
+		        		<a href="#" wicket:id="view">pokaż</a>
+		        	</td>
+       				<td style="text-align: center; width: 50px;"><a href="#" wicket:id="delete">usuń</a></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	</wicket:panel>
 </html>

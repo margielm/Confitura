@@ -17,7 +17,6 @@ public class EditSpeakerPage extends SpeakerBasePage {
 
 	@SpringBean
 	private SpeakerRepository repository;
-	private transient SpeakerPhotoProvider photoProvider = new SpeakerPhotoProvider("speaker");
 
 	public EditSpeakerPage() {
 		add(new EditSpeakerForm(getSession().getSpeaker()));
@@ -47,7 +46,7 @@ public class EditSpeakerPage extends SpeakerBasePage {
 		protected void onSubmit() {
 			repository.save(speaker);
 			if (fileUploadField.getFileUpload() != null)
-				photoProvider.savePhoto(fileUploadField.getFileUpload(), speaker);
+				speaker.savePhoto(fileUploadField.getFileUpload());
 			setResponsePage(ViewSpeakerPage.class);
 		}
 	}

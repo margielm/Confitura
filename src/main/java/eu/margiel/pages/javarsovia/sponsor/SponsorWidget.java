@@ -14,13 +14,13 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Sponsor;
 import eu.margiel.domain.SponsorType;
-import eu.margiel.pages.javarsovia.c4p.SpeakerPhotoProvider;
+import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 import eu.margiel.repositories.SponsorRepository;
 
 @SuppressWarnings("serial")
 public class SponsorWidget extends Panel {
 
-	private static final transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("sponsors");
+	private static final transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider("sponsors");
 	@SpringBean
 	private SponsorRepository repository;
 

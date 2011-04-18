@@ -4,7 +4,10 @@ import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.jasypt.util.password.StrongPasswordEncryptor;
+
+import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
@@ -17,6 +20,8 @@ public class User extends AbstractEntity {
 	private String password;
 	@Lob
 	private String bio;
+	@Transient
+	private transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider(getSubfolderName());
 
 	public User() {
 	}
@@ -79,6 +84,18 @@ public class User extends AbstractEntity {
 	public <T extends User> T mail(String mail) {
 		this.mail = mail;
 		return (T) this;
+	}
+
+	String getSubfolderName() {
+		return "";
+	}
+
+	public String getPathToPhoto() {
+		return provider.getPathTo(this);
+	}
+
+	public void savePhoto(FileUpload fileUpload) {
+		provider.savePhoto(fileUpload, this);
 	}
 
 }

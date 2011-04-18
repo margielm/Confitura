@@ -43,4 +43,9 @@ public class Speaker extends User {
 		this.presentations.add(presentation);
 	}
 
+	@Override
+	String getSubfolderName() {
+		return "speaker";
+	}
+
 }

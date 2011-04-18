@@ -379,7 +379,7 @@ color: black;
 	font-size: 12px;
 }
 
-#srodkowa_kolumna h3,#prawa_kolumna h3 {
+#srodkowa_kolumna h3,#prawa_kolumna h3, .naglowek {
 	font-family: Lucida Sans Unicode, Arial, sans-serif;
 	font-size: 18px;
 	border-bottom: 1px solid #d7d7d7;

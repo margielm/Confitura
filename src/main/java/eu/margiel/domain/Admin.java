@@ -20,4 +20,9 @@ public class Admin extends User {
 		return userName;
 	}
 
+	@Override
+	String getSubfolderName() {
+		return "kapitula";
+	}
+
 }

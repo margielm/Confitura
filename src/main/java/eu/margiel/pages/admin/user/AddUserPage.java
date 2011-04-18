@@ -19,7 +19,6 @@ import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Admin;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.javarsovia.c4p.SpeakerPhotoProvider;
 import eu.margiel.repositories.AdminRepository;
 import eu.margiel.utils.Models;
 
@@ -29,7 +28,6 @@ public class AddUserPage extends AdminBasePage {
 
 	@SpringBean
 	private AdminRepository repository;
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("kapitula");
 
 	public AddUserPage() {
 		initPage(new Admin());
@@ -56,7 +54,7 @@ public class AddUserPage extends AdminBasePage {
 			this.admin = admin;
 			this.repassword = withLabel("hasło", passwordField("repassword", new Model<String>(), admin.isNew()));
 			this.password = withLabel("Powtórz hasło", passwordField("password", new Model<String>(), admin.isNew()));
-			add(new StaticImage("photoView", provider.getPathTo(admin)).setVisible(admin.isNotNew()));
+			add(new StaticImage("photoView", admin.getPathToPhoto()).setVisible(admin.isNotNew()));
 			add(withLabel("Imię", textField("firstName", propertyModel(admin, "firstName"), true)));
 			add(withLabel("Nazwisko", textField("lastName", propertyModel(admin, "lastName"), true)));
 			add(withLabel("nazwa użytkownika", textField("userName", propertyModel(admin, "userName"), true)));
@@ -80,7 +78,8 @@ public class AddUserPage extends AdminBasePage {
 
 		private void save() {
 			repository.save(admin);
-			provider.savePhoto(fileUploadField.getFileUpload(), admin);
+			if (fileUploadField.getFileUpload() != null)
+				admin.savePhoto(fileUploadField.getFileUpload());
 		}
 
 		private void setPasswordIfAvailable() {

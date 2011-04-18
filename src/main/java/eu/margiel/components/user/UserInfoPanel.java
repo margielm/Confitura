@@ -1,14 +1,17 @@
 package eu.margiel.components.user;
 
 import static eu.margiel.utils.Components.*;
+import static eu.margiel.utils.Models.*;
 
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import eu.margiel.Javarsovia;
@@ -22,7 +25,6 @@ import eu.margiel.pages.admin.c4p.presentation.ViewPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.AddPresentationPage;
 import eu.margiel.pages.javarsovia.c4p.ChangePasswordPage;
 import eu.margiel.pages.javarsovia.c4p.EditSpeakerPage;
-import eu.margiel.pages.javarsovia.c4p.SpeakerPhotoProvider;
 import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
 import eu.margiel.repositories.PresentationRepository;
 
@@ -30,13 +32,12 @@ import eu.margiel.repositories.PresentationRepository;
 public class UserInfoPanel extends Panel {
 	@SpringBean
 	private PresentationRepository repository;
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("speaker");
 	private final boolean editable;
 
 	public UserInfoPanel(String id, Speaker speaker, boolean editable) {
 		super(id);
 		this.editable = editable;
-		add(new StaticImage("photo", provider.getPathTo(speaker)));
+		add(new StaticImage("photo", speaker.getPathToPhoto()));
 		add(label("firstName", speaker.getFirstName()));
 		add(label("lastName", speaker.getLastName()));
 		add(label("eMail", speaker.getMail()));
@@ -66,10 +67,16 @@ public class UserInfoPanel extends Panel {
 		@Override
 		protected void populateItem(Item<Presentation> item) {
 			Presentation presentation = item.getModelObject();
+			item.add(new AttributeModifier("class", getCssClass(item)));
 			item.add(label("title", presentation.getTitle()));
 			item.add(new RedirectLink("view", presentation, ViewPresentationPage.class).setVisible(!editable));
 			item.add(new RedirectLink("edit", presentation, AddPresentationPage.class).setVisible(editable));
 			item.add(new DeleteLink(presentation, repository, ViewSpeakerPage.class).setVisible(editable));
 		}
+
+		private Model<String> getCssClass(Item<?> item) {
+			return model(item.getIndex() % 2 == 0 ? "odd" : "");
+		}
 	}
+
 }

@@ -2,19 +2,18 @@ package eu.margiel.pages.javarsovia.sponsor;
 
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
-import static eu.margiel.utils.PageParametersBuilder.*;
+
+import java.util.List;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
-import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Sponsor;
@@ -23,44 +22,32 @@ import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.SponsorRepository;
 
 @MountPath(path = "partners")
-@MountMixedParam(parameterNames = "type")
 public class ViewSponsorsPage extends BaseWebPage {
 	@SpringBean
 	private SponsorRepository repository;
-	private SponsorType sponsorType;
 
 	public ViewSponsorsPage(PageParameters params) {
-		sponsorType = getSponsorType(params);
 		add(createSponsorTypeList());
-		add(createSponsorsList());
 
-	}
-
-	private SponsorType getSponsorType(PageParameters params) {
-		SponsorType type = params.getAsEnum("type", SponsorType.class);
-		return type != null ? type : SponsorType.GOLD;
 	}
 
 	@SuppressWarnings("serial")
 	private ListView<SponsorType> createSponsorTypeList() {
-		return new ListView<SponsorType>("sponsorType", SponsorType.sponsors()) {
+		return new ListView<SponsorType>("sponsorTypes", SponsorType.sponsors()) {
 
 			@Override
 			protected void populateItem(ListItem<SponsorType> item) {
 				SponsorType type = item.getModelObject();
-				BookmarkablePageLink<Void> link = new BookmarkablePageLink<Void>("type", ViewSponsorsPage.class,
-						paramsFor("type", type));
-				if (type == sponsorType)
-					link.add(new AttributeModifier("style", model("font-size: large; text-decoration: underline;")));
-				link.add(label("label", type.getFullName()));
-				item.add(link);
+				item.add(label("sponsorType", type.getFullName()));
+				List<Sponsor> sponsors = repository.readByType(type.getShortName());
+				item.add(createSponsorsListFor(sponsors));
 			}
 		};
 	}
 
 	@SuppressWarnings("serial")
-	private ListView<Sponsor> createSponsorsList() {
-		return new ListView<Sponsor>("sponsor", repository.readByType(sponsorType.getShortName())) {
+	private ListView<Sponsor> createSponsorsListFor(List<Sponsor> sponsors) {
+		return new ListView<Sponsor>("sponsor", sponsors) {
 
 			@Override
 			protected void populateItem(ListItem<Sponsor> item) {

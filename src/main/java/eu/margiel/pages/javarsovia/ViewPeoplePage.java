@@ -15,7 +15,6 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Admin;
-import eu.margiel.pages.javarsovia.c4p.SpeakerPhotoProvider;
 import eu.margiel.repositories.AdminRepository;
 
 @MountPath(path = "kapitula")
@@ -23,7 +22,6 @@ public class ViewPeoplePage extends BaseWebPage {
 
 	@SpringBean
 	private AdminRepository repository;
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("kapitula");
 
 	public ViewPeoplePage() {
 		add(new PeopleList("person", repository.readAll(new Sort("lastName"))));
@@ -42,7 +40,7 @@ public class ViewPeoplePage extends BaseWebPage {
 			item.add(new AttributeModifier("id", model(admin.getUserName())));
 			item.add(label("name", admin.getFullName()));
 			item.add(richLabel("bio", admin.getBio()));
-			item.add(new StaticImage("photo", provider.getPathTo(admin)));
+			item.add(new StaticImage("photo", admin.getPathToPhoto()));
 		}
 
 		private Model<String> getCssClass(ListItem<Admin> item) {

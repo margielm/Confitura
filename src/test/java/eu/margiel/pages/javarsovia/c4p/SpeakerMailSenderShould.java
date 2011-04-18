@@ -14,6 +14,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import eu.margiel.domain.MailTemplate;
 import eu.margiel.domain.Speaker;
+import eu.margiel.domain.User;
 import eu.margiel.pages.admin.c4p.speaker.AdminSpeakerMailSender;
 import eu.margiel.repositories.MailTemplateRepository;
 
@@ -41,7 +42,7 @@ public class SpeakerMailSenderShould {
 		sender = spy(sender);
 		sender.adminSender = adminSender;
 		doNothing().when(sender).sendMessage(anyString());
-		Speaker speaker = new Speaker().firstName("Michał").lastName("Margiel").mail("m@m.pl");
+		User speaker = new Speaker().firstName("Michał").lastName("Margiel").mail("m@m.pl");
 
 		sender.sendMessage(speaker);
 
@@ -58,7 +59,7 @@ public class SpeakerMailSenderShould {
 		when(repository.readByType("speaker")).thenReturn(
 				new MailTemplate().template("Witaj $firstName $lastName").subject(""));
 
-		Speaker speaker = new Speaker().firstName("Michał").lastName("Margiel").mail("michal.margiel@gmail.com");
+		User speaker = new Speaker().firstName("Michał").lastName("Margiel").mail("michal.margiel@gmail.com");
 		sender.sendMessage(speaker);
 	}
 

@@ -3,7 +3,7 @@ package eu.margiel.pages.javarsovia.c4p;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import eu.margiel.domain.Speaker;
+import eu.margiel.domain.User;
 import eu.margiel.pages.admin.c4p.speaker.AdminSpeakerMailSender;
 import eu.margiel.repositories.MailTemplateRepository;
 import eu.margiel.utils.MailSender;
@@ -30,7 +30,7 @@ public class SpeakerMailSender extends MailSender {
 		return this;
 	}
 
-	public void sendMessage(Speaker speaker) {
+	public void sendMessage(User speaker) {
 		firstName(speaker.getFirstName())
 				.lastName(speaker.getLastName())
 				.sendMessage(speaker.getMail());

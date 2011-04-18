@@ -9,10 +9,10 @@ import org.mockito.Mockito;
 
 import eu.margiel.domain.Speaker;
 
-public class SpeakerPhotoProviderShould {
+public class SubfolderPhotoProviderShould {
 	@Test
 	public void doNothingWhenFileUploadIsNull() {
-		SpeakerPhotoProvider provider = Mockito.spy(new SpeakerPhotoProvider(""));
+		SubfolderPhotoProvider provider = Mockito.spy(new SubfolderPhotoProvider(""));
 
 		provider.savePhoto(null, new Speaker());
 

@@ -5,7 +5,7 @@ import javax.persistence.Lob;
 
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 
-import eu.margiel.pages.javarsovia.c4p.SpeakerPhotoProvider;
+import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,10 +18,9 @@ public class Sponsor extends AbstractEntity {
 	@SuppressWarnings("unused")
 	@Lob
 	private String folderDescription;
-	private transient SpeakerPhotoProvider provider = new SpeakerPhotoProvider("sponsors");
+	private transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider("sponsors");
 
 	public Sponsor() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Sponsor(String name, String webPage) {

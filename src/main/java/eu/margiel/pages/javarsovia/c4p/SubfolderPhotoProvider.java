@@ -4,10 +4,10 @@ import org.apache.wicket.markup.html.form.upload.FileUpload;
 
 import eu.margiel.domain.AbstractEntity;
 
-public class SpeakerPhotoProvider extends PhotoProvider {
-	private String subfolder = "speakers";
+public class SubfolderPhotoProvider extends PhotoProvider {
+	private String subfolder;
 
-	public SpeakerPhotoProvider(String subfolder) {
+	public SubfolderPhotoProvider(String subfolder) {
 		super();
 		this.subfolder = subfolder;
 	}
