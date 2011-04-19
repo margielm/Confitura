@@ -21,7 +21,7 @@ public class ViewNewsDetailsPage extends NewsBasePage {
 		News news = repository.readByTitle(params.getString("id"));
 		add(linktToAuthor(news));
 		add(label("title", news.getTitle()));
-		add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
+		add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd.MM.yyyy")));
 		add(richLabel("shortDescription", news.getShortDescription()));
 		add(richLabel("description", news.getDescription()));
 	}

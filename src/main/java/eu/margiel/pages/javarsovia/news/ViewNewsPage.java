@@ -36,7 +36,7 @@ public class ViewNewsPage extends NewsBasePage {
 			final News news = item.getModelObject();
 			item.add(new LabeledLink("title", news.getTitle(), news.getTitle(), ViewNewsDetailsPage.class));
 			item.add(linktToAuthor(news));
-			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd-MM-yyyy")));
+			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd.MM.yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
 			item.add(new Link("more") {
 				@Override
