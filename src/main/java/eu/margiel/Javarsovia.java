@@ -37,7 +37,7 @@ public class Javarsovia extends WebApplication {
 		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 		new AnnotatedMountScanner().scanPackage("eu.margiel.pages").mount(this);
 		getResourceSettings().setThrowExceptionOnMissingResource(false);
-		getApplicationSettings().setInternalErrorPage(ViewNewsPage.class);
+		// getApplicationSettings().setInternalErrorPage(ViewNewsPage.class);
 		productionInit();
 	}
 
