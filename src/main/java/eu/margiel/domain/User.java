@@ -13,15 +13,16 @@ import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 @MappedSuperclass
 public class User extends AbstractEntity {
 	@Transient
-	private transient StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+	private transient StrongPasswordEncryptor encryptor;
+	@Transient
+	private transient SubfolderPhotoProvider provider;
+
 	private String firstName;
 	private String lastName;
 	protected String mail;
 	private String password;
 	@Lob
 	private String bio;
-	@Transient
-	private transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider(getSubfolderName());
 
 	public User() {
 	}
@@ -60,11 +61,23 @@ public class User extends AbstractEntity {
 	}
 
 	public boolean passwordIsCorrect(String plainPassword) {
-		return encryptor.checkPassword(plainPassword, this.password);
+		return getEnryptor().checkPassword(plainPassword, this.password);
 	}
 
 	public void encryptPassword() {
-		this.password = encryptor.encryptPassword(this.password);
+		this.password = getEnryptor().encryptPassword(this.password);
+	}
+
+	private StrongPasswordEncryptor getEnryptor() {
+		if (encryptor == null)
+			encryptor = new StrongPasswordEncryptor();
+		return encryptor;
+	}
+
+	private SubfolderPhotoProvider getPhotoProvider() {
+		if (provider == null)
+			provider = new SubfolderPhotoProvider(getSubfolderName());
+		return provider;
 	}
 
 	public void passwordWithEncryption(String password) {
@@ -91,11 +104,11 @@ public class User extends AbstractEntity {
 	}
 
 	public String getPathToPhoto() {
-		return provider.getPathTo(this);
+		return getPhotoProvider().getPathTo(this);
 	}
 
 	public void savePhoto(FileUpload fileUpload) {
-		provider.savePhoto(fileUpload, this);
+		getPhotoProvider().savePhoto(fileUpload, this);
 	}
 
 }

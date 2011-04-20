@@ -4,8 +4,8 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import eu.margiel.pages.javarsovia.BaseWebPage;
 
-@MountPath(path = "404")
-public class ErrorPage extends BaseWebPage {
+@MountPath(path = "error")
+public class PageNotFound extends BaseWebPage {
 	@Override
 	public boolean isErrorPage() {
 		return true;
