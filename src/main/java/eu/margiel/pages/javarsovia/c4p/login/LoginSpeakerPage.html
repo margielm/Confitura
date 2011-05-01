@@ -10,36 +10,43 @@
 <body>
 <wicket:extend>
 	<div class="tekst">
-	<form wicket:id="form">
 	<div wicket:id="feedback"></div>
-	<table class="c4p">
+	<form wicket:id="form">
+	<table class="c4p" style="width: 400px;">
 		<tr>
-			<td>e-mail</td>
+			<td>e-mail :</td>
 			<td><input
 				type="text"
-				wicket:id="mail" /></td>
+				wicket:id="mail" 
+				style="width: 200px;"/>
+			</td>
 		</tr>
 		<tr>
-			<td>hasło</td>
+			<td>hasło :</td>
 			<td><input
 				type="password"
-				wicket:id="password" /></td>
+				wicket:id="password" 
+				style="width: 200px;"/>
+			</td>
 		</tr>
 		<tr>
-			<td
-				colspan="2"
-				style="text-align: right;"><input
-				type="submit"
-				value="ok" /></td>
+			<td colspan="2" style="text-align: left;">
+				<input type="submit" value="ok" />
+			</td>
 		</tr>
 		<tr>
-			<td
-				colspan="2"
-				style="text-align: right;">
-				<wicket:link>
-					<a href="/eu/margiel/pages/javarsovia/c4p/RegisterSpeakerPage.html">Zarejestruj się!</a>
-				</wicket:link>
-				</td>
+			<td colspan="2" >
+				<div style="float: left;">
+					<wicket:link>
+						<a href="/eu/margiel/pages/javarsovia/c4p/RegisterSpeakerPage.html">Zarejestruj się!</a>
+					</wicket:link>
+				</div>
+				<div style="float: right;">
+					<wicket:link>
+						<a href="/eu/margiel/pages/javarsovia/c4p/login/RequestPasswordResetPage.html">Nie pamiętam hasła:(</a>
+					</wicket:link>
+				</div>
+			</td>
 		</tr>
 	</table>
 	</form>

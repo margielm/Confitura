@@ -20,20 +20,20 @@ public class LoginSpeakerPage extends BaseWebPage {
 
 	@SpringBean
 	private SpeakerRepository repository;
+	private FeedbackPanel feedback = new FeedbackPanel("feedback");
 
 	public LoginSpeakerPage() {
+		add(feedback);
 		add(new LoginForm("form"));
 	}
 
 	@SuppressWarnings("serial")
 	private final class LoginForm extends Form<Void> {
-		private FeedbackPanel feedback = new FeedbackPanel("feedback");
-		private TextField<String> mail = textField("mail", new Model<String>(), true);
-		private TextField<String> password = passwordField("password", new Model<String>(), true);
+		private TextField<String> mail = withLabel("e-mail", textField("mail", new Model<String>(), true));
+		private TextField<String> password = withLabel("hasło", passwordField("password", new Model<String>(), true));
 
 		private LoginForm(String id) {
 			super(id);
-			add(feedback);
 			add(mail);
 			add(password);
 		}

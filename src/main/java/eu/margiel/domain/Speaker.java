@@ -15,6 +15,7 @@ public class Speaker extends User {
 	private String twitter;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
 	private List<Presentation> presentations = newArrayList();
+	private String token;
 
 	public String getWebPage() {
 		return webPage;
@@ -46,6 +47,10 @@ public class Speaker extends User {
 	@Override
 	String getSubfolderName() {
 		return "speaker";
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }

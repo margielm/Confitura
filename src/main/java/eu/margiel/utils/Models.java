@@ -6,6 +6,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 public class Models {
+	public static Model<String> model() {
+		return new Model<String>();
+	}
+
 	public static Model<String> model(String value) {
 		return new Model<String>(value);
 	}

@@ -68,7 +68,7 @@ public class User extends AbstractEntity {
 		this.password = getEnryptor().encryptPassword(this.password);
 	}
 
-	private StrongPasswordEncryptor getEnryptor() {
+	public StrongPasswordEncryptor getEnryptor() {
 		if (encryptor == null)
 			encryptor = new StrongPasswordEncryptor();
 		return encryptor;

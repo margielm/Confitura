@@ -24,6 +24,7 @@ public class ViewNewsPage extends NewsBasePage {
 
 	public ViewNewsPage() {
 		add(new NewsList("news", repository.fetchPublished()));
+
 	}
 
 	private final class NewsList extends ListView<News> {
