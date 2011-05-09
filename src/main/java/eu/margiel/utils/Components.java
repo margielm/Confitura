@@ -222,7 +222,7 @@ public class Components {
 	}
 
 	public static <T extends Serializable> DropDownChoice<T> dropDown(String id, PropertyModel<T> model,
-			List<T> values) {
+			List<? extends T> values) {
 		return new DropDownChoice<T>(id, model, values);
 	}
 

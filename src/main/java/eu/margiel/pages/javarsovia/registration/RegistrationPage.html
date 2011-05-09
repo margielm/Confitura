@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+<wicket:extend>
+<div class="tekst">
+<form wicket:id="form">
+<div wicket:id="feedback"/>
+	<table >
+		<tbody>
+			<tr >
+				<td>Imię: </td>
+				<td><input type="text" wicket:id="firstName"  style="width:200px;"/></td>
+			</tr>
+			<tr>
+				<td>Naziwsko: </td>
+				<td><input type="text" wicket:id="lastName"  style="width:200px;"/></td>
+			</tr>
+			<tr>
+				<td>E-Mail: </td>
+				<td><input type="text" wicket:id="mail"  style="width:200px;"/></td>
+			</tr>
+			<tr>
+				<td>Płeć: </td>
+				<td><select wicket:id="sex" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Zarejestruj mnie!" />
+				</td> 
+			</tr>
+		</tbody>
+	</table>
+</form>
+</div>
+</wicket:extend>
+</body>
+</html>
