@@ -7,8 +7,6 @@ import eu.margiel.utils.MailSender;
 @Component
 public class RequestPasswordResetMailSender extends MailSender {
 
-	private String token;
-
 	public RequestPasswordResetMailSender token(String token) {
 		put("token", token);
 		return this;

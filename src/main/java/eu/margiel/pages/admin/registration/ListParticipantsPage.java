@@ -15,25 +15,30 @@ import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.ParticipantRepository;
 
 public class ListParticipantsPage extends AdminBasePage {
+
 	@SpringBean
 	private ParticipantRepository repository;
 
 	public ListParticipantsPage() {
-		List<Participant> participants = repository.readAll(new Sort("registrationDate"));
-		ListView<Participant> list = new ListView<Participant>("rows", participants) {
+		add(new ParticipantsList(repository.readAll(new Sort("registrationDate"))));
+	}
 
-			@Override
-			protected void populateItem(ListItem<Participant> item) {
-				Participant participant = item.getModelObject();
-				item.add(label("id", (item.getIndex() + 1) + ""));
-				item.add(label("firstName", participant.getFirstName()));
-				item.add(label("lastName", participant.getLastName()));
-				item.add(label("mail", participant.getMail()));
-				item.add(label("sex", participant.getSex()));
-				item.add(label("date", dateToString(participant.getRegistrationDate())));
-				item.add(label("approved", "no"));
-			}
-		};
-		add(list);
+	@SuppressWarnings("serial")
+	private final class ParticipantsList extends ListView<Participant> {
+		private ParticipantsList(List<? extends Participant> list) {
+			super("rows", list);
+		}
+
+		@Override
+		protected void populateItem(ListItem<Participant> item) {
+			Participant participant = item.getModelObject();
+			item.add(label("id", (item.getIndex() + 1) + ""));
+			item.add(label("firstName", participant.getFirstName()));
+			item.add(label("lastName", participant.getLastName()));
+			item.add(label("mail", participant.getMail()));
+			item.add(label("sex", participant.getSex()));
+			item.add(label("date", dateToString(participant.getRegistrationDate())));
+			item.add(label("approved", "no"));
+		}
 	}
 }

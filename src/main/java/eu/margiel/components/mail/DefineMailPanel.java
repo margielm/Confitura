@@ -28,7 +28,6 @@ public class DefineMailPanel extends Panel {
 		return mailTemplate != null ? mailTemplate : new MailTemplate(mailType);
 	}
 
-	@SuppressWarnings("serial")
 	private final class DefineMailTemplateForm extends Form<Void> {
 		private final MailTemplate mailTemplate;
 

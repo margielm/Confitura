@@ -15,6 +15,7 @@ public class Speaker extends User {
 	private String twitter;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
 	private List<Presentation> presentations = newArrayList();
+	@SuppressWarnings("unused")
 	private String token;
 
 	public String getWebPage() {
