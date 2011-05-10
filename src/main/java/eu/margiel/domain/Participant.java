@@ -12,6 +12,8 @@ public class Participant extends AbstractEntity {
 	private String mail;
 	private String sex;
 	private Date registrationDate = new Date();
+	private String token;
+	private boolean confirm;
 
 	public String getMail() {
 		return mail;
@@ -31,5 +33,21 @@ public class Participant extends AbstractEntity {
 
 	public Date getRegistrationDate() {
 		return registrationDate;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setConfirm(boolean confirm) {
+		this.confirm = confirm;
+	}
+
+	public boolean isConfirm() {
+		return confirm;
 	}
 }

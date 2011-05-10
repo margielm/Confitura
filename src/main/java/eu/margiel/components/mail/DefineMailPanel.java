@@ -16,10 +16,12 @@ public class DefineMailPanel extends Panel {
 	@SpringBean
 	private MailTemplateRepository repository;
 	private final String mailType;
+	private final String availableVars;
 
-	public DefineMailPanel(String id, String mailType) {
+	public DefineMailPanel(String id, String mailType, String availableVars) {
 		super(id);
 		this.mailType = mailType;
+		this.availableVars = availableVars;
 		add(new DefineMailTemplateForm(getMailTemplate()));
 	}
 
@@ -34,6 +36,7 @@ public class DefineMailPanel extends Panel {
 		private DefineMailTemplateForm(MailTemplate mailTemplate) {
 			super("form");
 			this.mailTemplate = mailTemplate;
+			add(label("vars", availableVars));
 			add(textField("subject", propertyModel(mailTemplate, "subject")));
 			add(richEditor("template", propertyModel(mailTemplate, "template")));
 			add(cancelLink(AdminHomePage.class));

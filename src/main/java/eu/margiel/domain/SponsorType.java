@@ -8,6 +8,7 @@ public enum SponsorType {
 	PLATINUM("Platynowy", "Partnerzy Platynowi"),
 	GOLD("Złoty", "Partnerzy Złoci"),
 	SILVER("Srebrny", "Partnerzy Srebrni"),
+	PARTNER("Partner", "Partnerzy"),
 	MEDIA("Medialny", "Patroni Medialni");
 	private String shortName;
 	private String fullName;
@@ -41,6 +42,6 @@ public enum SponsorType {
 	}
 
 	public static List<SponsorType> sponsors() {
-		return Lists.newArrayList(PLATINUM, GOLD, SILVER);
+		return Lists.newArrayList(PLATINUM, GOLD, SILVER, PARTNER);
 	}
 }

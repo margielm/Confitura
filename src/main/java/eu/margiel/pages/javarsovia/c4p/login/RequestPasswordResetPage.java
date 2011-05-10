@@ -12,6 +12,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.SpeakerRepository;
+import eu.margiel.utils.TokenUtils;
 
 @MountPath(path = "cp4/password")
 public class RequestPasswordResetPage extends BaseWebPage {
@@ -50,16 +51,12 @@ public class RequestPasswordResetPage extends BaseWebPage {
 		}
 
 		private void requestPasswordResetFor(Speaker speaker) {
-			String token = generateToken(speaker);
+			String token = TokenUtils.generateToken();
 			speaker.setToken(token);
 			repository.save(speaker);
 			sender.token(token).sendMessage(speaker.getMail());
 			feedback.info("Na podany e-mail wysłaliśmy wiadomość z dalszymi instrukcjami");
 		}
 
-		private String generateToken(Speaker speaker) {
-			String token = speaker.getEnryptor().encryptPassword("" + System.currentTimeMillis());
-			return token.replaceAll("/", "");
-		}
 	}
 }

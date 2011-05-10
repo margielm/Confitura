@@ -25,7 +25,12 @@ public class ParticipantMailSender extends MailSender {
 	public void sendMessage(Participant participant) {
 		put("firstName", participant.getFirstName());
 		put("lastName", participant.getLastName());
+		put("link", getApproveLink(participant.getToken()));
 		sendMessage(participant.getMail());
+	}
+
+	private String getApproveLink(String token) {
+		return "http://www.confitura.pl/registration/confirm/" + token;
 	}
 
 }

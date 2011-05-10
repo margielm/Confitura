@@ -6,6 +6,6 @@ import eu.margiel.pages.admin.AdminBasePage;
 public class DefineRegistrationMailPage extends AdminBasePage {
 
 	public DefineRegistrationMailPage() {
-		add(new DefineMailPanel("mail", "speaker"));
+		add(new DefineMailPanel("mail", "speaker", "$firstName, $lastName"));
 	}
 }

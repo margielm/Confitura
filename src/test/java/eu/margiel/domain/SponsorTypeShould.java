@@ -11,6 +11,6 @@ public class SponsorTypeShould {
 	public void getAllShortNames() {
 		List<String> shortNames = SponsorType.allShortNames();
 
-		assertThat(shortNames).containsExactly("Platynowy", "Złoty", "Srebrny", "Medialny");
+		assertThat(shortNames).containsExactly("Platynowy", "Złoty", "Srebrny", "Partner", "Medialny");
 	}
 }

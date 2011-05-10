@@ -5,6 +5,7 @@ import static eu.margiel.utils.DateUtils.*;
 
 import java.util.List;
 
+import org.apache.commons.lang.BooleanUtils;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -38,7 +39,7 @@ public class ListParticipantsPage extends AdminBasePage {
 			item.add(label("mail", participant.getMail()));
 			item.add(label("sex", participant.getSex()));
 			item.add(label("date", dateToString(participant.getRegistrationDate())));
-			item.add(label("approved", "no"));
+			item.add(label("confirmed", BooleanUtils.toString(participant.isConfirm(), "tak", "nie")));
 		}
 	}
 }

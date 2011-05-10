@@ -15,6 +15,7 @@ import eu.margiel.pages.admin.registration.ParticipantMailSender;
 import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.ParticipantRepository;
 import eu.margiel.utils.Models;
+import eu.margiel.utils.TokenUtils;
 
 @MountPath(path = "registration")
 public class RegistrationPage extends BaseWebPage {
@@ -49,8 +50,10 @@ public class RegistrationPage extends BaseWebPage {
 		protected void onSubmit() {
 			if (repository.readByMail(participant.getMail()) != null)
 				feedback.warn("Podany e-mail jest już zarejestrowany");
+			participant.setToken(TokenUtils.generateToken());
 			repository.save(participant);
 			mailSender.sendMessage(participant);
+			setResponsePage(new InfoPage("Na adres e-mail podany w formularzu przesłaliśmy dalsze informacje!"));
 		}
 	}
 }
