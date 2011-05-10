@@ -50,6 +50,11 @@ public class RegistrationPage extends BaseWebPage {
 		protected void onSubmit() {
 			if (repository.readByMail(participant.getMail()) != null)
 				feedback.warn("Podany e-mail jest już zarejestrowany");
+			else
+				saveParticipant();
+		}
+
+		private void saveParticipant() {
 			participant.setToken(TokenUtils.generateToken());
 			repository.save(participant);
 			mailSender.sendMessage(participant);
