@@ -73,7 +73,7 @@ public class UploadPhotosPanel extends Panel {
 		protected void populateItem(ListItem<File> item) {
 			File file = item.getModelObject();
 			item.add(createRemoveFileLink(file));
-			item.add(new StaticImage("image", provider.getPathTo(file)));
+			item.add(new StaticImage("image", getProvider().getPathTo(file)));
 		}
 	}
 
@@ -92,7 +92,7 @@ public class UploadPhotosPanel extends Panel {
 		@Override
 		protected void onSubmit() {
 			for (FileUpload image : images)
-				provider.savePhoto(image);
+				getProvider().savePhoto(image);
 			setResponsePage(page);
 		}
 
