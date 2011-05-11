@@ -28,7 +28,7 @@ import eu.margiel.components.nogeneric.Link;
 @SuppressWarnings("serial")
 public class UploadPhotosPanel extends Panel {
 	private ListView<File> imagesList;
-	private transient GalleryPhotoProvider provider = new GalleryPhotoProvider();
+	private transient GalleryPhotoProvider provider;
 	private Class<? extends Page> page;
 
 	public UploadPhotosPanel(String id, Class<? extends Page> page) {
@@ -42,9 +42,15 @@ public class UploadPhotosPanel extends Panel {
 
 	private Component createImagesList() {
 		WebMarkupContainer container = new WebMarkupContainer("images_container");
-		imagesList = new PhotosList("images", provider.listFiles());
+		imagesList = new PhotosList("images", getProvider().listFiles());
 		container.add(imagesList);
 		return container;
+	}
+
+	private GalleryPhotoProvider getProvider() {
+		if (provider == null)
+			provider = new GalleryPhotoProvider();
+		return provider;
 	}
 
 	private Link createRemoveFileLink(final File file) {

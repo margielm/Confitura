@@ -4,7 +4,9 @@ import static com.google.common.collect.Lists.*;
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
 
+import org.apache.commons.lang.BooleanUtils;
 import org.apache.wicket.extensions.validation.validator.RfcCompliantEmailAddressValidator;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -33,6 +35,7 @@ public class RegistrationPage extends BaseWebPage {
 	private final class RegistrationForm extends Form<Void> {
 		private Participant participant = new Participant();
 		private FeedbackPanel feedback = new FeedbackPanel("feedback");
+		private DropDownChoice<String> lunch = dropDown("lunch", model(), newArrayList("Tak", "Nie"));
 
 		private RegistrationForm(String id) {
 			super(id);
@@ -44,6 +47,7 @@ public class RegistrationPage extends BaseWebPage {
 							.add(RfcCompliantEmailAddressValidator.getInstance())));
 			add(withLabel("Płeć", dropDown("sex", propertyModel(participant, "sex"), newArrayList("K", "M"))
 					.setRequired(true)));
+			add(withLabel("Obiad", lunch.setRequired(true)));
 		}
 
 		@Override
@@ -55,6 +59,7 @@ public class RegistrationPage extends BaseWebPage {
 		}
 
 		private void saveParticipant() {
+			participant.lunch(BooleanUtils.toBoolean(lunch.getModelObject(), "Tak", "Nie"));
 			participant.setToken(TokenUtils.generateToken());
 			repository.save(participant);
 			mailSender.sendMessage(participant);

@@ -221,6 +221,11 @@ public class Components {
 		return new Label(id, content);
 	}
 
+	public static <T extends Serializable> DropDownChoice<T> dropDown(String id, Model<T> model,
+			List<? extends T> values) {
+		return new DropDownChoice<T>(id, model, values);
+	}
+
 	public static <T extends Serializable> DropDownChoice<T> dropDown(String id, PropertyModel<T> model,
 			List<? extends T> values) {
 		return new DropDownChoice<T>(id, model, values);

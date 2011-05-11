@@ -39,7 +39,8 @@ public class ListParticipantsPage extends AdminBasePage {
 			item.add(label("mail", participant.getMail()));
 			item.add(label("sex", participant.getSex()));
 			item.add(label("date", dateToString(participant.getRegistrationDate())));
-			item.add(label("confirmed", BooleanUtils.toString(participant.isConfirm(), "tak", "nie")));
+			item.add(label("state", participant.getRegistrationType().getName()));
+			item.add(label("lunch", BooleanUtils.toString(participant.isLunch(), "Tak", "Nie")));
 		}
 	}
 }

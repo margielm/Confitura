@@ -28,10 +28,10 @@ public class RegistrationConfirmPage extends BaseWebPage {
 
 	private void approveParticipant(Participant participant) {
 		String info;
-		if (participant.isConfirm())
+		if (participant.isConfirmed())
 			info = "Twoja rejestracja została już potwierdzona!";
 		else {
-			participant.setConfirm(true);
+			participant.confirm();
 			repository.save(participant);
 			info = "Dziękujemy za potwierdzenie rejestracji";
 		}

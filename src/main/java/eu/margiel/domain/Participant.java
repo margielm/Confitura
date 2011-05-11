@@ -1,5 +1,7 @@
 package eu.margiel.domain;
 
+import static eu.margiel.domain.RegistrationType.*;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,7 +15,8 @@ public class Participant extends AbstractEntity {
 	private String sex;
 	private Date registrationDate = new Date();
 	private String token;
-	private boolean confirm;
+	private RegistrationType registrationType = RegistrationType.NEW;
+	private boolean lunch;
 
 	public String getMail() {
 		return mail;
@@ -43,11 +46,23 @@ public class Participant extends AbstractEntity {
 		return token;
 	}
 
-	public void setConfirm(boolean confirm) {
-		this.confirm = confirm;
+	public void confirm() {
+		this.registrationType = CONFIRMED;
 	}
 
-	public boolean isConfirm() {
-		return confirm;
+	public RegistrationType getRegistrationType() {
+		return registrationType;
+	}
+
+	public boolean isConfirmed() {
+		return this.registrationType == CONFIRMED;
+	}
+
+	public void lunch(boolean lunch) {
+		this.lunch = lunch;
+	}
+
+	public boolean isLunch() {
+		return lunch;
 	}
 }

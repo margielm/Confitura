@@ -2,6 +2,7 @@ package eu.margiel.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 
@@ -18,7 +19,8 @@ public class Sponsor extends AbstractEntity {
 	@SuppressWarnings("unused")
 	@Lob
 	private String folderDescription;
-	private transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider("sponsors");
+	@Transient
+	private transient SubfolderPhotoProvider provider;
 
 	public Sponsor() {
 	}
@@ -41,15 +43,20 @@ public class Sponsor extends AbstractEntity {
 	}
 
 	public String getPathToPhoto() {
-		return provider.getPathTo(this);
+		return getProvider().getPathTo(this);
 	}
 
 	public void savePhoto(FileUpload fileUpload) {
-		provider.savePhoto(fileUpload, this);
+		getProvider().savePhoto(fileUpload, this);
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
+	private SubfolderPhotoProvider getProvider() {
+		if (provider == null)
+			provider = new SubfolderPhotoProvider("sponsors");
+		return provider;
+	}
 }
