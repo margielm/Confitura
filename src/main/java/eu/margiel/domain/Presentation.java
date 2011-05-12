@@ -13,8 +13,15 @@ public class Presentation extends AbstractEntity {
 	@ManyToOne
 	private Speaker speaker;
 
+	private boolean accepted = false;
+
 	public String getTitle() {
 		return title;
+	}
+
+	public Presentation setTitle(String title) {
+		this.title = title;
+		return this;
 	}
 
 	public User getSpeaker() {
@@ -28,5 +35,14 @@ public class Presentation extends AbstractEntity {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public boolean isAccepted() {
+		return accepted;
+	}
+
+	public Presentation toggleAccepted() {
+		this.accepted = !this.accepted;
+		return this;
 	}
 }

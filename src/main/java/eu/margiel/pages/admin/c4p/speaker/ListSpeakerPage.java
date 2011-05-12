@@ -39,6 +39,7 @@ public class ListSpeakerPage extends AdminBasePage {
 			item.add(label("lastName", speaker.getLastName()));
 			item.add(label("mail", speaker.getMail()));
 			item.add(label("webPage", speaker.getWebPage()));
+			item.add(label("accepted", speaker.anyPresentationAccepted() ? "Tak" : "Nie"));
 			item.add(new RedirectLink("view", speaker, ViewSpeakerPage.class));
 			item.add(new DeleteLink(speaker, repository, ListSpeakerPage.class));
 		}

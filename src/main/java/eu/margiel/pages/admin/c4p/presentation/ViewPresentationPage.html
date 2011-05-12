@@ -9,10 +9,32 @@
 </head>
 <body>
 <wicket:extend>
-Prelegent: <span wicket:id="speaker"/><br />
-Tytuł: <span wicket:id="title"/><br />
-Opis: <br />
-<span wicket:id="desc"/>
+	<table border="0" style="text-align: left;">
+		<tr>
+			<th>
+				Akcja:
+			</th>
+			<td>
+				<form wicket:id="form">
+					<input type="submit" wicket:id="accept" />
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<th>Prelegent:</th>
+			<td wicket:id="speaker"></td>
+		</tr>
+		<tr>
+			<th>Tytuł:</th>
+			<td wicket:id="title"></td>
+		</tr>
+		<tr>
+			<th colspan="2" >Opis:</th>
+		</tr>
+		<tr>
+			<td wicket:id="desc" colspan="2" ></td>
+		</tr>
+	</table>
 </wicket:extend>
 </body>
 </html>

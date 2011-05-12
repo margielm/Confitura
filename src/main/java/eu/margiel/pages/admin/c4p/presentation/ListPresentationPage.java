@@ -40,6 +40,7 @@ public class ListPresentationPage extends AdminBasePage {
 			item.add(label("firstName", speaker.getFirstName()));
 			item.add(label("lastName", speaker.getLastName()));
 			item.add(label("title", presentation.getTitle()));
+			item.add(label("accepted", presentation.isAccepted() ? "Tak" : "Nie"));
 			item.add(new RedirectLink("view", presentation, ViewPresentationPage.class));
 			item.add(new DeleteLink(presentation, repository, ListPresentationPage.class));
 		}

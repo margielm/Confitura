@@ -1,9 +1,11 @@
 package eu.margiel.domain;
 
+import static ch.lambdaj.Lambda.*;
 import static com.google.common.collect.Lists.*;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -13,7 +15,7 @@ import javax.persistence.OneToMany;
 public class Speaker extends User {
 	private String webPage;
 	private String twitter;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Presentation> presentations = newArrayList();
 	@SuppressWarnings("unused")
 	private String token;
@@ -40,9 +42,10 @@ public class Speaker extends User {
 		return presentations;
 	}
 
-	public void addPresentation(Presentation presentation) {
+	public Speaker addPresentation(Presentation presentation) {
 		presentation.speaker(this);
 		this.presentations.add(presentation);
+		return this;
 	}
 
 	@Override
@@ -52,6 +55,14 @@ public class Speaker extends User {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public boolean anyPresentationAccepted() {
+		return getAcceptedPresentations().size() > 0;
+	}
+
+	public List<Presentation> getAcceptedPresentations() {
+		return select(getPresentations(), having(on(Presentation.class).isAccepted()));
 	}
 
 }
