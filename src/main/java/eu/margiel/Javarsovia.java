@@ -10,6 +10,7 @@ import org.apache.wicket.Session;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebRequest;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
@@ -39,7 +40,7 @@ public class Javarsovia extends WebApplication {
 		new AnnotatedMountScanner().scanPackage("eu.margiel.pages").mount(this);
 		getResourceSettings().setThrowExceptionOnMissingResource(false);
 		getApplicationSettings().setInternalErrorPage(ErrorPage.class);
-		// getExceptionSettings().setUnexpectedExceptionDisplay(IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+		getExceptionSettings().setUnexpectedExceptionDisplay(IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		productionInit();
 	}
 
