@@ -5,7 +5,6 @@ import static com.google.common.collect.Lists.*;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -15,7 +14,7 @@ import javax.persistence.OneToMany;
 public class Speaker extends User {
 	private String webPage;
 	private String twitter;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true, cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "speaker", orphanRemoval = true)
 	private List<Presentation> presentations = newArrayList();
 	@SuppressWarnings("unused")
 	private String token;
