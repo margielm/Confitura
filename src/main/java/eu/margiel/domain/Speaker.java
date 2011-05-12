@@ -2,6 +2,7 @@ package eu.margiel.domain;
 
 import static ch.lambdaj.Lambda.*;
 import static com.google.common.collect.Lists.*;
+import static org.apache.commons.lang.StringUtils.*;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Speaker extends User {
 	}
 
 	public String getTwitterUrl() {
-		return "http://www.twitter.com/" + twitter;
+		return isBlank(twitter) ? null : "http://www.twitter.com/" + twitter;
 	}
 
 	@SuppressWarnings("unchecked")
