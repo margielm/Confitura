@@ -1,5 +1,7 @@
 package eu.margiel.domain;
 
+import static org.apache.commons.lang.StringUtils.*;
+
 import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
@@ -86,7 +88,10 @@ public class User extends AbstractEntity {
 	}
 
 	public String getFullName() {
-		return getFirstName() + " " + getLastName();
+		if (isBlank(firstName) || isBlank(lastName))
+			return "";
+		else
+			return getFirstName() + " " + getLastName();
 	}
 
 	public String getBio() {

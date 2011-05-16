@@ -1,6 +1,7 @@
 package eu.margiel.pages.javarsovia;
 
 import static com.google.common.collect.Lists.*;
+import static eu.margiel.domain.SponsorType.*;
 
 import org.apache.wicket.Resource;
 import org.apache.wicket.ResourceReference;
@@ -14,6 +15,7 @@ import eu.margiel.components.menu.MainMenuPanel;
 import eu.margiel.components.menu.MenuLinks;
 import eu.margiel.domain.SponsorType;
 import eu.margiel.pages.javarsovia.news.NewsFeed;
+import eu.margiel.pages.javarsovia.speaker.SpeakersWidget;
 import eu.margiel.pages.javarsovia.sponsor.SponsorWidget;
 import eu.margiel.repositories.MenuRepository;
 import eu.margiel.repositories.NewsRepository;
@@ -46,7 +48,8 @@ public class BaseWebPage extends JavarsoviaBasePage {
 		add(wrapper);
 		add(new MainMenuPanel("mainMenu", menuRepository.getMainMenu(), menuItemList));
 		add(new SponsorWidget("sponsors", SponsorType.sponsors()));
-		add(new SponsorWidget("media", newArrayList(SponsorType.MEDIA)));
+		add(new SponsorWidget("media", newArrayList(MEDIA)));
+		add(new SpeakersWidget("speakers"));
 	}
 
 	@Override

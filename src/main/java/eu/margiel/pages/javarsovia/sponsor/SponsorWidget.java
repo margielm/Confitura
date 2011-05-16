@@ -14,13 +14,11 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Sponsor;
 import eu.margiel.domain.SponsorType;
-import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 import eu.margiel.repositories.SponsorRepository;
 
 @SuppressWarnings("serial")
 public class SponsorWidget extends Panel {
 
-	private static final transient SubfolderPhotoProvider provider = new SubfolderPhotoProvider("sponsors");
 	@SpringBean
 	private SponsorRepository repository;
 
@@ -65,7 +63,7 @@ public class SponsorWidget extends Panel {
 		if (sponsor.isNew())
 			return "/files/photos/sponsor.png";
 		else
-			return provider.getPathTo(sponsor);
+			return sponsor.getPathToPhoto();
 	}
 
 	private final class SponsorFetcher {
@@ -76,9 +74,8 @@ public class SponsorWidget extends Panel {
 		}
 
 		private void addUpToTwoEmptySponsors(List<Sponsor> sponsors) {
-			while (sponsors.size() < 2) {
+			while (sponsors.size() < 2)
 				sponsors.add(new Sponsor("Zostań naszym partnerem", "mailto:confitura@confitura.pl"));
-			}
 		}
 	}
 }

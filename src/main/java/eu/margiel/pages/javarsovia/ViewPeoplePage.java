@@ -3,6 +3,7 @@ package eu.margiel.pages.javarsovia;
 import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.wicket.AttributeModifier;
@@ -24,7 +25,13 @@ public class ViewPeoplePage extends BaseWebPage {
 	private AdminRepository repository;
 
 	public ViewPeoplePage() {
-		add(new PeopleList("person", repository.readAll(new Sort("lastName"))));
+		add(new PeopleList("person", getAdmins()));
+	}
+
+	private List<Admin> getAdmins() {
+		List<Admin> admins = repository.readAll(new Sort("lastName"));
+		Collections.shuffle(admins);
+		return admins;
 	}
 
 	@SuppressWarnings("serial")
