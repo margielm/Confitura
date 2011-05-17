@@ -55,7 +55,7 @@ public class AddSponsorPage extends AdminBasePage {
             add(textField("money", propertyModel(sponsor, "money"), true));
 			add(richEditor("desc", propertyModel(sponsor, "description"), true));
 			add(richEditor("folderDesc", propertyModel(sponsor, "folderDescription")));
-			add(fileUpload.setRequired(true));
+			add(fileUpload.setRequired(!sponsor.isNotNew()));
 			add(cancelLink(ListSponsorPage.class));
 			add(new FeedbackPanel("feedback"));
 		}
@@ -63,7 +63,9 @@ public class AddSponsorPage extends AdminBasePage {
 		@Override
 		protected void onSubmit() {
 			repository.save(sponsor);
-			sponsor.savePhoto(fileUpload.getFileUpload());
+			if (!sponsor.isNotNew() || (fileUpload.getFileUpload() != null && fileUpload.getFileUpload().getSize() > 0)) {
+                sponsor.savePhoto(fileUpload.getFileUpload());
+            }
 			setResponsePage(ListSponsorPage.class);
 		}
 	}
