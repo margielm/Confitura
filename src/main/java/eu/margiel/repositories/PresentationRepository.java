@@ -8,7 +8,7 @@ import org.synyx.hades.dao.Query;
 import eu.margiel.domain.Presentation;
 
 public interface PresentationRepository extends GenericDao<Presentation, Integer> {
-	@Query("FROM Presentation WHERE accepted = true")
+	@Query("FROM Presentation WHERE accepted = true ORDER BY title")
 	List<Presentation> readAllAccepted();
 
 }

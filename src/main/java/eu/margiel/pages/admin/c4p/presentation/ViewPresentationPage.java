@@ -25,6 +25,7 @@ public class ViewPresentationPage extends AdminBasePage {
 	private PresentationRepository repository;
 
 	public ViewPresentationPage(PageParameters params) {
+
 		final Presentation presentation = repository.readByPrimaryKey(params.getAsInteger("id"));
 		add(new PresentationPanel("presentation", presentation) {
 

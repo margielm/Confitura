@@ -5,6 +5,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
+import eu.margiel.components.RedirectLink;
 import eu.margiel.components.user.UserInfoPanel;
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.admin.AdminBasePage;
@@ -18,6 +19,7 @@ public class ViewSpeakerPage extends AdminBasePage {
 
 	public ViewSpeakerPage(PageParameters params) {
 		Speaker speaker = repository.readByPrimaryKey(params.getAsInteger("id"));
+		add(new RedirectLink("edit", speaker, EditSpeakerPage.class));
 		add(new UserInfoPanel("info", speaker, false));
 	}
 }
