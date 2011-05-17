@@ -1,7 +1,7 @@
 package eu.margiel.pages.admin.c4p.presentation;
 
-import static eu.margiel.utils.Components.*;
 import static eu.margiel.utils.Models.*;
+import static eu.margiel.utils.PageParametersBuilder.*;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.PageParameters;
@@ -11,13 +11,13 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
-import eu.margiel.components.LabeledLink;
 import eu.margiel.domain.Presentation;
-import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.pages.admin.c4p.speaker.ViewSpeakerPage;
+import eu.margiel.pages.javarsovia.c4p.PresentationPanel;
 import eu.margiel.repositories.PresentationRepository;
 
+@SuppressWarnings("serial")
 @MountPath(path = "admin/presentations/view")
 @MountMixedParam(parameterNames = "id")
 public class ViewPresentationPage extends AdminBasePage {
@@ -25,15 +25,18 @@ public class ViewPresentationPage extends AdminBasePage {
 	private PresentationRepository repository;
 
 	public ViewPresentationPage(PageParameters params) {
-		Presentation presentation = repository.readByPrimaryKey(params.getAsInteger("id"));
-		User speaker = presentation.getSpeaker();
-		add(new LabeledLink("speaker", speaker.getFullName(), speaker.getId(), ViewSpeakerPage.class));
-		add(label("title", presentation.getTitle()));
-		add(richLabel("desc", presentation.getDescription()));
+		final Presentation presentation = repository.readByPrimaryKey(params.getAsInteger("id"));
+		add(new PresentationPanel("presentation", presentation) {
+
+			@Override
+			public void onCancelOrSubmit() {
+				setResponsePage(ViewSpeakerPage.class, paramsFor("id", presentation.getSpeaker().getId()));
+			}
+
+		});
 		add(createAcceptLink(presentation));
 	}
 
-	@SuppressWarnings("serial")
 	private Component createAcceptLink(final Presentation presentation) {
 		final Button acceptButton = new Button("accept", model(getLinkLabel(presentation)));
 		Form<Void> form = new Form<Void>("form") {
