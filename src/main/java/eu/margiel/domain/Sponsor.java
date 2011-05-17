@@ -1,12 +1,11 @@
 package eu.margiel.domain;
 
+import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
+import org.apache.wicket.markup.html.form.upload.FileUpload;
+
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Transient;
-
-import org.apache.wicket.markup.html.form.upload.FileUpload;
-
-import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
 
 @SuppressWarnings("serial")
 @Entity
@@ -21,6 +20,8 @@ public class Sponsor extends AbstractEntity {
 	private String folderDescription;
 	@Transient
 	private transient SubfolderPhotoProvider provider;
+
+    private Long money;
 
 	public Sponsor() {
 	}
@@ -59,4 +60,8 @@ public class Sponsor extends AbstractEntity {
 			provider = new SubfolderPhotoProvider("sponsors");
 		return provider;
 	}
+
+    public Long getMoney() {
+        return money;
+    }
 }
