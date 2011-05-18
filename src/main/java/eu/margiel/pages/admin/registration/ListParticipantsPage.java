@@ -1,19 +1,18 @@
 package eu.margiel.pages.admin.registration;
 
-import static eu.margiel.utils.Components.*;
-import static eu.margiel.utils.DateUtils.*;
-
-import java.util.List;
-
+import eu.margiel.domain.Participant;
+import eu.margiel.pages.admin.AdminBasePage;
+import eu.margiel.repositories.ParticipantRepository;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.synyx.hades.domain.Sort;
 
-import eu.margiel.domain.Participant;
-import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.repositories.ParticipantRepository;
+import java.util.List;
+
+import static eu.margiel.utils.Components.label;
+import static eu.margiel.utils.DateUtils.dateToString;
 
 public class ListParticipantsPage extends AdminBasePage {
 
@@ -37,6 +36,7 @@ public class ListParticipantsPage extends AdminBasePage {
 			item.add(label("firstName", participant.getFirstName()));
 			item.add(label("lastName", participant.getLastName()));
 			item.add(label("mail", participant.getMail()));
+			item.add(label("city", participant.getCity()));
 			item.add(label("sex", participant.getSex()));
 			item.add(label("date", dateToString(participant.getRegistrationDate())));
 			item.add(label("state", participant.getRegistrationType().getName()));

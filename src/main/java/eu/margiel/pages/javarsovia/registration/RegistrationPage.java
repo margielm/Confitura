@@ -1,9 +1,11 @@
 package eu.margiel.pages.javarsovia.registration;
 
-import static com.google.common.collect.Lists.*;
-import static eu.margiel.utils.Components.*;
-import static eu.margiel.utils.Models.*;
-
+import eu.margiel.domain.Participant;
+import eu.margiel.pages.admin.registration.ParticipantMailSender;
+import eu.margiel.pages.javarsovia.BaseWebPage;
+import eu.margiel.repositories.ParticipantRepository;
+import eu.margiel.utils.Models;
+import eu.margiel.utils.TokenUtils;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.wicket.extensions.validation.validator.RfcCompliantEmailAddressValidator;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -12,12 +14,12 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import eu.margiel.domain.Participant;
-import eu.margiel.pages.admin.registration.ParticipantMailSender;
-import eu.margiel.pages.javarsovia.BaseWebPage;
-import eu.margiel.repositories.ParticipantRepository;
-import eu.margiel.utils.Models;
-import eu.margiel.utils.TokenUtils;
+import static com.google.common.collect.Lists.newArrayList;
+import static eu.margiel.utils.Components.dropDown;
+import static eu.margiel.utils.Components.textField;
+import static eu.margiel.utils.Components.withLabel;
+import static eu.margiel.utils.Models.model;
+import static eu.margiel.utils.Models.propertyModel;
 
 @MountPath(path = "registration")
 public class RegistrationPage extends BaseWebPage {
@@ -45,6 +47,7 @@ public class RegistrationPage extends BaseWebPage {
 			add(withLabel("e-mail",
 					textField("mail", Models.<String> propertyModel(participant, "mail"), true)
 							.add(RfcCompliantEmailAddressValidator.getInstance())));
+            add(withLabel("Miasto", textField("city", propertyModel(participant, "city"), true)));
 			add(withLabel("Płeć", dropDown("sex", propertyModel(participant, "sex"), newArrayList("K", "M"))
 					.setRequired(true)));
 			add(withLabel("Obiad", lunch.setRequired(true)));
