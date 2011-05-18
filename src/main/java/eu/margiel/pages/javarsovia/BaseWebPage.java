@@ -1,24 +1,22 @@
 package eu.margiel.pages.javarsovia;
 
-import static com.google.common.collect.Lists.*;
-import static eu.margiel.domain.SponsorType.*;
-
-import org.apache.wicket.Resource;
-import org.apache.wicket.ResourceReference;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.wicketstuff.rome.FeedResource;
-
 import eu.margiel.JavarsoviaBasePage;
 import eu.margiel.JavarsoviaSession;
 import eu.margiel.components.menu.MainMenuPanel;
 import eu.margiel.components.menu.MenuLinks;
 import eu.margiel.domain.SponsorType;
 import eu.margiel.pages.javarsovia.news.NewsFeed;
-import eu.margiel.pages.javarsovia.speaker.SpeakersWidget;
 import eu.margiel.pages.javarsovia.sponsor.SponsorWidget;
 import eu.margiel.repositories.MenuRepository;
 import eu.margiel.repositories.NewsRepository;
+import org.apache.wicket.Resource;
+import org.apache.wicket.ResourceReference;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.rome.FeedResource;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static eu.margiel.domain.SponsorType.MEDIA;
 
 @SuppressWarnings("serial")
 public class BaseWebPage extends JavarsoviaBasePage {
@@ -49,7 +47,7 @@ public class BaseWebPage extends JavarsoviaBasePage {
 		add(new MainMenuPanel("mainMenu", menuRepository.getMainMenu(), menuItemList));
 		add(new SponsorWidget("sponsors", SponsorType.sponsors()));
 		add(new SponsorWidget("media", newArrayList(MEDIA)));
-		add(new SpeakersWidget("speakers"));
+		//add(new SpeakersWidget("speakers"));
 	}
 
 	@Override
