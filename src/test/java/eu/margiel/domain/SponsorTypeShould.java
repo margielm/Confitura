@@ -13,4 +13,5 @@ public class SponsorTypeShould {
 
 		assertThat(shortNames).containsExactly("Platynowy", "Złoty", "Srebrny", "Partner", "Medialny");
 	}
+
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en"
+	lang="en">
+<head>
+</head>
+<body>
+
+<wicket:extend>
+	<table style="width: 100%" border="1">
+		<thead>
+			<tr>
+				<th rowspan="2" style="width:100px">STATUS</th>
+				<th rowspan="2" colspan="2">Suma</th>
+				<th colspan="4">Obiad</th>
+				<th colspan="4">Płeć</th>
+			</tr>
+			<tr>
+				<th colspan="2">TAK</th>
+				<th colspan="2">NIE</th>
+				<th colspan="2">K</th>
+				<th colspan="2">M</th>
+			</tr>
+		</thead>
+		<tbody style="text-align:right;">
+			<tr>
+				<td>WSZYSTKIE</td>
+				<td wicket:id="sumVal"></td>
+				<td wicket:id="sumPer"></td>
+				<td wicket:id="dinerYesVal">100</td>
+				<td wicket:id="dinerYesPer">100</td>
+				<td wicket:id="dinerNoVal">100</td>
+				<td wicket:id="dinerNoPer">100</td>
+				<td wicket:id="womenVal">100</td>
+				<td wicket:id="womenPer">100</td>
+				<td wicket:id="menVal">100</td>
+				<td wicket:id="menPer">100</td>
+			</tr>
+			<tr wicket:id="statusInfo">
+				<td wicket:id="status">STATUS</td>
+				<td wicket:id="sumVal"></td>
+				<td wicket:id="sumPer"></td>
+				<td wicket:id="dinerYesVal">100</td>
+				<td wicket:id="dinerYesPer">100</td>
+				<td wicket:id="dinerNoVal">100</td>
+				<td wicket:id="dinerNoPer">100</td>
+				<td wicket:id="womenVal">100</td>
+				<td wicket:id="womenPer">100</td>
+				<td wicket:id="menVal">100</td>
+				<td wicket:id="menPer">100</td>
+			</tr>
+		</tbody>
+	</table>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Miasto</th>
+				<th colspan="2">Liczba Zarejestrowanych</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr wicket:id="city">
+			<td wicket:id="name"></td>
+			<td wicket:id="peopleVal"></td>
+			<td wicket:id="peoplePer"></td>
+		</tr>
+		</tbody>
+	</table>
+</wicket:extend>
+</body>
+</html>

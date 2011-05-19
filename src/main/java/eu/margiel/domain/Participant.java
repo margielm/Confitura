@@ -1,9 +1,10 @@
 package eu.margiel.domain;
 
-import javax.persistence.Entity;
+import static eu.margiel.domain.RegistrationType.*;
+
 import java.util.Date;
 
-import static eu.margiel.domain.RegistrationType.CONFIRMED;
+import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
@@ -12,7 +13,7 @@ public class Participant extends AbstractEntity {
 	private String lastName;
 	private String mail;
 	private String sex;
-    private String city;
+	private String city;
 	private Date registrationDate = new Date();
 	private String token;
 	private RegistrationType registrationType = RegistrationType.NEW;
@@ -66,7 +67,12 @@ public class Participant extends AbstractEntity {
 		return lunch;
 	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getCity() {
+		return city;
+	}
+
+	public Participant city(String city) {
+		this.city = city;
+		return this;
+	}
 }
