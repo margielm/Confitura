@@ -1,17 +1,18 @@
 package eu.margiel.pages.admin.simple;
 
-import static eu.margiel.utils.Components.*;
-
+import eu.margiel.domain.SimpleContent;
+import eu.margiel.pages.admin.AdminBasePage;
+import eu.margiel.repositories.SimpleContentRepository;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
-import eu.margiel.domain.SimpleContent;
-import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.repositories.SimpleContentRepository;
+import static eu.margiel.utils.Components.cancelLink;
+import static eu.margiel.utils.Components.textField;
 
 @SuppressWarnings("serial")
 @MountPath(path = "/admin/simpleContent")
@@ -37,7 +38,7 @@ public class AddSimpleContentPage extends AdminBasePage {
 			}
 		};
 		form.add(textField("title", new PropertyModel<String>(simpleContent, "title")));
-		form.add(richEditor("content", new PropertyModel<String>(simpleContent, "content")));
+		form.add(new TextArea<String>("content", new PropertyModel<String>(simpleContent, "content")));
 		form.add(cancelLink(ListSimpleContentPage.class));
 		add(form);
 	}
