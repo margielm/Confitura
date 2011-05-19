@@ -75,4 +75,8 @@ public class Participant extends AbstractEntity {
 		this.city = city;
 		return this;
 	}
+
+	public String getLowerCaseCity() {
+		return getCity().toLowerCase();
+	}
 }

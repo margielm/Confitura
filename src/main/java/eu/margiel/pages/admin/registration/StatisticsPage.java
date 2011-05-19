@@ -36,7 +36,7 @@ public class StatisticsPage extends AdminBasePage {
 	}
 
 	private Group<Participant> groupByCities() {
-		return group(allParticipants, by(on(Participant.class).getCity().toLowerCase()));
+		return group(allParticipants, by(on(Participant.class).getLowerCaseCity()));
 	}
 
 	private void fillStatisticsRow(MarkupContainer component, List<Participant> participants) {
