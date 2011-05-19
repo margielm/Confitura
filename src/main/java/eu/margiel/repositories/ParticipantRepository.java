@@ -11,7 +11,7 @@ public interface ParticipantRepository extends GenericDao<Participant, Integer> 
 
 	Participant readByToken(String token);
 
-    @Query("SELECT COUNT(p.id) FROM Participant p")
+    @Query("SELECT COUNT(p.id) FROM Participant p WHERE lunch = true")
     Long wantDinner();
 
 }
