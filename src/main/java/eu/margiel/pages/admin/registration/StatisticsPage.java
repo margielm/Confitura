@@ -65,7 +65,7 @@ public class StatisticsPage extends AdminBasePage {
 	}
 
 	private final class CityStatistics extends ListView<String> {
-		private final Group<Participant> group;
+		private transient final Group<Participant> group;
 
 		private CityStatistics(Group<Participant> group) {
 			super("city", newArrayList(group.keySet()));
