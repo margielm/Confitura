@@ -4,11 +4,14 @@ import eu.margiel.domain.Participant;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.ParticipantRepository;
 import org.apache.commons.lang.BooleanUtils;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.synyx.hades.domain.Sort;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static eu.margiel.utils.Components.label;
@@ -20,7 +23,9 @@ public class ListParticipantsPage extends AdminBasePage {
 	private ParticipantRepository repository;
 
 	public ListParticipantsPage() {
-		add(new ParticipantsList(repository.readAll(new Sort("registrationDate"))));
+		add(new Label("registrationCounter", new Model<Serializable>(repository.count())));
+		add(new Label("wantDinner", new Model<Serializable>(repository.wantDinner())));
+        add(new ParticipantsList(repository.readAll(new Sort("registrationDate"))));
 	}
 
 	@SuppressWarnings("serial")
