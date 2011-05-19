@@ -68,7 +68,7 @@ public class Participant extends AbstractEntity {
 	}
 
 	public String getCity() {
-		return city;
+		return city == null ? "" : city;
 	}
 
 	public Participant city(String city) {
