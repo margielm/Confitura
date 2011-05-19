@@ -52,8 +52,8 @@ public class StatisticsPage extends AdminBasePage {
 		return new Label[] { label(id + "Val", count + ""), label(id + "Per", getPercent(count, all) + "%") };
 	}
 
-	private int getPercent(int count, int all) {
-		return all == 0 ? 0 : count / all * 100;
+	private int getPercent(double count, double all) {
+		return (int) (all == 0 ? 0 : (count / all) * 100);
 	}
 
 	private int withSexFrom(List<Participant> participants, String sex) {
