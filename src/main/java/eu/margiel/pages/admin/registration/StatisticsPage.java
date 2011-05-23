@@ -5,6 +5,7 @@ import static com.google.common.collect.Lists.*;
 import static eu.margiel.utils.Components.*;
 import static org.hamcrest.Matchers.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.wicket.MarkupContainer;
@@ -35,8 +36,11 @@ public class StatisticsPage extends AdminBasePage {
 		add(new CityStatistics(groupByCities()));
 	}
 
-	private Group<Participant> groupByCities() {
-		return group(allParticipants, by(on(Participant.class).getLowerCaseCity()));
+	private List<Group<Participant>> groupByCities() {
+		Group<Participant> group = group(allParticipants, by(on(Participant.class).getLowerCaseCity()));
+		List<Group<Participant>> sorted = sort(group.subgroups(), on(Group.class).getSize());
+		Collections.reverse(sorted);
+		return sorted;
 	}
 
 	private void fillStatisticsRow(MarkupContainer component, List<Participant> participants) {
@@ -64,19 +68,17 @@ public class StatisticsPage extends AdminBasePage {
 		return select(participants, having(on(Participant.class).isLunch(), is(withDiner))).size();
 	}
 
-	private final class CityStatistics extends ListView<String> {
-		private transient final Group<Participant> group;
+	private final class CityStatistics extends ListView<Group<Participant>> {
 
-		private CityStatistics(Group<Participant> group) {
-			super("city", newArrayList(group.keySet()));
-			this.group = group;
+		private CityStatistics(List<Group<Participant>> participantsByCity) {
+			super("city", participantsByCity);
 		}
 
 		@Override
-		protected void populateItem(ListItem<String> item) {
-			String city = item.getModelObject();
-			item.add(label("name", city));
-			item.add(createLabelsFor("people", group.find(city).size(), allParticipants.size()));
+		protected void populateItem(ListItem<Group<Participant>> item) {
+			Group<Participant> group = item.getModelObject();
+			item.add(label("name", (String) group.key()));
+			item.add(createLabelsFor("people", group.getSize(), allParticipants.size()));
 		}
 	}
 
