@@ -1,10 +1,12 @@
 package eu.margiel.pages.javarsovia.news;
 
 import static eu.margiel.utils.Components.*;
+import static org.apache.commons.lang.StringUtils.*;
 import static org.joda.time.LocalDate.*;
 
 import java.util.List;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -39,12 +41,17 @@ public class ViewNewsPage extends NewsBasePage {
 			item.add(linktToAuthor(news));
 			item.add(label("creationDate", fromDateFields(news.getCreationDate()).toString("dd.MM.yyyy")));
 			item.add(richLabel("shortDescription", news.getShortDescription()));
-			item.add(new Link("more") {
+			item.add(createMoreLinkFor(news));
+		}
+
+		private Component createMoreLinkFor(final News news) {
+			Link link = new Link("more") {
 				@Override
 				public void onClick() {
 					setResponse(ViewNewsDetailsPage.class, news.getTitle());
 				}
-			});
+			};
+			return link.setVisible(isNotBlank(news.getDescription()));
 		}
 
 	}
