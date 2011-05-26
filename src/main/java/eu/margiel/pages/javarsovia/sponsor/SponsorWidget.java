@@ -35,16 +35,18 @@ public class SponsorWidget extends Panel {
 		@Override
 		protected void populateItem(ListItem<SponsorType> item) {
 			SponsorType sponsorType = item.getModelObject();
+			List<Sponsor> sponsors = repository.readByType(sponsorType.getShortName());
 			item.add(label("type", sponsorType.getFullName()));
-			item.add(new SponsorList(sponsorType));
+			item.add(new SponsorList(sponsors));
+			item.setVisible(sponsors.size() > 0);
 
 		}
 	}
 
 	private final class SponsorList extends ListView<Sponsor> {
 
-		private SponsorList(SponsorType sponsorType) {
-			super("sponsor", new SponsorFetcher().fetchSponsorsBy(sponsorType));
+		private SponsorList(List<Sponsor> sponsors) {
+			super("sponsor", sponsors);
 		}
 
 		@Override
@@ -68,7 +70,7 @@ public class SponsorWidget extends Panel {
 
 	private final class SponsorFetcher {
 		public List<Sponsor> fetchSponsorsBy(SponsorType type) {
-			List<Sponsor> sponsors = SponsorWidget.this.repository.readByType(type.getShortName());
+			List<Sponsor> sponsors = repository.readByType(type.getShortName());
 			addUpToTwoEmptySponsors(sponsors);
 			return sponsors;
 		}

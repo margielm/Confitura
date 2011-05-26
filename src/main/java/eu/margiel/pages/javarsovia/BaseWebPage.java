@@ -1,5 +1,15 @@
 package eu.margiel.pages.javarsovia;
 
+import static com.google.common.collect.Lists.*;
+import static eu.margiel.domain.SponsorType.*;
+import static eu.margiel.utils.Components.*;
+
+import org.apache.wicket.Resource;
+import org.apache.wicket.ResourceReference;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.rome.FeedResource;
+
 import eu.margiel.JavarsoviaBasePage;
 import eu.margiel.JavarsoviaSession;
 import eu.margiel.components.menu.MainMenuPanel;
@@ -10,18 +20,6 @@ import eu.margiel.pages.javarsovia.sponsor.SponsorWidget;
 import eu.margiel.repositories.MenuRepository;
 import eu.margiel.repositories.NewsRepository;
 import eu.margiel.repositories.ParticipantRepository;
-import org.apache.wicket.Resource;
-import org.apache.wicket.ResourceReference;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.wicketstuff.rome.FeedResource;
-
-import java.io.Serializable;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static eu.margiel.domain.SponsorType.MEDIA;
 
 @SuppressWarnings("serial")
 public class BaseWebPage extends JavarsoviaBasePage {
@@ -31,8 +29,8 @@ public class BaseWebPage extends JavarsoviaBasePage {
 	private MenuLinks menuItemList;
 	@SpringBean
 	private NewsRepository newsRepository;
-    @SpringBean
-    private ParticipantRepository participantRepository;
+	@SpringBean
+	private ParticipantRepository participantRepository;
 
 	private WebMarkupContainer wrapper;
 
@@ -54,8 +52,8 @@ public class BaseWebPage extends JavarsoviaBasePage {
 		add(new MainMenuPanel("mainMenu", menuRepository.getMainMenu(), menuItemList));
 		add(new SponsorWidget("sponsors", SponsorType.sponsors()));
 		add(new SponsorWidget("media", newArrayList(MEDIA)));
-        add(new Label("registrationCounter", new Model<Serializable>(participantRepository.count())));
-		//add(new SpeakersWidget("speakers"));
+		// add(new SpeakersWidget("speakers"));
+		add(label("registrationCounter", participantRepository.count() + ""));
 	}
 
 	@Override

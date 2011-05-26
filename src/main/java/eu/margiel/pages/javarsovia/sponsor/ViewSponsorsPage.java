@@ -52,7 +52,6 @@ public class ViewSponsorsPage extends BaseWebPage {
 			@Override
 			protected void populateItem(ListItem<Sponsor> item) {
 				Sponsor sponsor = item.getModelObject();
-				item.add(createLogo(sponsor));
 				item.add(createInfoCell(item, sponsor));
 			}
 
@@ -65,6 +64,7 @@ public class ViewSponsorsPage extends BaseWebPage {
 			private WebMarkupContainer createInfoCell(ListItem<Sponsor> item, Sponsor sponsor) {
 				WebMarkupContainer info = new WebMarkupContainer("info");
 				info.add(new AttributeModifier("class", getCssClass(item)));
+				info.add(createLogo(sponsor));
 				info.add(richLabel("name", sponsor.getName()));
 				info.add(richLabel("desc", sponsor.getDescription()));
 				return info;
