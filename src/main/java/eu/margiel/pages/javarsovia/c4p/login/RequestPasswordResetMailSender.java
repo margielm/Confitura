@@ -20,7 +20,7 @@ public class RequestPasswordResetMailSender extends MailSender {
 	@Override
 	public String getTemplate() {
 		return "Witaj! <br />"
-				+ "Zostało zgłoszone rządanie zresetowania hasła dla Twojego konta na conftura.pl. <br />"
+				+ "Zostało zgłoszone żądanie zresetowania hasła dla Twojego konta na conftura.pl. <br />"
 				+ "Aby wprowadzić nowe hasło kliknij poniższy link. Jeśli nie chcesz zresetować swojego hasła zignoruj tą wiadomość<br /><br />"
 				+ "<a href=\"http://www.confitura.pl/c4p/password/reset/$token\">RESET</a><br/>"
 				+ "Pozdrawiam<br />"
