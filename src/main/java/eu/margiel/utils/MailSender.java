@@ -1,77 +1,82 @@
 package eu.margiel.utils;
 
-import static javax.mail.Message.RecipientType.*;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
 
-import java.io.StringWriter;
-import java.util.Properties;
-
+import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.StringWriter;
+import java.util.Properties;
 
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
+import static javax.mail.Message.RecipientType.TO;
 
 public abstract class MailSender {
-	protected VelocityContext ctx = new VelocityContext();
-	private Session session;
 
-	public MailSender() {
-		Properties properties = new Properties();
-		properties.put("mail.smtps.auth", true);
-		session = Session.getInstance(properties, null);
-	}
+    protected static final String MAIN_ADDRESS = "confitura@confitura.pl";
+    protected static final String CHARSET = "UTF-8";
 
-	public void sendMessage() {
-		sendMessage("rejestracja@javarsovia.pl");
-	}
+    protected VelocityContext ctx = new VelocityContext();
 
-	public void sendMessage(String recipient) {
-		try {
-			Message msg = createMessage(recipient);
-			Transport t = session.getTransport("smtps");
-			t.connect("smtp.gmail.com", "confitura@confitura.pl", "java4ever");
-			t.sendMessage(msg, msg.getAllRecipients());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private Session session;
 
-	private Message createMessage(String recipient) throws Exception {
-		MimeMessage msg = new MimeMessage(session);
-		msg.setFrom(new InternetAddress("confitura@confitura.pl", "Confitura 2011", "UTF-8"));
-		msg.setRecipient(TO, new InternetAddress(recipient));
-		msg.setContent(getContent(), "text/html; charset=UTF-8");
-		msg.setSubject(getSubject(), "UTF-8");
-		return msg;
-	}
+    public MailSender() {
+        Properties properties = new Properties();
+        properties.setProperty("mail.smtp.host", "localhost");
+        session = Session.getDefaultInstance(properties);
+    }
 
-	public String getContent() {
-		return getText(getTemplate());
-	}
+    public void sendMessage() {
+        sendMessage(MAIN_ADDRESS);
+    }
 
-	public String getText(String template) {
-		StringWriter message = new StringWriter();
-		try {
-			Velocity.evaluate(ctx, message, "message", template);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return message.toString();
-	}
+    public void sendMessage(String recipient) {
+        try {
+            Message msg = createMessage(recipient);
+            Transport.send(msg, msg.getAllRecipients());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public String getSubject() {
-		return getText(getSubjectTemplate());
-	}
+    private Message createMessage(String recipient) throws Exception {
+        InternetAddress from = new InternetAddress(MAIN_ADDRESS, "Confitura 2011", CHARSET);
+        MimeMessage msg = new MimeMessage(session);
+        msg.setReplyTo(new Address[]{from});
+        msg.setFrom(from);
+        msg.setRecipient(TO, new InternetAddress(recipient));
+        msg.setContent(getContent(), "text/html; charset=UTF-8");
+        msg.setSubject(getSubject(), CHARSET);
+        return msg;
+    }
 
-	public abstract String getSubjectTemplate();
+    public String getContent() {
+        return getText(getTemplate());
+    }
 
-	public abstract String getTemplate();
+    public String getText(String template) {
+        StringWriter message = new StringWriter();
+        try {
+            Velocity.evaluate(ctx, message, "message", template);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return message.toString();
+    }
 
-	protected void put(String name, Object value) {
-		ctx.put(name, value);
-	}
+    public String getSubject() {
+        return getText(getSubjectTemplate());
+    }
+
+    public abstract String getSubjectTemplate();
+
+    public abstract String getTemplate();
+
+    protected void put(String name, Object value) {
+        ctx.put(name, value);
+    }
 
 }
