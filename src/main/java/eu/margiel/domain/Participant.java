@@ -59,6 +59,10 @@ public class Participant extends AbstractEntity {
 		return this.registrationType == CONFIRMED;
 	}
 
+	public boolean isFinalConfirmed() {
+		return this.registrationType == FINAL_CONFIRMED;
+	}
+
 	public void lunch(boolean lunch) {
 		this.lunch = lunch;
 	}
@@ -79,4 +83,5 @@ public class Participant extends AbstractEntity {
 	public String getLowerCaseCity() {
 		return getCity().toLowerCase();
 	}
+
 }

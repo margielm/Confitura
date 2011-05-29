@@ -6,31 +6,22 @@ import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.Participant;
-import eu.margiel.pages.PageNotFound;
-import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.ParticipantRepository;
 
-@MountPath(path = "registration/confirm")
+@MountPath(path = "registration/confirm/final")
 @MountMixedParam(parameterNames = "token")
-public class RegistrationConfirmPage extends BaseWebPage {
+public class RegistrationFinalConfirmPage extends RegistrationConfirmPage {
 
 	@SpringBean
 	private ParticipantRepository repository;
 
-	public RegistrationConfirmPage(PageParameters params) {
-		Participant participant = getParticipantByToken(params);
-		if (participant != null)
-			setResponsePage(new InfoPage(performActionFor(participant)));
-		else
-			setResponsePage(PageNotFound.class);
+	public RegistrationFinalConfirmPage(PageParameters params) {
+		super(params);
 	}
 
-	private Participant getParticipantByToken(PageParameters params) {
-		return repository.readByToken(params.getString("token"));
-	}
-
+	@Override
 	String performActionFor(Participant participant) {
-		if (participant.isConfirmed())
+		if (participant.isFinalConfirmed())
 			return "Twoja rejestracja została już potwierdzona!";
 		else {
 			participant.confirm();

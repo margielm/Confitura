@@ -9,6 +9,8 @@ public class Registration extends AbstractEntity {
 	private boolean active;
 	@Lob
 	private String info;
+	@Lob
+	private String widgetInfo;
 
 	public void setActive(boolean active) {
 		this.active = active;
@@ -24,5 +26,9 @@ public class Registration extends AbstractEntity {
 
 	public String getInfo() {
 		return info;
+	}
+
+	public String getWidgetInfo() {
+		return widgetInfo;
 	}
 }

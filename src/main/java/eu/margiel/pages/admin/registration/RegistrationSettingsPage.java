@@ -41,6 +41,7 @@ public class RegistrationSettingsPage extends AdminBasePage {
 			radio.setModelObject(registration.isActive() ? ACTIVE : CLOSE);
 			add(radio);
 			add(richEditor("info", propertyModel(registration, "info")));
+			add(richEditor("widget", propertyModel(registration, "widgetInfo")));
 		}
 
 		@Override
