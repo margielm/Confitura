@@ -1,6 +1,9 @@
 package eu.margiel.pages.admin.registration;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import eu.margiel.domain.Participant;
@@ -20,6 +23,15 @@ public class FinalConfirmationMailSender extends MailSender {
 	@Override
 	public String getTemplate() {
 		return repository.readByType("finalConfirmation").getTemplate();
+	}
+
+	@Async
+	public void sendMessages(List<Participant> participants) {
+		for (Participant participant : participants) {
+			System.out.println(String.format("%s/%s Sending email to " + participant.getMail(),
+					participants.indexOf(participant) + 1, participants.size()));
+			sendMessage(participant);
+		}
 	}
 
 	public void sendMessage(Participant participant) {

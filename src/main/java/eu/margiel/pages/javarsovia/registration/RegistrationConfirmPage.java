@@ -17,6 +17,9 @@ public class RegistrationConfirmPage extends BaseWebPage {
 	@SpringBean
 	private ParticipantRepository repository;
 
+	public RegistrationConfirmPage() {
+	}
+
 	public RegistrationConfirmPage(PageParameters params) {
 		Participant participant = getParticipantByToken(params);
 		if (participant != null)

@@ -84,4 +84,16 @@ public class Participant extends AbstractEntity {
 		return getCity().toLowerCase();
 	}
 
+	public void finalConfirmation() {
+		this.registrationType = FINAL_CONFIRMED;
+	}
+
+	public boolean isCancel() {
+		return registrationType == CANCELED;
+	}
+
+	public void cancel() {
+		this.registrationType = CANCELED;
+	}
+
 }

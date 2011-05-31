@@ -10,12 +10,12 @@ import eu.margiel.repositories.ParticipantRepository;
 
 @MountPath(path = "registration/confirm/final")
 @MountMixedParam(parameterNames = "token")
-public class RegistrationFinalConfirmPage extends RegistrationConfirmPage {
+public class FinalCofirmationPage extends RegistrationConfirmPage {
 
 	@SpringBean
 	private ParticipantRepository repository;
 
-	public RegistrationFinalConfirmPage(PageParameters params) {
+	public FinalCofirmationPage(PageParameters params) {
 		super(params);
 	}
 
@@ -24,10 +24,9 @@ public class RegistrationFinalConfirmPage extends RegistrationConfirmPage {
 		if (participant.isFinalConfirmed())
 			return "Twoja rejestracja została już potwierdzona!";
 		else {
-			participant.confirm();
+			participant.finalConfirmation();
 			repository.save(participant);
-			return "Dziękujemy za potwierdzenie rejestracji";
+			return "Dziękujemy za ostateczne potwierdzenie rejestracji";
 		}
 	}
-
 }
