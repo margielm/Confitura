@@ -1,17 +1,18 @@
 package eu.margiel.pages.admin.registration;
 
-import static ch.lambdaj.Lambda.*;
-
-import java.util.List;
-
-import org.apache.wicket.behavior.SimpleAttributeModifier;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-
 import eu.margiel.components.mail.DefineMailPanel;
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.Participant;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.ParticipantRepository;
+import org.apache.wicket.behavior.SimpleAttributeModifier;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.List;
+
+import static ch.lambdaj.Lambda.having;
+import static ch.lambdaj.Lambda.on;
+import static ch.lambdaj.Lambda.select;
 
 public class FinalConfirmationMailPage extends AdminBasePage {
 	@SpringBean
@@ -45,7 +46,6 @@ public class FinalConfirmationMailPage extends AdminBasePage {
 
 	private List<Participant> getConfirmedParticipants() {
 		List<Participant> participants = FinalConfirmationMailPage.this.repository.readAll();
-		List<Participant> select = select(participants, having(on(Participant.class).isConfirmed()));
-		return select;
+        return select(participants, having(on(Participant.class).isConfirmed() && !on(Participant.class).isFinalConfirmed()));
 	}
 }
