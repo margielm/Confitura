@@ -19,7 +19,6 @@ import eu.margiel.pages.javarsovia.registration.RegistrationWidget;
 import eu.margiel.pages.javarsovia.sponsor.SponsorWidget;
 import eu.margiel.repositories.MenuRepository;
 import eu.margiel.repositories.NewsRepository;
-import eu.margiel.repositories.ParticipantRepository;
 
 @SuppressWarnings("serial")
 public class BaseWebPage extends JavarsoviaBasePage {
@@ -29,8 +28,6 @@ public class BaseWebPage extends JavarsoviaBasePage {
 	private MenuLinks menuItemList;
 	@SpringBean
 	private NewsRepository newsRepository;
-	@SpringBean
-	private ParticipantRepository participantRepository;
 
 	private WebMarkupContainer wrapper;
 

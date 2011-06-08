@@ -6,7 +6,6 @@ import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.Participant;
-import eu.margiel.pages.PageNotFound;
 import eu.margiel.pages.javarsovia.BaseWebPage;
 import eu.margiel.repositories.ParticipantRepository;
 
@@ -21,11 +20,12 @@ public class RegistrationConfirmPage extends BaseWebPage {
 	}
 
 	public RegistrationConfirmPage(PageParameters params) {
-		Participant participant = getParticipantByToken(params);
-		if (participant != null)
-			setResponsePage(new InfoPage(performActionFor(participant)));
-		else
-			setResponsePage(PageNotFound.class);
+		setResponsePage(new InfoPage("Zakończyliśmy etap potwierdzania rejestracji, dziękujemy!"));
+		// Participant participant = getParticipantByToken(params);
+		// if (participant != null)
+		// setResponsePage(new InfoPage(performActionFor(participant)));
+		// else
+		// setResponsePage(PageNotFound.class);
 	}
 
 	private Participant getParticipantByToken(PageParameters params) {
