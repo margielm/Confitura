@@ -11,7 +11,7 @@ import eu.margiel.repositories.MailTemplateRepository;
 import eu.margiel.utils.MailSender;
 
 @Component
-public class FinalConfirmationMailSender extends MailSender {
+public class GroupMailSender extends MailSender {
 	@Autowired
 	private MailTemplateRepository repository;
 

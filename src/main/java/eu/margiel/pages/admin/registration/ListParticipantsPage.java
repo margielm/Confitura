@@ -39,7 +39,7 @@ public class ListParticipantsPage extends AdminBasePage {
 			item.add(label("city", participant.getCity()));
 			item.add(label("sex", participant.getSex()));
 			item.add(label("date", dateToString(participant.getRegistrationDate())));
-			item.add(label("state", participant.getRegistrationType().getName()));
+			item.add(label("state", participant.getRegistrationStatus().getName()));
 			item.add(label("lunch", participant.isLunch() ? "Tak" : "Nie"));
 		}
 	}

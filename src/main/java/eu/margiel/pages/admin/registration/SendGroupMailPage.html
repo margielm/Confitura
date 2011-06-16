@@ -10,7 +10,10 @@
 <body>
 
 <wicket:extend>
-	<a href="#" wicket:id="send" >Wyślij!</a>
+<form wicket:id="form">
+	<span wicket:id="statuses" /><br />
+	<input type="submit" value="Wyślij!"/>
+</form>
 	<span wicket:id="mail" />
 </wicket:extend>
 </body>

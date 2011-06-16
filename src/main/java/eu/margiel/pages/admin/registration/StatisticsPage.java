@@ -17,7 +17,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import ch.lambdaj.group.Group;
 import eu.margiel.domain.Participant;
-import eu.margiel.domain.RegistrationType;
+import eu.margiel.domain.RegistrationStatus;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.ParticipantRepository;
 
@@ -82,23 +82,23 @@ public class StatisticsPage extends AdminBasePage {
 		}
 	}
 
-	private final class StatusStatistics extends ListView<RegistrationType> {
+	private final class StatusStatistics extends ListView<RegistrationStatus> {
 		private final List<Participant> participants;
 
 		private StatusStatistics(List<Participant> participants) {
-			super("statusInfo", newArrayList(RegistrationType.values()));
+			super("statusInfo", newArrayList(RegistrationStatus.values()));
 			this.participants = participants;
 		}
 
 		@Override
-		protected void populateItem(ListItem<RegistrationType> item) {
-			RegistrationType type = item.getModelObject();
+		protected void populateItem(ListItem<RegistrationStatus> item) {
+			RegistrationStatus type = item.getModelObject();
 			item.add(label("status", type.getName()));
 			fillStatisticsRow(item, getParticipantsByType(participants, type));
 		}
 
-		private List<Participant> getParticipantsByType(final List<Participant> participants, RegistrationType type) {
-			return select(participants, having(on(Participant.class).getRegistrationType(), is(type)));
+		private List<Participant> getParticipantsByType(final List<Participant> participants, RegistrationStatus type) {
+			return select(participants, having(on(Participant.class).getRegistrationStatus(), is(type)));
 		}
 	}
 }

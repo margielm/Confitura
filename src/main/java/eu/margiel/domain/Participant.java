@@ -1,6 +1,6 @@
 package eu.margiel.domain;
 
-import static eu.margiel.domain.RegistrationType.*;
+import static eu.margiel.domain.RegistrationStatus.*;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ public class Participant extends AbstractEntity {
 	private String city;
 	private Date registrationDate = new Date();
 	private String token;
-	private RegistrationType registrationType = RegistrationType.NEW;
+	private RegistrationStatus registrationType = RegistrationStatus.NEW;
 	private boolean lunch;
 
 	public String getMail() {
@@ -51,7 +51,7 @@ public class Participant extends AbstractEntity {
 		this.registrationType = CONFIRMED;
 	}
 
-	public RegistrationType getRegistrationType() {
+	public RegistrationStatus getRegistrationStatus() {
 		return registrationType;
 	}
 
