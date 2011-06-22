@@ -8,8 +8,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.wicket.behavior.SimpleAttributeModifier;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.CheckBoxMultipleChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.CollectionModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -36,27 +38,45 @@ public class SendGroupMailPage extends AdminBasePage {
 
 	@SuppressWarnings("serial")
 	private final class SendMailForm extends Form<Void> {
-		private CheckBoxMultipleChoice<RegistrationStatus> choice = new CheckBoxMultipleChoice<RegistrationStatus>(
+		private CheckBoxMultipleChoice<RegistrationStatus> statusChoice = new CheckBoxMultipleChoice<RegistrationStatus>(
 				"statuses", new CollectionModel<RegistrationStatus>(), newArrayList(RegistrationStatus.values()));
+		private CheckBox participated = new CheckBox("participated", new Model<Boolean>());
 
 		private SendMailForm(String id) {
 			super(id);
-			choice.setPrefix("");
-			choice.setSuffix("");
-			add(choice);
+			statusChoice.setPrefix("");
+			statusChoice.setSuffix("");
+			add(statusChoice);
+			add(participated);
 		}
 
 		@Override
 		protected void onSubmit() {
-			sendEmailsToParticipantWith(choice.getModelObject());
+			sendEmailsToParticipantWith(statusChoice.getModelObject());
 		}
 
 		private void sendEmailsToParticipantWith(Collection<RegistrationStatus> statuses) {
-			sender.sendMessages(getParticipantsWith(statuses));
+			List<Participant> participantsByStatuses = getParticipantsWith(statuses);
+			sender.sendMessages(filterRealParticipantsOnly(participated.getModelObject(), participantsByStatuses));
+		}
+
+		private List<Participant> filterRealParticipantsOnly(boolean filter, List<Participant> participants) {
+			if (filter)
+				return select(participants, having(participant().participated()));
+			else
+				return participants;
 		}
 
 		private List<Participant> getParticipantsWith(Collection<RegistrationStatus> statuses) {
-			return select(getAllParticipants(), having(on(Participant.class).getRegistrationStatus(), isIn(statuses)));
+			List<Participant> all = getAllParticipants();
+			if (statuses.isEmpty())
+				return all;
+			else
+				return select(all, having(participant().getRegistrationStatus(), isIn(statuses)));
+		}
+
+		private Participant participant() {
+			return on(Participant.class);
 		}
 
 		private List<Participant> getAllParticipants() {

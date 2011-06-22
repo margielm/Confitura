@@ -17,6 +17,7 @@ public class Participant extends AbstractEntity {
 	private Date registrationDate = new Date();
 	private String token;
 	private RegistrationStatus registrationType = RegistrationStatus.NEW;
+	private boolean participated = false;
 	private boolean lunch;
 
 	public String getMail() {
@@ -94,6 +95,10 @@ public class Participant extends AbstractEntity {
 
 	public void cancel() {
 		this.registrationType = CANCELED;
+	}
+
+	public boolean participated() {
+		return participated;
 	}
 
 }

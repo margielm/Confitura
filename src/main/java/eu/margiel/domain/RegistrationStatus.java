@@ -4,8 +4,7 @@ public enum RegistrationStatus {
 	NEW("Nowa"),
 	CONFIRMED("Potwierdzona"),
 	FINAL_CONFIRMED("Finalna"),
-	CANCELED("Anulowana"),
-	PARTICIPATED("Był");
+	CANCELED("Anulowana");
 	private final String name;
 
 	private RegistrationStatus(String name) {
