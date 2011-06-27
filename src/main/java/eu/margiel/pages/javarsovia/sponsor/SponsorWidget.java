@@ -68,16 +68,4 @@ public class SponsorWidget extends Panel {
 			return sponsor.getPathToPhoto();
 	}
 
-	private final class SponsorFetcher {
-		public List<Sponsor> fetchSponsorsBy(SponsorType type) {
-			List<Sponsor> sponsors = repository.readByType(type.getShortName());
-			addUpToTwoEmptySponsors(sponsors);
-			return sponsors;
-		}
-
-		private void addUpToTwoEmptySponsors(List<Sponsor> sponsors) {
-			while (sponsors.size() < 2)
-				sponsors.add(new Sponsor("Zostań naszym partnerem", "mailto:confitura@confitura.pl"));
-		}
-	}
 }

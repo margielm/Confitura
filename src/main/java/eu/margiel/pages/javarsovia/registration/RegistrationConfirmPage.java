@@ -28,6 +28,7 @@ public class RegistrationConfirmPage extends BaseWebPage {
 		// setResponsePage(PageNotFound.class);
 	}
 
+	@SuppressWarnings("unused")
 	private Participant getParticipantByToken(PageParameters params) {
 		return repository.readByToken(params.getString("token"));
 	}
