@@ -6,15 +6,15 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 
 import com.google.common.collect.ImmutableMap;
 
-import eu.margiel.Javarsovia;
-import eu.margiel.JavarsoviaBasePage;
-import eu.margiel.JavarsoviaSession;
+import eu.margiel.Confitura;
+import eu.margiel.ConfituraBasePage;
+import eu.margiel.ConfituraSession;
 import eu.margiel.components.nogeneric.Link;
 import eu.margiel.domain.AbstractEntity;
 import eu.margiel.pages.admin.login.LoginPage;
 
 @SuppressWarnings("serial")
-public class AdminBasePage extends JavarsoviaBasePage {
+public class AdminBasePage extends ConfituraBasePage {
 	private WebMarkupContainer wrapper;
 
 	public AdminBasePage() {
@@ -29,18 +29,18 @@ public class AdminBasePage extends JavarsoviaBasePage {
 
 			@Override
 			public void onClick() {
-				JavarsoviaSession.get().invalidateNow();
+				ConfituraSession.get().invalidateNow();
 				setResponsePage(LoginPage.class);
 			}
 
 		});
 		add(wrapper);
-		if (JavarsoviaSession.get().isAdminAvailable() == false)
+		if (ConfituraSession.get().isAdminAvailable() == false)
 			setResponsePage(LoginPage.class);
 	}
 
-	protected Javarsovia getApp() {
-		return (Javarsovia) Application.get();
+	protected Confitura getApp() {
+		return (Confitura) Application.get();
 	}
 
 	protected PageParameters paramsWithId(AbstractEntity entity) {

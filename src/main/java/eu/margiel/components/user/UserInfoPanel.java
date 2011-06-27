@@ -14,18 +14,18 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import eu.margiel.Javarsovia;
-import eu.margiel.JavarsoviaSession;
+import eu.margiel.Confitura;
+import eu.margiel.ConfituraSession;
 import eu.margiel.components.DeleteLink;
 import eu.margiel.components.RedirectLink;
 import eu.margiel.components.StaticImage;
 import eu.margiel.domain.Presentation;
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.admin.c4p.presentation.ViewPresentationPage;
-import eu.margiel.pages.javarsovia.c4p.AddPresentationPage;
-import eu.margiel.pages.javarsovia.c4p.ChangePasswordPage;
-import eu.margiel.pages.javarsovia.c4p.EditSpeakerPage;
-import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
+import eu.margiel.pages.confitura.c4p.AddPresentationPage;
+import eu.margiel.pages.confitura.c4p.ChangePasswordPage;
+import eu.margiel.pages.confitura.c4p.EditSpeakerPage;
+import eu.margiel.pages.confitura.c4p.ViewSpeakerPage;
 import eu.margiel.repositories.PresentationRepository;
 
 @SuppressWarnings("serial")
@@ -47,10 +47,10 @@ public class UserInfoPanel extends Panel {
 		add(redirectLink("edit", EditSpeakerPage.class).setVisible(editable));
 		add(redirectLink("changePassword", ChangePasswordPage.class).setVisible(editable));
 		add(redirectLink("add_presentation", AddPresentationPage.class).setVisible(editable));
-		add(new RedirectLink("logout", Javarsovia.get().getHomePage()) {
+		add(new RedirectLink("logout", Confitura.get().getHomePage()) {
 			@Override
 			public void onClick() {
-				JavarsoviaSession.get().invalidateNow();
+				ConfituraSession.get().invalidateNow();
 				super.onClick();
 			}
 

@@ -9,14 +9,14 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import eu.margiel.JavarsoviaBasePage;
+import eu.margiel.ConfituraBasePage;
 import eu.margiel.domain.Admin;
 import eu.margiel.domain.User;
 import eu.margiel.pages.admin.AdminHomePage;
 import eu.margiel.repositories.AdminRepository;
 
 @SuppressWarnings("serial")
-public class LoginPage extends JavarsoviaBasePage {
+public class LoginPage extends ConfituraBasePage {
 	@SpringBean
 	private AdminRepository repository;
 	private TextField<String> userName = textField("userName", new Model<String>());

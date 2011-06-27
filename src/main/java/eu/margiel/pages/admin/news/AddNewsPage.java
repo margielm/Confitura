@@ -12,7 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
 
-import eu.margiel.JavarsoviaSession;
+import eu.margiel.ConfituraSession;
 import eu.margiel.domain.News;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.repositories.NewsRepository;
@@ -55,7 +55,7 @@ public class AddNewsPage extends AdminBasePage {
 		@Override
 		protected void onSubmit() {
 			if (news.isNew())
-				news.autor(JavarsoviaSession.get().getAdmin());
+				news.autor(ConfituraSession.get().getAdmin());
 			repository.save(news);
 			setResponsePage(ListNewsPage.class);
 		}

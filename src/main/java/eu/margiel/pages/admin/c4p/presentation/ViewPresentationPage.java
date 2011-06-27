@@ -14,7 +14,7 @@ import org.wicketstuff.annotation.strategy.MountMixedParam;
 import eu.margiel.domain.Presentation;
 import eu.margiel.pages.admin.AdminBasePage;
 import eu.margiel.pages.admin.c4p.speaker.ViewSpeakerPage;
-import eu.margiel.pages.javarsovia.c4p.PresentationPanel;
+import eu.margiel.pages.confitura.c4p.PresentationPanel;
 import eu.margiel.repositories.PresentationRepository;
 
 @SuppressWarnings("serial")

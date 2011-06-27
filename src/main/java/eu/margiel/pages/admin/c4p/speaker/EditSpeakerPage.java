@@ -7,7 +7,7 @@ import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import eu.margiel.domain.Speaker;
 import eu.margiel.pages.admin.AdminBasePage;
-import eu.margiel.pages.javarsovia.c4p.EditSpeakerPanel;
+import eu.margiel.pages.confitura.c4p.EditSpeakerPanel;
 import eu.margiel.repositories.SpeakerRepository;
 import eu.margiel.utils.PageParametersBuilder;
 

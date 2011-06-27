@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.util.file.Folder;
 
-import eu.margiel.pages.javarsovia.c4p.PhotoProvider;
+import eu.margiel.pages.confitura.c4p.PhotoProvider;
 
 public class GalleryPhotoProvider extends PhotoProvider {
 

@@ -9,7 +9,7 @@ import javax.persistence.Transient;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
-import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
+import eu.margiel.pages.confitura.c4p.SubfolderPhotoProvider;
 
 @SuppressWarnings("serial")
 @MappedSuperclass

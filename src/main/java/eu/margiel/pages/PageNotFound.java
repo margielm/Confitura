@@ -2,7 +2,7 @@ package eu.margiel.pages;
 
 import org.wicketstuff.annotation.mount.MountPath;
 
-import eu.margiel.pages.javarsovia.BaseWebPage;
+import eu.margiel.pages.confitura.BaseWebPage;
 
 @MountPath(path = "error")
 public class PageNotFound extends BaseWebPage {

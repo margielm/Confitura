@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 import eu.margiel.domain.MenuItem;
 import eu.margiel.domain.MenuLinkItem;
 import eu.margiel.domain.SimpleContent;
-import eu.margiel.pages.javarsovia.ViewPeoplePage;
-import eu.margiel.pages.javarsovia.ViewSimpleContentPage;
-import eu.margiel.pages.javarsovia.c4p.ViewSpeakerPage;
-import eu.margiel.pages.javarsovia.news.ViewNewsPage;
-import eu.margiel.pages.javarsovia.registration.RegistrationPage;
-import eu.margiel.pages.javarsovia.speaker.ListPresentationPage;
-import eu.margiel.pages.javarsovia.speaker.ListSpeakerPage;
-import eu.margiel.pages.javarsovia.sponsor.ViewSponsorsPage;
+import eu.margiel.pages.confitura.ViewPeoplePage;
+import eu.margiel.pages.confitura.ViewSimpleContentPage;
+import eu.margiel.pages.confitura.c4p.ViewSpeakerPage;
+import eu.margiel.pages.confitura.news.ViewNewsPage;
+import eu.margiel.pages.confitura.registration.RegistrationPage;
+import eu.margiel.pages.confitura.speaker.ListPresentationPage;
+import eu.margiel.pages.confitura.speaker.ListSpeakerPage;
+import eu.margiel.pages.confitura.sponsor.ViewSponsorsPage;
 import eu.margiel.repositories.SimpleContentRepository;
 
 @Component

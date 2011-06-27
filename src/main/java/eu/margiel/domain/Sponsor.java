@@ -1,6 +1,7 @@
 package eu.margiel.domain;
 
-import eu.margiel.pages.javarsovia.c4p.SubfolderPhotoProvider;
+import eu.margiel.pages.confitura.c4p.SubfolderPhotoProvider;
+
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 
 import javax.persistence.Entity;
