@@ -35,4 +35,17 @@ public class NewsRepositoryShould {
 
 		assertThat(news).containsExactly(published2, published1);
 	}
+
+	@Test
+	public void fetchOnlyPublishedNews() {
+		News published1 = new News().title("n1").published(true)
+				.creationDate(new LocalDateTime(2010, 10, 1, 10, 10).toDateTime().toDate());
+		repository.saveAndFlush(published1);
+		repository.saveAndFlush(new News().title("n3").published(false));
+
+		List<News> news = repository.readAll(new PublishedNews());
+
+		assertThat(news).containsExactly(published1);
+		assertThat(repository.count(new PublishedNews())).isEqualTo(1);
+	}
 }

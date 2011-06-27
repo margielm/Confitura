@@ -10,24 +10,25 @@
 </head>
 <body>
 <wicket:extend>
-<div wicket:id="news">
-	<h1 class="tytul">
-		<span wicket:id="title" clas="tytul"/>
-	</h1>
-	<span class="data" wicket:id="creationDate"> 13.08.2010 </span>
-	<hr class="clear" />
-	<p class="info">Napisał: <a href="#" wicket:id="author" ></a></p>
-
-	<div
-		class="tresc"
-		wicket:id="shortDescription" />
-
-	<div class="wiecej"><a
-		class="wiecej"
-		href="#"
-		wicket:id="more">czytaj wiecej...</a></div>
-	<br />
+	<div wicket:id="news">
+		<h1 class="tytul">
+			<span wicket:id="title" clas="tytul"/>
+		</h1>
+		<span class="data" wicket:id="creationDate"> 13.08.2010 </span>
+		<hr class="clear" />
+		<p class="info">Napisał: <a href="#" wicket:id="author" ></a></p>
+	
+		<div
+			class="tresc"
+			wicket:id="shortDescription" />
+	
+		<div class="wiecej"><a
+			class="wiecej"
+			href="#"
+			wicket:id="more">czytaj wiecej...</a></div>
+		<br />
 	</div>
+	<span wicket:id="navigator"/>
 </wicket:extend>
 </body>
 </html>

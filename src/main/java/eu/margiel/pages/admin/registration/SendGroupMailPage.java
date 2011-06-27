@@ -25,6 +25,7 @@ public class SendGroupMailPage extends AdminBasePage {
 
 	@SpringBean
 	private GroupMailSender sender;
+
 	@SpringBean
 	private ParticipantRepository repository;
 

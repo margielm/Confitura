@@ -4,11 +4,10 @@ import static eu.margiel.utils.Components.*;
 import static org.apache.commons.lang.StringUtils.*;
 import static org.joda.time.LocalDate.*;
 
-import java.util.List;
-
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -25,17 +24,19 @@ public class ViewNewsPage extends NewsBasePage {
 	private NewsRepository repository;
 
 	public ViewNewsPage() {
-		add(new NewsList("news", repository.fetchPublished()));
+		NewsList newsList = new NewsList("news", repository);
+		add(newsList);
+		add(new PagingNavigator("navigator", newsList));
 
 	}
 
-	private final class NewsList extends ListView<News> {
-		private NewsList(String id, List<News> newsList) {
-			super(id, newsList);
+	private final class NewsList extends DataView<News> {
+		private NewsList(String id, NewsRepository repository) {
+			super(id, new NewsProvider(repository), 7);
 		}
 
 		@Override
-		protected void populateItem(ListItem<News> item) {
+		protected void populateItem(Item<News> item) {
 			final News news = item.getModelObject();
 			item.add(new LabeledLink("title", news.getTitle(), news.getTitle(), ViewNewsDetailsPage.class));
 			item.add(linktToAuthor(news));
